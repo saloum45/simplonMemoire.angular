@@ -17,6 +17,11 @@
     color: white;
     font-weight: bold;
   }
+
+  h5{
+    color: var(--darkbluecolor);
+    /* color: red; */
+  }
 }
 
 .form-image {

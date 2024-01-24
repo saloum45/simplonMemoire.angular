@@ -6,6 +6,7 @@ import { PanierComponent } from './components/panier/panier.component';
 import { ConfirmCommandComponent } from './components/confirm-command/confirm-command.component';
 import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { InscriptionComponent } from './auth/inscription/inscription.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 export const routes: Routes = [
 
@@ -40,5 +41,9 @@ export const routes: Routes = [
   {
     path:"inscription",
     component:InscriptionComponent
+  },
+  {
+    path:"contact",
+    component:ContactComponent
   }
 ];

@@ -6,10 +6,10 @@
   margin: 0 auto;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
- display: flex;
+  display: flex;
   align-items: center;
   flex-direction: column;
-   justify-content: space-evenly;
+  justify-content: center;
 
   button{
     width: 60%;
@@ -24,19 +24,19 @@
   }
 }
 
-/* .form-image {
+.form-image {
   width: 50%;
-} */
+}
 
 .form-left {
   width: 45%;
-  height: 180px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   input {
-    width: 70%;
+    width: 60%;
     border: none;
     border-bottom: 2px var(--darkbluecolor) solid;
     padding-left: 20px;
