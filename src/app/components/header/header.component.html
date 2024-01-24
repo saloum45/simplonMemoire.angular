@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg fixed-top" id="nav">
+  <div class="container-fluid">
+    <a class="navbar-brand" id="logo"
+      ><img src="assets/panierLocal-logo.png" alt=""
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse "
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        @for (item of navLinks; track $index) {
+
+        <li class="nav-item fw-bold mx-3">
+          <a class="nav-link active text-white" aria-current="page" [routerLink]="[item.path]" id="linkItem">
+            <i class="{{ item.icon }}"></i> {{ item.name }}</a
+          >
+        </li>
+        }
+
+        <li class="nav-item dropdown " id="dropdown">
+          <a
+          class="nav-link dropdown-toggle text-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle"></i> Compte
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">Se connecter</a></li>
+            <li><a class="dropdown-item">S'inscrire</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="navbar-nav mb-2 mb-lg-0"> -->
+      <!-- </ul> -->
+    </div>
+  </div>
+</nav>
+
+<div class="separateur"></div>

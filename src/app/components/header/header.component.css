@@ -1,0 +1,47 @@
+#nav{
+  background-color: var(--darkbluecolor);
+  /* background-color: var(--bgcolor); */
+  height: 80px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 10px;
+}
+
+i{
+  color: var(--goldcolor);
+}
+#logo img{
+  height: 70px;
+  width: 90px;
+}
+
+#dropdown{
+  background-color: white;
+  border-radius: 5px;
+  /* padding: 10px; */
+  width: 160px;
+  font-weight: bold;
+
+}
+#dropdown a{
+  color: var(--darkbluecolor);
+}
+.separateur{
+  margin-top: 90px;
+}
+
+@media screen and (max-width:767px){
+  #nav{
+    height: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .navbar-toggler{
+    background-color: var(--goldcolor);
+    color: white;
+  }
+  .navbar-toggler-icon{
+    color: white;
+  }
+}
