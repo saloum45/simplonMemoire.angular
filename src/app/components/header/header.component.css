@@ -26,11 +26,27 @@ i{
 }
 #dropdown a{
   color: var(--darkbluecolor);
+  font-size: 18px;
+}
+
+#dropdown .dropdown-item{
+ font-weight: bold;
+ color: var(--darkbluecolor);
+ cursor: pointer;
+}
+
+#dropdown .dropdown-item:hover{
+ background-color: var(--darkbluecolor);
+ color: white;
+ cursor: pointer;
 }
 .separateur{
   margin-top: 90px;
 }
 
+#linkItem{
+  font-size: 18px;
+}
 @media screen and (max-width:767px){
   #nav{
     height: auto;

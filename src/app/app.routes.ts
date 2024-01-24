@@ -4,6 +4,8 @@ import { AccueilComponent } from './components/accueil/accueil.component';
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
 import { PanierComponent } from './components/panier/panier.component';
 import { ConfirmCommandComponent } from './components/confirm-command/confirm-command.component';
+import { ConnexionComponent } from './auth/connexion/connexion.component';
+import { InscriptionComponent } from './auth/inscription/inscription.component';
 
 export const routes: Routes = [
 
@@ -30,5 +32,13 @@ export const routes: Routes = [
   {
     path:"confirmCommand",
     component:ConfirmCommandComponent
+  },
+  {
+    path:"connexion",
+    component:ConnexionComponent
+  },
+  {
+    path:"inscription",
+    component:InscriptionComponent
   }
 ];
