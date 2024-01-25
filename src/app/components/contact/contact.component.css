@@ -1,7 +1,6 @@
 .form-container {
   height: 500px;
   border: 10px var(--darkbluecolor) solid;
-  /* background-color: red; */
   width: 80%;
   margin: 0 auto;
   border-radius: 5px;
@@ -20,7 +19,6 @@
 
   h5{
     color: var(--darkbluecolor);
-    /* color: red; */
   }
 }
 
@@ -46,6 +44,7 @@
   input:focus {
     border-bottom: 10px var(--darkbluecolor) solid;
   }
+
   .form-element {
     display: flex;
     justify-content: space-between;

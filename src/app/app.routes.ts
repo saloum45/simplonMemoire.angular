@@ -1,4 +1,3 @@
-import { ProduitComponent } from './components/produit/produit.component';
 import { Routes } from '@angular/router';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
@@ -7,6 +6,7 @@ import { ConfirmCommandComponent } from './components/confirm-command/confirm-co
 import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { InscriptionComponent } from './auth/inscription/inscription.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { DetailsProduitComponent } from './components/details-produit/details-produit.component';
 
 export const routes: Routes = [
 
@@ -23,8 +23,8 @@ export const routes: Routes = [
     component:CatalogueComponent
   },
   {
-    path:"produit/:id",
-    component:ProduitComponent
+    path:"detailsProduit/:id",
+    component:DetailsProduitComponent
   },
   {
     path:"panier",

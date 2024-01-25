@@ -130,4 +130,27 @@
   #card{
     height: auto;
   }
+
+  .processItems{
+    flex-direction: column;
+    height: auto;
+  }
+  .processItem{
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .description{
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  .description p{
+    width: 100%;
+  }
+  .description .img-logo{
+    width: 70%;
+    text-align: center;
+  }
+
 }
