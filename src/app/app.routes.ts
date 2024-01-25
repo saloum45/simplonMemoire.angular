@@ -7,6 +7,7 @@ import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { InscriptionComponent } from './auth/inscription/inscription.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { DetailsProduitComponent } from './components/details-produit/details-produit.component';
+import { AddProduitComponent } from './components/produit/add-produit/add-produit.component';
 
 export const routes: Routes = [
 
@@ -45,5 +46,9 @@ export const routes: Routes = [
   {
     path:"contact",
     component:ContactComponent
+  },
+  {
+    path:"addProduit",
+    component:AddProduitComponent
   }
 ];
