@@ -7,7 +7,7 @@
         <div class="form-element">
           <label for="">Categorie</label>
           <!-- <input type="text"> -->
-          <select name="" id="">
+          <select name="" id="" [(ngModel)]="categorie_id">
             @for (categorie of categories; track $index) {
               <option [value]="categorie.id">{{categorie.nom_categorie}}</option>
             }
@@ -15,23 +15,23 @@
         </div>
         <div class="form-element">
           <label for="">Titre</label>
-          <input type="email">
+          <input type="email"  [(ngModel)]="nom">
         </div>
         <div class="form-element">
           <label for="">Description</label>
-          <input type="text">
+          <input type="text"  [(ngModel)]="descripiton">
         </div>
         <div class="form-element">
           <label for="">Image</label>
-          <input type="text">
+          <input type="file" style="padding: 0;" (change)="getFile($event)" >
         </div>
         <div class="form-element">
           <label for="">Prix</label>
-          <input type="text">
+          <input type="text"  [(ngModel)]="prix">
         </div>
         <div class="form-element">
           <label for="">Quantité</label>
-          <input type="text">
+          <input type="text"  [(ngModel)]="quantite">
         </div>
       </div>
       <div class="form-image">
@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="text-center w-100">
-      <button class="btn">Ajouter</button>
+      <button class="btn " (click)="ajouter()">Ajouter</button>
     </div>
   </div>
 </div>

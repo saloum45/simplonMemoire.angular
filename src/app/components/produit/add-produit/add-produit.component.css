@@ -28,7 +28,7 @@
 
 .form-left {
   width: 45%;
-  height: 200px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -42,7 +42,7 @@
   }
 
   input:focus, select:focus {
-    border-bottom: 5px var(--darkbluecolor) solid;
+    border-bottom: 3px var(--darkbluecolor) solid;
   }
 
   .form-element {

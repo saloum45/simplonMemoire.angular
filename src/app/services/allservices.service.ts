@@ -15,7 +15,7 @@ export class AllservicesService {
   post(path: string, dataToSend: any, onSuccess: Function) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Authorization: "Bearer " + JSON.parse(localStorage.getItem("userOnline") ?? '{}').token
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("onlineUser") ?? '{}').token
       })
     };
     this.http.post(this.urlBase + path, dataToSend,httpOptions).subscribe((reponse: any) => onSuccess(reponse));
@@ -24,7 +24,7 @@ export class AllservicesService {
   get(path: string, onSuccess: Function) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Authorization: "Bearer " + JSON.parse(localStorage.getItem("userOnline") ?? '{}').token
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("onlineUser") ?? '{}').token
       })
     };
     this.http.get(this.urlBase + path, httpOptions).subscribe((reponse: any) => onSuccess(reponse));
