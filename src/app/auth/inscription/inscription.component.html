@@ -34,9 +34,9 @@
         <div class="form-element">
           <label for="">Genre</label>
           <!-- <input type="text" > -->
-          <select name="" id="">
-            <option value="m">Masculin</option>
-            <option value="f">Feminin</option>
+          <select name="" id="" [(ngModel)]="genre">
+            <option value="homme">Homme</option>
+            <option value="femme">Femme</option>
           </select>
         </div>
         <div class="form-element">
@@ -49,7 +49,7 @@
         </div>
         <div class="form-element">
           <label for="">Passe</label>
-          <input type="text" [(ngModel)]="pass">
+          <input type="password" [(ngModel)]="pass">
 
         </div>
       </div>
