@@ -42,7 +42,7 @@
   }
 
   input:focus {
-    border-bottom: 10px var(--darkbluecolor) solid;
+    border-bottom: 5px var(--darkbluecolor) solid;
   }
 
   .form-element {

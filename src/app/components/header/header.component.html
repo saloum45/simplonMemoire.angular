@@ -35,8 +35,12 @@
             <i class="bi bi-person-circle"></i> Compte
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="connexion">Se connecter</a></li>
-            <li><a class="dropdown-item" routerLink="inscription">S'inscrire</a></li>
+            @if (isOnline()==null) {
+              <li><a class="dropdown-item" routerLink="connexion">Se connecter</a></li>
+              <li><a class="dropdown-item" routerLink="inscription">S'inscrire</a></li>
+            }@else {
+              <li><a class="dropdown-item" (click)="deconnexion()" >Se déconnecter</a></li>
+            }
           </ul>
         </li>
       </ul>

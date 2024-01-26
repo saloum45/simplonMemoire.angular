@@ -13,12 +13,12 @@ export class AllservicesService {
   constructor(private http: HttpClient) { }
 
   post(path: string, dataToSend: any, onSuccess: Function) {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     Authorization: "Bearer " + JSON.parse(localStorage.getItem("userOnline") ?? '{}').token
-    //   })
-    // };
-    this.http.post(this.urlBase + path, dataToSend).subscribe((reponse: any) => onSuccess(reponse));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("userOnline") ?? '{}').token
+      })
+    };
+    this.http.post(this.urlBase + path, dataToSend,httpOptions).subscribe((reponse: any) => onSuccess(reponse));
   }
 
   get(path: string, onSuccess: Function) {
@@ -37,5 +37,23 @@ export class AllservicesService {
       text: message,
       icon: icon
     });
+  }
+
+  whoIsOnline(){
+    if (localStorage.getItem("onlineUser")!=null || localStorage.getItem("onlineUser")!=undefined) {
+      let data= JSON.parse(localStorage.getItem("onlineUser") ??'{}');
+      return data.type;
+    }else{
+      return null;
+    }
+  }
+
+  IsOnline(){
+    if (localStorage.getItem("onlineUser")!=null || localStorage.getItem("onlineUser")!=undefined) {
+      let data= JSON.parse(localStorage.getItem("onlineUser") ??'{}');
+      return data;
+    }else{
+      return null;
+    }
   }
 }

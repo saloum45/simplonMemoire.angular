@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AllservicesService } from '../../services/allservices.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+
+
+
   // Attributs
+  // public isOnline=this.service.IsOnline();
   public navLinks=[
     {
       path:"accueil",
@@ -35,7 +40,13 @@ export class HeaderComponent {
       icon:"bi bi-cart3"
     }
   ];
+constructor(private service:AllservicesService, private router:Router){
 
+}
+  ngOnInit(): void {
+    // console.log('test data',this.isOnline);
+  }
+  // Methodes
   // activeLink() {
   //   let links = document.querySelectorAll('a');
   //   links.forEach((element: any) => {
@@ -48,4 +59,14 @@ export class HeaderComponent {
   //     });
   //   });
   // }
+
+  isOnline(){
+   return this.service.IsOnline();
+  }
+
+  deconnexion(){
+    localStorage.removeItem("onlineUser");
+    this.router.navigate(['/accueil']);
+    this.service.message("Au revoir","success","Déconnexion faite avec succès");
+  }
 }

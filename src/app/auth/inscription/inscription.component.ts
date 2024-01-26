@@ -34,7 +34,6 @@ export class InscriptionComponent {
   }
   // la fonction qui permet d'inscrire un utilisateur
   inscription() {
-    this.router.navigate(['/connexion']);
     if (this.nom == "" || this.prenom=="" || this.naissance||  this.naissance || this.genre=="" || this.nin=="" || this.ninea=="" || this.adresse=="" || this.numero=="" || this.pass=="" || this.email=="") {
       this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
     } else {
@@ -43,6 +42,7 @@ export class InscriptionComponent {
       this.service.post('api/registerCommercant', this.user, (reponse: any) => {
         if (reponse.status == 200) {
           // console.log('success',reponse);
+          this.router.navigate(['/connexion']);
           this.service.message("Merci!!!", "success", "Inscription faite avec succès,Veuillez vous connecter");
         } else {
           // console.log('error ',reponse);
