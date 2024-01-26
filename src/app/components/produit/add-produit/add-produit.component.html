@@ -6,7 +6,12 @@
       <div class="form-left">
         <div class="form-element">
           <label for="">Categorie</label>
-          <input type="text">
+          <!-- <input type="text"> -->
+          <select name="" id="">
+            @for (categorie of categories; track $index) {
+              <option [value]="categorie.id">{{categorie.nom_categorie}}</option>
+            }
+          </select>
         </div>
         <div class="form-element">
           <label for="">Titre</label>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AllservicesService } from '../../../services/allservices.service';
 
 @Component({
   selector: 'app-add-produit',
@@ -7,6 +8,20 @@ import { Component } from '@angular/core';
   templateUrl: './add-produit.component.html',
   styleUrl: './add-produit.component.css'
 })
-export class AddProduitComponent {
+export class AddProduitComponent implements OnInit {
+  // Attributs
+  public categories:any=[];
+
+
+  // Methodes
+  constructor(private service:AllservicesService){
+
+  }
+  ngOnInit(): void {
+    this.service.get("api/categories",(reponse:any)=>{
+      this.categories=reponse.data;
+      console.log(reponse.data);
+    });
+  }
 
 }
