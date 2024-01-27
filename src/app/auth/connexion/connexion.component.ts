@@ -40,6 +40,7 @@ connexion() {
         localStorage.setItem("onlineUser",JSON.stringify(onlineUser));
         this.router.navigate(['/accueil']);
         this.service.message("Merci!!!", "success", "Connexion faite avec succès");
+        // console.log("reponse conn",reponse);
       } else {
         console.log('error ',reponse);
         this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");

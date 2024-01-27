@@ -14,6 +14,7 @@ import { RouterLink } from '@angular/router';
 export class CatalogueComponent implements OnInit{
  // Attributs
  public produits:any=[];
+ public categories:any=[];
 
 
  // Methodes
@@ -22,9 +23,24 @@ export class CatalogueComponent implements OnInit{
  }
 
  ngOnInit(): void {
-   this.service.get("api/produits",(reponse:any)=>{
-     this.produits=reponse.data;
-     console.log(reponse.data);
-   });
+  this.loadAllProducts();
+   this.service.get("api/categories",(reponse:any)=>{
+    this.categories=reponse.data;
+    console.log(reponse.data);
+  });
+ }
+
+ loadAllProducts(){
+  this.service.get("api/produits",(reponse:any)=>{
+    this.produits=reponse.data;
+    console.log(reponse.data);
+  });
+ }
+
+ getProductByCategorie(id:any){
+  this.service.get("api/produits/"+id,(reponse:any)=>{
+    this.produits=reponse.data;
+    console.log("prod: ",id,reponse.data);
+  });
  }
 }

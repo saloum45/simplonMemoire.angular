@@ -42,6 +42,14 @@
     padding-left: 20px;
     transition: 1s ease;
   }
+  textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 2px var(--darkbluecolor) solid;
+    padding-left: 20px;
+    transition: 1s ease;
+    height: 100px;
+  }
 
   input:focus {
     border-bottom: 5px var(--darkbluecolor) solid;

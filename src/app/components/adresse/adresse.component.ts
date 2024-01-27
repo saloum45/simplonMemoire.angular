@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-adresse',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   templateUrl: './adresse.component.html',
-  styleUrl: './adresse.component.css'
+  styleUrl: '../../auth/connexion/connexion.component.css'
 })
 export class AdresseComponent {
-
+// Attributs
+public adresse="";
 }

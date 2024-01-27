@@ -7,12 +7,11 @@
           class="d-flex flex-column justify-content-between p-lg-4"
           style="height: 250px"
         >
-          <span>Tout</span>
-          <span>Produits de artisanaux</span>
-          <span>Produits de mer</span>
-          <span>Produits épicerie</span>
-          <span>Boisson locales</span>
-          <span>Produits de la terre</span>
+        <span (click)="loadAllProducts()">Tout</span>
+        @for (item of categories; track $index) {
+
+          <span (click)="getProductByCategorie(item.id)">{{item.nom_categorie}}</span>
+        }
         </div>
       </div>
       <div class="recherche px-3">
