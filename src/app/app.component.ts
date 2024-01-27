@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from "./components/footer/footer.component";
 import { HeaderComponent } from "./components/header/header.component";
+import { AllservicesService } from './services/allservices.service';
 
 @Component({
     selector: 'app-root',
@@ -12,5 +13,16 @@ import { HeaderComponent } from "./components/header/header.component";
     imports: [CommonModule, RouterOutlet, FooterComponent, HeaderComponent]
 })
 export class AppComponent {
+  // Attributs
   title = 'panierlocal';
+
+
+
+  // Methodes
+  constructor(private service:AllservicesService){
+
+  }
+  isOnline(){
+    return this.service.IsOnline();
+   }
 }
