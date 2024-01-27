@@ -10,14 +10,14 @@
         <span (click)="loadAllProducts()">Tout</span>
         @for (item of categories; track $index) {
 
-          <span (click)="getProductByCategorie(item.id)">{{item.nom_categorie}}</span>
+          <span (click)="getProductByCategorie(item.id,item.nom_categorie)">{{item.nom_categorie}}</span>
         }
         </div>
       </div>
       <div class="recherche px-3">
         <h6 class="text-center pt-3 fw-bold">RECHERCHE ET FILTRE</h6>
         <div class="form-floating">
-          <input type="email" class="form-control" id="floatingInput" />
+          <input type="email" class="form-control" id="floatingInput" [(ngModel)]="searchInput"/>
           <label for="floatingInput">Rechercher</label>
         </div>
         <hr />
@@ -58,11 +58,11 @@
       </div>
       <div class="nouveaute mt-4">
         <div class="section-title">
-          <h4>Tout</h4>
+          <h4>{{titre}}</h4>
           <hr />
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-          @for (item of produits; track $index) {
+          @for (item of search(); track $index) {
 
             <div class="col" [routerLink]="['/detailsProduit',item.id]">
               <div class="card" id="card">
@@ -77,6 +77,12 @@
                   </div>
                 </div>
               </div>
+            </div>
+          }
+          @if (produits.length==0) {
+            <div class="m-auto">
+
+              <img src="assets/empty_image.png" alt="">
             </div>
           }
 
