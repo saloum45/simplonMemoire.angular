@@ -47,6 +47,14 @@ export class AllservicesService {
       return null;
     }
   }
+  idOnline() {
+    if (localStorage.getItem("onlineUser") != null || localStorage.getItem("onlineUser") != undefined) {
+      let data = JSON.parse(localStorage.getItem("onlineUser") ?? '{}');
+      return data.id;
+    } else {
+      return null;
+    }
+  }
 
   IsOnline() {
     if (localStorage.getItem("onlineUser") != null || localStorage.getItem("onlineUser") != undefined) {

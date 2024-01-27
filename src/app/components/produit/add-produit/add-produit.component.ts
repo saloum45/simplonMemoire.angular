@@ -16,13 +16,13 @@ export class AddProduitComponent implements OnInit {
   // Attributs
   public categories:any=[];
   // public file="";
-  public nom="test";
-  public quantite="12";
-  public categorie_id="2";
-  public commercant_id="2";
+  public nom="";
+  public quantite="";
+  public categorie_id="";
+  public commercant_id=this.service.idOnline();
   public image:any;
-  public prix ="1240";
-  public descripiton="in order";
+  public prix ="";
+  public descripiton="";
 
 
   // Methodes
