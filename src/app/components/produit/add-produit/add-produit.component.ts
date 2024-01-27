@@ -16,13 +16,13 @@ export class AddProduitComponent implements OnInit {
   // Attributs
   public categories:any=[];
   // public file="";
-  public nom="";
-  public quantite="";
-  public categorie_id="";
-  public commercant_id="";
-  public image="";
-  public prix ="";
-  public descripiton="";
+  public nom="test";
+  public quantite="12";
+  public categorie_id="2";
+  public commercant_id="2";
+  public image:any;
+  public prix ="1240";
+  public descripiton="in order";
 
 
   // Methodes
@@ -38,7 +38,7 @@ export class AddProduitComponent implements OnInit {
 
   getFile(event: any) {
     console.warn(event.target.files[0]);
-    this.image = event.target.files[0];
+    this.image = event.target.files[0] as File;
   }
 
   // ajout d'un produit
@@ -46,15 +46,24 @@ export class AddProduitComponent implements OnInit {
     if (this.nom == "" || this.quantite=="" ) {
       this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
     } else {
-      let produit=new Produit(this.nom,this.quantite,this.prix,this.descripiton,2,2,this.image);
-      console.log("produit",produit);
-      this.service.post('api/produit/create', produit, (reponse: any) => {
+      let formData=new FormData();
+      formData.append("image",this.image);
+      formData.append("nom_produit",this.nom);
+      formData.append("quantite",this.quantite);
+      formData.append("categorie_id",this.categorie_id);
+      formData.append("commercant_id",this.commercant_id);
+      formData.append("description",this.descripiton);
+      formData.append("prix",this.prix);
+      
+      // let produit=new Produit(this.nom,this.quantite,this.prix,this.descripiton,2,2,formData);
+      // console.log("produit",formData);
+      this.service.post('api/produit/create',formData, (reponse: any) => {
         if (reponse.status == 200) {
-          // console.log('success',reponse);
+          console.log('success',reponse);
           // this.router.navigate(['/connexion']);
           this.service.message("Merci!!!", "success", "Ajout avec succès,Veuillez vous connecter");
         } else {
-          // console.log('error ',reponse);
+          console.log('error ',reponse);
           this.service.message("Désolé!!!", "error", "Ajout échoué, vérifier la saisie ");
         }
       });

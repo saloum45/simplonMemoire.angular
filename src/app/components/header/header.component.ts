@@ -45,6 +45,7 @@ constructor(private service:AllservicesService, private router:Router){
 }
   ngOnInit(): void {
     // console.log('test data',this.isOnline);
+    // console.warn("test",JSON.parse(localStorage.getItem("onlineUser") ?? '{}').token);
   }
   // Methodes
   // activeLink() {

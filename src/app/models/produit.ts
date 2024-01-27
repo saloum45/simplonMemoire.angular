@@ -4,9 +4,9 @@ export class Produit {
     private quantite:string,
     private prix: string,
     private description:string,
-    private commercant__id:number,
+    private commercant_id:number,
     private categorie_id:number,
-    private image:string
+    private image:any
   ) {
 
   }

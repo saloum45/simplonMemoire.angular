@@ -15,16 +15,16 @@ export class AllservicesService {
   post(path: string, dataToSend: any, onSuccess: Function) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Authorization: "Bearer " + JSON.parse(localStorage.getItem("onlineUser") ?? '{}').token
+        Authorization: "Bearer" + JSON.parse(localStorage.getItem("onlineUser") ?? '{}').token
       })
     };
-    this.http.post(this.urlBase + path, dataToSend,httpOptions).subscribe((reponse: any) => onSuccess(reponse));
+    this.http.post(this.urlBase + path, dataToSend, httpOptions).subscribe((reponse: any) => onSuccess(reponse));
   }
 
   get(path: string, onSuccess: Function) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Authorization: "Bearer " + JSON.parse(localStorage.getItem("onlineUser") ?? '{}').token
+        Authorization: "Bearer" + JSON.parse(localStorage.getItem("onlineUser") ?? '{}').token
       })
     };
     this.http.get(this.urlBase + path, httpOptions).subscribe((reponse: any) => onSuccess(reponse));
@@ -39,20 +39,20 @@ export class AllservicesService {
     });
   }
 
-  whoIsOnline(){
-    if (localStorage.getItem("onlineUser")!=null || localStorage.getItem("onlineUser")!=undefined) {
-      let data= JSON.parse(localStorage.getItem("onlineUser") ??'{}');
+  whoIsOnline() {
+    if (localStorage.getItem("onlineUser") != null || localStorage.getItem("onlineUser") != undefined) {
+      let data = JSON.parse(localStorage.getItem("onlineUser") ?? '{}');
       return data.type;
-    }else{
+    } else {
       return null;
     }
   }
 
-  IsOnline(){
-    if (localStorage.getItem("onlineUser")!=null || localStorage.getItem("onlineUser")!=undefined) {
-      let data= JSON.parse(localStorage.getItem("onlineUser") ??'{}');
+  IsOnline() {
+    if (localStorage.getItem("onlineUser") != null || localStorage.getItem("onlineUser") != undefined) {
+      let data = JSON.parse(localStorage.getItem("onlineUser") ?? '{}');
       return data;
-    }else{
+    } else {
       return null;
     }
   }
