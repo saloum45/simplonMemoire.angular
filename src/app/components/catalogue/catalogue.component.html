@@ -65,7 +65,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
           @for (item of produits; track $index) {
 
-            <div class="col">
+            <div class="col" [routerLink]="['/detailsProduit',item.id]">
               <div class="card" id="card">
                 <div class="text-center image">
                   <img src="http://localhost:8000/images/{{item.image}}" alt="" />
@@ -80,7 +80,7 @@
               </div>
             </div>
           }
-        
+
         </div>
         <div class="pagination">
           <span>Précedent</span>

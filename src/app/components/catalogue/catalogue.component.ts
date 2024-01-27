@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AllservicesService } from '../../services/allservices.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-catalogue',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './catalogue.component.html',
   styleUrl: './catalogue.component.css'
 })
