@@ -1,0 +1,20 @@
+.side-router-container {
+  display: flex;
+  justify-content: space-between;
+}
+.sidemenu {
+ width: 7%;
+ background-color: var(--darkbluecolor);
+ position: fixed;
+ height: 110vh;
+ z-index: 5;
+ top: -10px;
+ left: 0;
+ box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
+}
+
+.router-section{
+  width: 92%;
+  margin-left: 8%;
+}
