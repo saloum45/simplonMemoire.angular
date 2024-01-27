@@ -4,24 +4,21 @@
 
   <div class="side-router-container">
     <div class="sidemenu">
-      <div>
+      <div [routerLink]="['/commande']">
         <img src="assets/commandes.png" alt="" />
         <span>Mes commandes</span>
       </div>
-      <div>
+      <div [routerLink]="['/profile']">
         <img src="assets/profile.png" alt="" />
         <span>Mon profile</span>
-
       </div>
-      <div>
+      <div [routerLink]="['/adresse']">
         <img src="assets/location.png" alt="" />
         <span>Mon adresse</span>
-
       </div>
       <div [routerLink]="['/listProduit']" >
         <img src="assets/produits.png" alt="" />
         <span>Mes produits</span>
-
       </div>
     </div>
     <div class="router-section">

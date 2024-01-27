@@ -9,6 +9,9 @@ import { ContactComponent } from './components/contact/contact.component';
 import { DetailsProduitComponent } from './components/details-produit/details-produit.component';
 import { AddProduitComponent } from './components/produit/add-produit/add-produit.component';
 import { ListProduitComponent } from './components/produit/list-produit/list-produit.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { AdresseComponent } from './components/adresse/adresse.component';
+import { CommandeComponent } from './components/commande/commande.component';
 
 export const routes: Routes = [
 
@@ -55,5 +58,17 @@ export const routes: Routes = [
   {
     path:"listProduit",
     component:ListProduitComponent
+  },
+  {
+    path:"profile",
+    component:ProfileComponent
+  },
+  {
+    path:"adresse",
+    component:AdresseComponent
+  },
+  {
+    path:"commande",
+    component:CommandeComponent
   }
 ];

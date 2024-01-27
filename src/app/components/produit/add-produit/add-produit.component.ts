@@ -43,7 +43,7 @@ export class AddProduitComponent implements OnInit {
 
   // ajout d'un produit
   ajouter() {
-    if (this.nom == "" || this.quantite=="" ) {
+    if (this.nom == "" || this.quantite=="" || this.descripiton=="" || this.prix=="" || this.quantite==""|| this.image==undefined) {
       this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
     } else {
       let formData=new FormData();
