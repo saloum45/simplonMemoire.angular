@@ -25,6 +25,9 @@
   width: 50px;
   border-radius: 10px;
 }
+.sidemenu div {
+  cursor: pointer;
+}
 
 
 .sidemenu div span{

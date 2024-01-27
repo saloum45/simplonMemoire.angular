@@ -8,6 +8,7 @@ import { InscriptionComponent } from './auth/inscription/inscription.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { DetailsProduitComponent } from './components/details-produit/details-produit.component';
 import { AddProduitComponent } from './components/produit/add-produit/add-produit.component';
+import { ListProduitComponent } from './components/produit/list-produit/list-produit.component';
 
 export const routes: Routes = [
 
@@ -50,5 +51,9 @@ export const routes: Routes = [
   {
     path:"addProduit",
     component:AddProduitComponent
+  },
+  {
+    path:"listProduit",
+    component:ListProduitComponent
   }
 ];
