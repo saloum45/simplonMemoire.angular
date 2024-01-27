@@ -54,9 +54,9 @@ export class AddProduitComponent implements OnInit {
       formData.append("commercant_id",this.commercant_id);
       formData.append("description",this.descripiton);
       formData.append("prix",this.prix);
-      
+
       // let produit=new Produit(this.nom,this.quantite,this.prix,this.descripiton,2,2,formData);
-      // console.log("produit",formData);
+      console.log("produit",formData);
       this.service.post('api/produit/create',formData, (reponse: any) => {
         if (reponse.status == 200) {
           console.log('success',reponse);

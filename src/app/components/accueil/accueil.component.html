@@ -57,7 +57,24 @@
           <hr />
         </div>
         <div class="row row-cols-1 row-cols-md-4 g-4">
-          <div class="col" [routerLink]="['/detailsProduit',1]">
+          @for (item of  produits; track $index) {
+
+            <div class="col" [routerLink]="['/detailsProduit',1]">
+              <div class="card" id="card">
+                <div class="text-center image">
+                  <img src="http://localhost:8000/images/{{item.image}}" alt="" />
+                </div>
+                <div class="card-text">
+                  <h6 class="text-center">{{item.nom_produit}}</h6>
+                  <span class="text-center">{{item.prix}} fcfa</span>
+                  <div class="text-center">
+                    <button class="btn">Ajouter au panier</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          <!-- <div class="col">
             <div class="card" id="card">
               <div class="text-center image">
                 <img src="assets/Madd.png" alt="" />
@@ -70,8 +87,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col">
+          </div> -->
+          <!-- <div class="col">
             <div class="card" id="card">
               <div class="text-center image">
                 <img src="assets/Madd.png" alt="" />
@@ -84,8 +101,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col">
+          </div> -->
+          <!-- <div class="col">
             <div class="card" id="card">
               <div class="text-center image">
                 <img src="assets/Madd.png" alt="" />
@@ -98,8 +115,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col">
+          </div> -->
+          <!-- <div class="col">
             <div class="card" id="card">
               <div class="text-center image">
                 <img src="assets/Madd.png" alt="" />
@@ -112,8 +129,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col">
+          </div> -->
+          <!-- <div class="col">
             <div class="card" id="card">
               <div class="text-center image">
                 <img src="assets/Madd.png" alt="" />
@@ -126,8 +143,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col">
+          </div> -->
+          <!-- <div class="col">
             <div class="card" id="card">
               <div class="text-center image">
                 <img src="assets/Madd.png" alt="" />
@@ -140,8 +157,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col">
+          </div> -->
+          <!-- <div class="col">
             <div class="card" id="card">
               <div class="text-center image">
                 <img src="assets/Madd.png" alt="" />
@@ -154,21 +171,7 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card" id="card">
-              <div class="text-center image">
-                <img src="assets/Madd.png" alt="" />
-              </div>
-              <div class="card-text">
-                <h6 class="text-center">Confiture de madd</h6>
-                <span class="text-center">2000 fcfa</span>
-                <div class="text-center">
-                  <button class="btn">Ajouter au panier</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          </div> -->
         </div>
         <div class="pagination">
           <span>Précedent</span>
