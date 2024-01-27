@@ -57,9 +57,9 @@
           <hr />
         </div>
         <div class="row row-cols-1 row-cols-md-4 g-4">
-          @for (item of  produits; track $index) {
+          @for (item of  produits.slice(0,8); track $index) {
 
-            <div class="col" [routerLink]="['/detailsProduit',1]">
+            <div class="col" [routerLink]="['/detailsProduit',item.id]">
               <div class="card" id="card">
                 <div class="text-center image">
                   <img src="http://localhost:8000/images/{{item.image}}" alt="" />
@@ -74,104 +74,7 @@
               </div>
             </div>
           }
-          <!-- <div class="col">
-            <div class="card" id="card">
-              <div class="text-center image">
-                <img src="assets/Madd.png" alt="" />
-              </div>
-              <div class="card-text">
-                <h6 class="text-center">Confiture de madd</h6>
-                <span class="text-center">2000 fcfa</span>
-                <div class="text-center">
-                  <button class="btn">Ajouter au panier</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="col">
-            <div class="card" id="card">
-              <div class="text-center image">
-                <img src="assets/Madd.png" alt="" />
-              </div>
-              <div class="card-text">
-                <h6 class="text-center">Confiture de madd</h6>
-                <span class="text-center">2000 fcfa</span>
-                <div class="text-center">
-                  <button class="btn">Ajouter au panier</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="col">
-            <div class="card" id="card">
-              <div class="text-center image">
-                <img src="assets/Madd.png" alt="" />
-              </div>
-              <div class="card-text">
-                <h6 class="text-center">Confiture de madd</h6>
-                <span class="text-center">2000 fcfa</span>
-                <div class="text-center">
-                  <button class="btn">Ajouter au panier</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="col">
-            <div class="card" id="card">
-              <div class="text-center image">
-                <img src="assets/Madd.png" alt="" />
-              </div>
-              <div class="card-text">
-                <h6 class="text-center">Confiture de madd</h6>
-                <span class="text-center">2000 fcfa</span>
-                <div class="text-center">
-                  <button class="btn">Ajouter au panier</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="col">
-            <div class="card" id="card">
-              <div class="text-center image">
-                <img src="assets/Madd.png" alt="" />
-              </div>
-              <div class="card-text">
-                <h6 class="text-center">Confiture de madd</h6>
-                <span class="text-center">2000 fcfa</span>
-                <div class="text-center">
-                  <button class="btn">Ajouter au panier</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="col">
-            <div class="card" id="card">
-              <div class="text-center image">
-                <img src="assets/Madd.png" alt="" />
-              </div>
-              <div class="card-text">
-                <h6 class="text-center">Confiture de madd</h6>
-                <span class="text-center">2000 fcfa</span>
-                <div class="text-center">
-                  <button class="btn">Ajouter au panier</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="col">
-            <div class="card" id="card">
-              <div class="text-center image">
-                <img src="assets/Madd.png" alt="" />
-              </div>
-              <div class="card-text">
-                <h6 class="text-center">Confiture de madd</h6>
-                <span class="text-center">2000 fcfa</span>
-                <div class="text-center">
-                  <button class="btn">Ajouter au panier</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
+         
         </div>
         <div class="pagination">
           <span>Précedent</span>

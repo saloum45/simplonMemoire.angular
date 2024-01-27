@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { AllservicesService } from '../../services/allservices.service';
 
 @Component({
   selector: 'app-details-produit',
@@ -10,12 +11,23 @@ import { RouterLink } from '@angular/router';
   templateUrl: './details-produit.component.html',
   styleUrl: './details-produit.component.css'
 })
-export class DetailsProduitComponent {
- // Attributs
- public  quantite=1;
+export class DetailsProduitComponent implements OnInit{
+  // Attributs
+  public  quantite=1;
+  public produit:any;
+
+  // Methodes
+  constructor(private service:AllservicesService,private activatedRouter:ActivatedRoute){
+
+  }
+   ngOnInit(): void {
+    this.service.get("api/produit/"+this.activatedRouter.snapshot.params['id'],(reponse:any)=>{
+      this.produit=reponse.data;
+      console.log("details",reponse.data);
+    });
+  }
 
 
- // Methodes
  upOrDownQuantity(type:string) {
    // if (this.quantite<1) {
    //   this.quantite=1;
