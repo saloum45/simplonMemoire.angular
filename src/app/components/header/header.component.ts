@@ -69,5 +69,9 @@ constructor(private service:AllservicesService, private router:Router){
     localStorage.removeItem("onlineUser");
     this.router.navigate(['/accueil']);
     this.service.message("Au revoir","success","Déconnexion faite avec succès");
+    // deconnexionCommercant
+    // this.service.simplePost("api/deconnexionCommercant",((reponse:any)=>{
+    //   console.log(reponse);
+    // }));
   }
 }

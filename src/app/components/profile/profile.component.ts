@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Commerçant } from '../../models/commerçant';
 import { AllservicesService } from '../../services/allservices.service';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './profile.component.html',
   styleUrl: '../../auth/inscription/inscription.component.css'
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit{
  // Attributs
  public nom="";
  public prenom="";
@@ -31,6 +31,12 @@ export class ProfileComponent {
  constructor(private service:AllservicesService, private router:Router){
 
  }
+  ngOnInit(): void {
+    this.service.get('api/user', (reponse: any) => {
+      console.log(reponse);
+
+    });
+  }
  // la fonction qui permet d'inscrire un utilisateur
  inscription() {
    if (this.nom == "" || this.prenom=="" || this.naissance||  this.naissance || this.genre=="" || this.nin=="" || this.ninea=="" || this.adresse=="" || this.numero=="" || this.pass=="" || this.email=="") {

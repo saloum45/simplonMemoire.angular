@@ -21,6 +21,14 @@ export class AllservicesService {
     this.http.post(this.urlBase + path, dataToSend, httpOptions).subscribe((reponse: any) => onSuccess(reponse));
   }
 
+  simplePost(path: string, onSuccess: Function) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: "Bearer" + JSON.parse(localStorage.getItem("onlineUser") ?? '{}').token
+      })
+    };
+    this.http.post(this.urlBase + path, httpOptions).subscribe((reponse: any) => onSuccess(reponse));
+  }
   get(path: string, onSuccess: Function) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -47,6 +55,7 @@ export class AllservicesService {
       return null;
     }
   }
+
   idOnline() {
     if (localStorage.getItem("onlineUser") != null || localStorage.getItem("onlineUser") != undefined) {
       let data = JSON.parse(localStorage.getItem("onlineUser") ?? '{}');
