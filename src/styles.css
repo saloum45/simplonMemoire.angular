@@ -1,28 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
-*{
+* {
   padding: 0;
   margin: 0;
 }
 
-:root{
-  --bgcolor:#4457BA;
-  --goldcolor:#FFD233;
-  --darkbluecolor:#252B42;
-  --clearcolor:#737373;
+:root {
+  --bgcolor: #4457ba;
+  --goldcolor: #ffd233;
+  --darkbluecolor: #252b42;
+  --clearcolor: #737373;
 }
 
 /* i{
  color: var(--goldcolor);
 } */
 
-
-.blue-title{
+.blue-title {
   color: var(--bgcolor);
   text-align: center;
 }
-
-
 
 /* cards and process baners for catalogue and accueil component  css */
 
@@ -34,13 +31,12 @@
   padding-top: 25px;
   cursor: pointer;
 }
-#card .image{
+#card .image {
   height: 180px;
   /* background-color: rebeccapurple; */
   padding: 10px;
-
 }
-#card .card-text{
+#card .card-text {
   height: 30%;
   display: flex;
   flex-direction: column;
@@ -48,7 +44,7 @@
   padding: 5px;
   text-align: center;
 }
-#card img{
+#card img {
   height: 150px;
   width: auto;
   border-radius: 5px;
@@ -60,7 +56,6 @@
   padding: 0;
   margin: 0;
   font-weight: bold;
-
 }
 #card span {
   background-color: transparent;
@@ -72,11 +67,10 @@
 #card button {
   background-color: var(--darkbluecolor);
   color: white;
-width: 80%;
-padding: 0;
-font-weight: bold;
+  width: 80%;
+  padding: 0;
+  font-weight: bold;
 }
-
 
 /* titre */
 .section-title h4 {
@@ -89,12 +83,9 @@ font-weight: bold;
   opacity: 1;
 }
 
-
-
 /* pagination */
 
-
-.pagination{
+.pagination {
   width: 250px;
   height: 40px;
   margin: 0 auto;
@@ -107,11 +98,9 @@ font-weight: bold;
   align-items: center;
   padding: 5px;
 }
-.pagination span:nth-child(2){
+.pagination span:nth-child(2) {
   background-color: white;
   color: var(--darkbluecolor);
   padding: 2px;
   border-radius: 2px;
 }
-
-
