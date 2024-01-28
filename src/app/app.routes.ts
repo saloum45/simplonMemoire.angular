@@ -12,6 +12,7 @@ import { ListProduitComponent } from './components/produit/list-produit/list-pro
 import { ProfileComponent } from './components/profile/profile.component';
 import { AdresseComponent } from './components/adresse/adresse.component';
 import { CommandeComponent } from './components/commande/commande.component';
+import { EditProduitComponent } from './components/produit/edit-produit/edit-produit.component';
 
 export const routes: Routes = [
 
@@ -70,5 +71,9 @@ export const routes: Routes = [
   {
     path:"commande",
     component:CommandeComponent
+  },
+  {
+    path:"editProduit/:id",
+    component:EditProduitComponent
   }
 ];
