@@ -1,10 +1,10 @@
 <div class="container mt-5">
   <div class="produit-container mb-5">
     <div class="produit-left">
-      <img src="assets/Madd.png" alt="" />
+      <img src="http://localhost:8000/images/{{produit.image}}" alt="" />
     </div>
     <div class="produit-right p-2">
-      <h5>Jus citron</h5>
+      <h5>{{produit.nom_produit}}</h5>
       <!-- top  -->
       <div class="d-flex justify-content-between w-75">
         <span>
@@ -37,20 +37,23 @@
       <div class="d-flex justify-content-between w-75 mt-2">
         <p>
           Disponibilité :
-          <span>En stock(12)</span>
+          <span>En stock({{produit.quantite}})</span>
         </p>
         <p>
           Vendeur :
-          <span>Fatou cissé</span>
+          <span>{{produit.commercant}}</span>
         </p>
         <p>
           Portable :
-          <span>778286784</span>
+          <span>{{produit.numero_tel}}</span>
         </p>
       </div>
       <!-- description  -->
       <hr />
       <p class="description">
+       {{produit.description}}
+      </p>
+      <!-- <p class="description">
         Plongez dans une expérience gustative éclatante avec notre jus de citron
         d'une fraîcheur inégalée. Pressé à partir de citrons juteux, ce nectar
         pétillant ajoute une touche vivifiante à vos boissons et plats. <br />
@@ -60,9 +63,9 @@
         et offre une dose naturelle d'antioxydants. Découvrez la vitalité pure
         dans chaque goutte, une invitation à la santé et à la délectation des
         sens.
-      </p>
+      </p> -->
       <hr />
-      <h5>3000 fcfa</h5>
+      <h5>{{produit.prix}} fcfa</h5>
       <p>
         Quantité :
         <i class="bi bi-caret-up-fill" (click)="upOrDownQuantity('up')"></i>

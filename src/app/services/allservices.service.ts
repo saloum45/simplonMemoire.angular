@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
+import { Produit } from '../models/produit';
 // import { HttpClientModule } from '@angular/common/http';
 
 
@@ -72,5 +73,29 @@ export class AllservicesService {
     } else {
       return null;
     }
+  }
+
+  postToPanier(produit: any) {
+    if (localStorage.getItem('panier') == null || localStorage.getItem('panier') == undefined) {
+      localStorage.setItem('panier', JSON.stringify([produit]));
+      this.message("parfait", "success", "produit ajouté au panier");
+    } else {
+      let panier = JSON.parse(localStorage.getItem('panier') ?? '[]');
+      let a = panier.filter((item: any) => item.id == produit.id);
+      // console.log(a.length);
+      if (a.length > 0) {
+
+        this.message("oops", "warning", "Ce produit existe déja dans le panier");
+      } else {
+
+        panier.push(produit);
+        localStorage.setItem('panier', JSON.stringify(panier));
+        this.message("parfait", "success", "produit ajouté au panier");
+      }
+    }
+  }
+
+  getFromPanier() {
+    return JSON.parse(localStorage.getItem('panier') ?? '[]');
   }
 }

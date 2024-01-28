@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AllservicesService } from '../../services/allservices.service';
+import { Produit } from '../../models/produit';
 
 @Component({
   selector: 'app-accueil',
@@ -26,5 +27,9 @@ export class AccueilComponent implements OnInit{
      this.produits=reponse.data;
     //  console.log(reponse.data);
    });
+ }
+
+ postPanier(produit:any){
+  this.service.postToPanier(produit);
  }
 }

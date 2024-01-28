@@ -11,32 +11,32 @@ import { AllservicesService } from '../../services/allservices.service';
   templateUrl: './details-produit.component.html',
   styleUrl: './details-produit.component.css'
 })
-export class DetailsProduitComponent implements OnInit{
+export class DetailsProduitComponent implements OnInit {
   // Attributs
-  public  quantite=1;
-  public produit:any;
+  public quantite = 1;
+  public produit: any;
 
   // Methodes
-  constructor(private service:AllservicesService,private activatedRouter:ActivatedRoute){
+  constructor(private service: AllservicesService, private activatedRouter: ActivatedRoute) {
 
   }
-   ngOnInit(): void {
-    this.service.get("api/produit/"+this.activatedRouter.snapshot.params['id'],(reponse:any)=>{
-      this.produit=reponse.data;
-      console.log("details",reponse.data);
+  ngOnInit(): void {
+    this.service.simplePost("api/Detailsproduits/" + this.activatedRouter.snapshot.params['id'], (reponse: any) => {
+      this.produit = reponse.data;
+      console.log("details", reponse.data);
     });
   }
 
 
- upOrDownQuantity(type:string) {
-   // if (this.quantite<1) {
-   //   this.quantite=1;
-   // }
-   if (type=='up') {
-     this.quantite++;
-   }else{
-     this.quantite--;
-   }
-}
+  upOrDownQuantity(type: string) {
+    // if (this.quantite<1) {
+    //   this.quantite=1;
+    // }
+    if (type == 'up') {
+      this.quantite++;
+    } else {
+      this.quantite--;
+    }
+  }
 
 }

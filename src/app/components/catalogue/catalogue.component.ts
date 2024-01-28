@@ -53,4 +53,8 @@ export class CatalogueComponent implements OnInit{
  search(){
     return this.produits.filter((prod:any)=>prod.nom_produit.toLowerCase().includes(this.searchInput.toLowerCase()));
  }
+
+ postPanier(produit:any){
+  this.service.postToPanier(produit);
+ }
 }
