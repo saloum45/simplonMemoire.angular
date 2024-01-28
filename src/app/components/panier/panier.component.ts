@@ -35,4 +35,17 @@ export class PanierComponent implements OnInit {
       this.quantite--;
     }
   }
+
+  deleteFromPanier(id:any){
+    let tab:any=[];
+    tab=this.service.getFromPanier();
+    tab.forEach((element:any,index:any) => {
+      if (element.id==id) {
+        tab.splice(index,1);
+      }
+    });
+    localStorage.setItem('panier', JSON.stringify(tab));
+    this.panier=this.service.getFromPanier();
+    this.service.message("Parfait","success","produit retiré du panier");
+  }
 }
