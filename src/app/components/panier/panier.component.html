@@ -6,11 +6,11 @@
         <hr />
       </div>
       <div class="panier-items">
-        @for (item of panier; track $index) {
+        @for (item of panier.reverse(); track $index) {
 
           <div class="panier-item">
-            <img src="http://localhost:8000/images/{{item.image}}" alt="" />
-            <p>
+            <img src="http://localhost:8000/images/{{item.image}}" alt="" [routerLink]="['/detailsProduit',item.id]" />
+            <p [routerLink]="['/detailsProduit',item.id]">
               {{item.nom_produit}} <br />
               <span>{{item.prix}} fcfa</span>
             </p>
@@ -23,7 +23,7 @@
                 (click)="upOrDownQuantity('down')"
               ></i>
             </p>
-            <span>{{item.prix}} fcfa</span>
+            <span>{{item.prix*quantite}} fcfa</span>
             <i class="bi bi-trash3" (click)="deleteFromPanier(item.id)"></i>
           </div>
         }
@@ -40,7 +40,7 @@
           style="height: 150px"
         >
           <div class="d-flex justify-content-between w-100">
-            <span>6 Articles</span>
+            <span>{{panier.length}} Articles</span>
             <span>3000 fcfa</span>
           </div>
           <div class="d-flex justify-content-between w-100">

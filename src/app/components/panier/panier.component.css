@@ -80,4 +80,5 @@ input{
 i{
   color: var(--darkbluecolor);
   font-size: 25px;
+  cursor: pointer;
 }

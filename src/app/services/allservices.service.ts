@@ -77,6 +77,7 @@ export class AllservicesService {
 
   postToPanier(produit: any) {
     if (localStorage.getItem('panier') == null || localStorage.getItem('panier') == undefined) {
+      
       localStorage.setItem('panier', JSON.stringify([produit]));
       this.message("parfait", "success", "produit ajouté au panier");
     } else {

@@ -39,4 +39,8 @@ export class DetailsProduitComponent implements OnInit {
     }
   }
 
+  postPanier(produit: any) {
+    this.service.postToPanier(produit);
+  }
+
 }
