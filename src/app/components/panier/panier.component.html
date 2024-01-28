@@ -6,42 +6,28 @@
         <hr />
       </div>
       <div class="panier-items">
-        <div class="panier-item">
-          <img src="assets/Madd.png" alt="" />
-          <p>
-            JUS DITAKH <br />
-            <span>2000 fcfa</span>
-          </p>
-          <p>
-            <i class="bi bi-caret-up-fill" (click)="upOrDownQuantity('up')"></i>
-            <!-- <i class="bi bi-plus quant" ></i> -->
-            <input type="text" [value]="quantite" />
-            <i
-              class="bi bi-caret-down-fill"
-              (click)="upOrDownQuantity('down')"
-            ></i>
-          </p>
-          <span>2000 fcfa</span>
-          <i class="bi bi-trash3"></i>
-        </div>
-        <div class="panier-item">
-          <img src="assets/Madd.png" alt="" />
-          <p>
-            JUS DITAKH <br />
-            <span>2000 fcfa</span>
-          </p>
-          <p>
-            <i class="bi bi-caret-up-fill" (click)="upOrDownQuantity('up')"></i>
-            <!-- <i class="bi bi-plus quant" ></i> -->
-            <input type="text" [value]="quantite" />
-            <i
-              class="bi bi-caret-down-fill"
-              (click)="upOrDownQuantity('down')"
-            ></i>
-          </p>
-          <span>2000 fcfa</span>
-          <i class="bi bi-trash3"></i>
-        </div>
+        @for (item of panier; track $index) {
+
+          <div class="panier-item">
+            <img src="http://localhost:8000/images/{{item.image}}" alt="" />
+            <p>
+              {{item.nom_produit}} <br />
+              <span>{{item.prix}} fcfa</span>
+            </p>
+            <p>
+              <i class="bi bi-caret-up-fill" (click)="upOrDownQuantity('up')"></i>
+              <!-- <i class="bi bi-plus quant" ></i> -->
+              <input type="text" [value]="quantite" />
+              <i
+                class="bi bi-caret-down-fill"
+                (click)="upOrDownQuantity('down')"
+              ></i>
+            </p>
+            <span>{{item.prix}} fcfa</span>
+            <i class="bi bi-trash3"></i>
+          </div>
+        }
+
         <!-- <div class="panier-item"></div> -->
       </div>
     </div>

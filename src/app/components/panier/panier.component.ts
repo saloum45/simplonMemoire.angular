@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AllservicesService } from '../../services/allservices.service';
 
 @Component({
   selector: 'app-panier',
@@ -10,20 +11,28 @@ import { RouterLink } from '@angular/router';
   templateUrl: './panier.component.html',
   styleUrl: './panier.component.css'
 })
-export class PanierComponent {
- // Attributs
- public  quantite=1;
+export class PanierComponent implements OnInit {
+  // Attributs
+  public quantite = 1;
+  public panier:any=[];
 
+  // Methodes
+  constructor(private service: AllservicesService) {
 
- // Methodes
- upOrDownQuantity(type:string) {
-   // if (this.quantite<1) {
-   //   this.quantite=1;
-   // }
-   if (type=='up') {
-     this.quantite++;
-   }else{
-     this.quantite--;
-   }
- }
+  }
+
+  ngOnInit(): void {
+    this.panier=this.service.getFromPanier();
+  }
+
+  upOrDownQuantity(type: string) {
+    // if (this.quantite<1) {
+    //   this.quantite=1;
+    // }
+    if (type == 'up') {
+      this.quantite++;
+    } else {
+      this.quantite--;
+    }
+  }
 }
