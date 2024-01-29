@@ -6,11 +6,11 @@
         <hr />
       </div>
       <div class="panier-items">
-        @for (item of panier.reverse(); track $index) {
+        @for (item of panier; track $index) {
 
           <div class="panier-item">
             <img src="http://localhost:8000/images/{{item.image}}" alt="" [routerLink]="['/detailsProduit',item.id]" />
-            <p [routerLink]="['/detailsProduit',item.id]">
+            <p class="nom_prix" [routerLink]="['/detailsProduit',item.id]">
               {{item.nom_produit}} <br />
               <span>{{item.prix}} fcfa</span>
             </p>
