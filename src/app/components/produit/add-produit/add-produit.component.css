@@ -28,7 +28,7 @@
 
 .form-left {
   width: 45%;
-  height: 250px;
+  height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -48,5 +48,17 @@
   .form-element {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
+}
+
+
+textarea {
+  width: 60%;
+  border: none;
+  border-bottom: 2px var(--darkbluecolor) solid;
+  padding-left: 20px;
+  transition: 1s ease;
+  height: 100px;
+  resize: none;
 }

@@ -13,12 +13,23 @@ button:hover {
   font-weight: bold;
 }
 
-.form-floating
-{
-  width: 49%;
 
+input {
+  width: 49%;
+  height: 38px;
 }
 
-i{
+i {
   font-size: 20px;
+}
+
+
+.empty_img{
+  margin: 0 auto;
+  /* height: 10px; */
+  width: 60%;
+  /* background-color: red; */
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 50px;
 }

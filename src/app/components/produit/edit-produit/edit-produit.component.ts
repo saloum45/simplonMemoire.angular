@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AllservicesService } from '../../../services/allservices.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-produit',
@@ -20,13 +20,13 @@ export class EditProduitComponent {
   public quantite = "";
   public categorie_id = "";
   public commercant_id = this.service.idOnline();
-  public image: any;
+  public image!: File;
   public prix = "";
   public descripiton = "";
   public produit:any;
 
   // Methodes
-  constructor(private service: AllservicesService, private activatedRouter: ActivatedRoute) {
+  constructor(private service: AllservicesService, private activatedRouter: ActivatedRoute,private router:Router) {
 
   }
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class EditProduitComponent {
       console.log("details", reponse.data);
       this.nom = this.produit.nom_produit;
       this.quantite = this.produit.quantite;
-      this.categorie_id = this.produit.categorie_id;
+      this.categorie_id = this.produit.id_categorie;
       // this.image: any;
       this.prix = this.produit.prix;
       this.descripiton = this.produit.description;
@@ -54,7 +54,7 @@ export class EditProduitComponent {
 
   // ajout d'un produit
   ajouter() {
-    if (this.nom == "" || this.quantite == "" || this.descripiton == "" || this.prix == "" || this.quantite == "" || this.image == undefined) {
+    if (this.nom == "" || this.quantite == "" || this.descripiton == "" || this.prix == "" || this.quantite == "") {
       this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
     } else {
       let formData = new FormData();
@@ -68,14 +68,14 @@ export class EditProduitComponent {
 
       // let produit=new Produit(this.nom,this.quantite,this.prix,this.descripiton,2,2,formData);
       console.log("produit", formData);
-      this.service.post('api/produit/create', formData, (reponse: any) => {
+      this.service.post('api/produit/update/'+this.activatedRouter.snapshot.params['id'], formData, (reponse: any) => {
         if (reponse.status == 200) {
           console.log('success', reponse);
-          // this.router.navigate(['/connexion']);
-          this.service.message("Merci!!!", "success", "Ajout avec succès,Veuillez vous connecter");
+          this.router.navigate(['/listProduit']);
+          this.service.message("Parfait!!!", "success", "Modification faite avec succès");
         } else {
           console.log('error ', reponse);
-          this.service.message("Désolé!!!", "error", "Ajout échoué, vérifier la saisie ");
+          this.service.message("Désolé!!!", "error", "Modification échouée, vérifier la saisie ");
         }
       });
     }

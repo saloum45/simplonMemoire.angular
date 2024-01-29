@@ -15,7 +15,7 @@
           <i class="bi bi-star mx-1"></i>
           <i class="bi bi-star mx-1"></i>
         </span>
-        <span>
+        <span data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="bi bi-pen-fill"></i>
           Ecrire un avis
         </span>
@@ -229,6 +229,41 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- popup -->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 m-auto" id="exampleModalLabel">Ecrivez un avis</h1>
+      </div>
+      <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+      <div class="modal-body">
+        <div class="d-flex w-50 justify-content-between">
+          <span>La note : </span>
+          <div class="w-50 d-flex justify-content-between">
+            <i class="bi bi-star"></i>
+              <i class="bi bi-star"></i>
+              <i class="bi bi-star"></i>
+              <i class="bi bi-star"></i>
+              <i class="bi bi-star"></i>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn " data-bs-dismiss="modal" aria-label="Close">Annuler</button>
+        <button type="button" class="btn ">Envoyer</button>
       </div>
     </div>
   </div>

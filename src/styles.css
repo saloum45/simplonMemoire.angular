@@ -97,10 +97,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px;
+  cursor: pointer;
 }
-.pagination span:nth-child(2) {
+.pagination span {
   background-color: white;
   color: var(--darkbluecolor);
   padding: 2px;
   border-radius: 2px;
+}
+.pagination button {
+ background-color: transparent;
+ border: none;
+ color: white;
 }

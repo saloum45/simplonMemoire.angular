@@ -17,7 +17,8 @@
   justify-content: center;
 }
 .produit-left img{
-
+  height: 200px;
+  width: 80%;
 }
 
 
@@ -34,6 +35,9 @@
 .produit-right i{
   font-size: 20px;
   color: var(--darkbluecolor);
+  cursor: pointer;
+}
+.produit-right span{
   cursor: pointer;
 }
 .produit-right p.description{
@@ -78,6 +82,12 @@ nav{
   text-align: center;
 }
 
+
+.modal button{
+  background-color: var(--darkbluecolor);
+  font-weight: bold;
+  color: white;
+}
 
 /* avis tabs */
 #nav-tabContent{

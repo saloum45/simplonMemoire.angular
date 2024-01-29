@@ -8,53 +8,73 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [
     RouterLink,
-    FormsModule
+    FormsModule,
+
   ],
   templateUrl: './catalogue.component.html',
   styleUrl: './catalogue.component.css'
 })
-export class CatalogueComponent implements OnInit{
- // Attributs
- public produits:any=[];
- public categories:any=[];
- public titre="Tout";
- public searchInput="";
+export class CatalogueComponent implements OnInit {
+  // Attributs
+  public produits: any = [];
+  public categories: any = [];
+  public titre = "Tout";
+  public searchInput = "";
+  public pageActuelle: number = 1;
+  public articlesParPage: number = 9;
 
 
- // Methodes
- constructor(private service:AllservicesService){
+  // Methodes
+  constructor(private service: AllservicesService) {
 
- }
+  }
 
- ngOnInit(): void {
-  this.loadAllProducts();
-   this.service.get("api/categories",(reponse:any)=>{
-    this.categories=reponse.data;
-    // console.log(reponse.data);
-  });
- }
+  ngOnInit(): void {
+    this.loadAllProducts();
+    this.service.get("api/categories", (reponse: any) => {
+      this.categories = reponse.data;
+      // console.log(reponse.data);
+    });
+  }
 
- loadAllProducts(){
-  this.service.get("api/produits",(reponse:any)=>{
-    this.produits=reponse.data;
-    // console.log(reponse.data);
-    this.titre="Tout";
-  });
- }
+  loadAllProducts() {
+    this.service.get("api/produits", (reponse: any) => {
+      this.produits = reponse.data;
+      // console.log(reponse.data);
+      this.titre = "Tout";
+    });
+  }
 
- getProductByCategorie(id:any,nom_categorie:any){
-  this.service.get("api/produits/"+id,(reponse:any)=>{
-    this.produits=reponse.data;
-    this.titre=nom_categorie;
-    // console.log("prod: ",id,reponse.data);
-  });
- }
+  getProductByCategorie(id: any, nom_categorie: any) {
+    this.service.get("api/produits/" + id, (reponse: any) => {
+      this.produits = reponse.data;
+      this.titre = nom_categorie;
+      // console.log("prod: ",id,reponse.data);
+    });
+  }
 
- search(){
-    return this.produits.filter((prod:any)=>prod.nom_produit.toLowerCase().includes(this.searchInput.toLowerCase()));
- }
+  search() {
+    return this.produits.filter((prod: any) => prod.nom_produit.toLowerCase().includes(this.searchInput.toLowerCase()));
+  }
 
- postPanier(produit:any){
-  this.service.postToPanier(produit);
- }
+  postPanier(produit: any) {
+    this.service.postToPanier(produit);
+  }
+
+  // Méthode pour déterminer les articles à afficher sur la page actuelle
+  getArticlesPage(): any[] {
+    const indexDebut = (this.pageActuelle - 1) * this.articlesParPage;
+    const indexFin = indexDebut + this.articlesParPage;
+    return this.search().slice(indexDebut, indexFin);
+  }
+  // Méthode pour générer la liste des pages
+  get pages(): number[] {
+    const totalPages = Math.ceil(this.search().length / this.articlesParPage);
+    return Array(totalPages).fill(0).map((_, index) => index + 1);
+  }
+
+  // Méthode pour obtenir le nombre total de pages
+  get totalPages(): number {
+    return Math.ceil(this.search().length / this.articlesParPage);
+  }
 }

@@ -24,13 +24,33 @@ export class ListProduitComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.loadAll();
+  }
+
+
+  loadAll() {
+
     this.service.get("api/getProduitsByCommercant", (reponse: any) => {
       console.log(reponse);
       this.produits = reponse.data;
     });
   }
+  search() {
+    return this.produits.filter((prod: any) => prod.nom_produit.toLowerCase().includes(this.searchInput.toLowerCase()));
+  }
 
-  search(){
-    return this.produits.filter((prod:any)=>prod.nom_produit.toLowerCase().includes(this.searchInput.toLowerCase()));
- }
+  suppression(produitId: any) {
+    this.service.simplePost("api/produit/"+produitId, (reponse: any) => {
+      if (reponse.status == 200) {
+        alert("fait");
+        this.loadAll();
+        console.log(reponse);
+      } else {
+
+        console.log(reponse);
+        alert("pas fait");
+      }
+    });
+
+  }
 }

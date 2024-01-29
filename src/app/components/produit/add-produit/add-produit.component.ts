@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AllservicesService } from '../../../services/allservices.service';
 import { Produit } from '../../../models/produit';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-produit',
@@ -26,7 +27,7 @@ export class AddProduitComponent implements OnInit {
 
 
   // Methodes
-  constructor(private service:AllservicesService){
+  constructor(private service:AllservicesService, private router:Router){
 
   }
   ngOnInit(): void {
@@ -60,8 +61,8 @@ export class AddProduitComponent implements OnInit {
       this.service.post('api/produit/create',formData, (reponse: any) => {
         if (reponse.status == 200) {
           console.log('success',reponse);
-          // this.router.navigate(['/connexion']);
-          this.service.message("Merci!!!", "success", "Ajout avec succès,Veuillez vous connecter");
+          this.router.navigate(['/listProduit']);
+          this.service.message("Parfait!!!", "success", "Ajout avec succès");
         } else {
           console.log('error ',reponse);
           this.service.message("Désolé!!!", "error", "Ajout échoué, vérifier la saisie ");

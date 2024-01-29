@@ -18,7 +18,7 @@ export class InscriptionComponent {
   // Attributs
   public nom="";
   public prenom="";
-  public naissance=new Date();
+  public naissance:any;
   public genre="";
   public nin="";
   public ninea="";
@@ -34,18 +34,18 @@ export class InscriptionComponent {
   }
   // la fonction qui permet d'inscrire un utilisateur
   inscription() {
-    if (this.nom == "" || this.prenom=="" || this.naissance||  this.naissance || this.genre=="" || this.nin=="" || this.ninea=="" || this.adresse=="" || this.numero=="" || this.pass=="" || this.email=="") {
+    if (this.nom == "" || this.prenom=="" || this.naissance==undefined || this.genre=="" || this.nin=="" || this.ninea=="" || this.adresse=="" || this.numero=="" || this.pass=="" || this.email=="") {
       this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
     } else {
       this.user= new Commerçant(this.nom,this.prenom,this.email,this.pass,this.numero,this.nin,this.ninea,this.adresse,this.genre,this.naissance);
       console.log("user",this.user);
       this.service.post('api/registerCommercant', this.user, (reponse: any) => {
         if (reponse.status == 200) {
-          // console.log('success',reponse);
+          console.log('success',reponse);
           this.router.navigate(['/connexion']);
           this.service.message("Merci!!!", "success", "Inscription faite avec succès,Veuillez vous connecter");
         } else {
-          // console.log('error ',reponse);
+          console.log('error ',reponse);
           this.service.message("Désolé!!!", "error", "Inscription a échouée, vérifier la saisie ");
         }
       });
