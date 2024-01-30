@@ -18,8 +18,11 @@ export class DetailsProduitComponent implements OnInit {
   // Attributs
   public quantite = 1;
   public produit: any;
-  public note =0;
-  public commentaire="";
+  public note = 0;
+  public commentaire = "";
+  public commentaires: any[] = [];
+
+
   // Methodes
   constructor(private service: AllservicesService, private activatedRouter: ActivatedRoute) {
 
@@ -30,11 +33,20 @@ export class DetailsProduitComponent implements OnInit {
       this.produit = reponse.data;
       console.log("details", reponse.data);
     });
+    this.loadCommentaires();
+  }
+
+  loadCommentaires() {
+    this.service.get("api/commentaires/" + this.activatedRouter.snapshot.params['id'], ((reponse: any) => {
+      this.commentaires = reponse.data;
+      console.log('commmentaires', reponse);
+    }));
+
   }
   // gestion de note avec étoile
-  noteStar(note:number) {
-    let stars=document.querySelectorAll('#star');
-    stars.forEach((element:any)=>{
+  noteStar(note: number) {
+    let stars = document.querySelectorAll('#star');
+    stars.forEach((element: any) => {
 
       element.classList.remove("bi-star-fill");
       element.classList.add("bi-star");
@@ -43,7 +55,7 @@ export class DetailsProduitComponent implements OnInit {
       stars[i].classList.remove("bi-star");
       stars[i].classList.add("bi-star-fill");
     }
-    this.note=note;
+    this.note = note;
   }
 
   upOrDownQuantity(type: string) {
@@ -61,27 +73,29 @@ export class DetailsProduitComponent implements OnInit {
     this.service.postToPanier(produit);
   }
 
-  envoyerAvis(){
-    let avis={
-      note:this.note,
-      commentaire : this.commentaire,
+  envoyerAvis() {
+    let avis = {
+      note: this.note,
+      commentaire: this.commentaire,
       // prduit_id: this.activatedRouter.snapshot.params['id'],
       // client_id: this.service.idOnline()
     }
-    console.log("comm",avis);
-    this.service.post("api/faireCommentaire/"+this.activatedRouter.snapshot.params['id'],avis,((reponse:any)=>{
-      console.log("reponse",reponse);
-      if (this.note==0 || this.commentaire=="") {
-        this.service.message("Oop's","error","Veuillez vérifier la saisie(pour noter cliquer sur les étoiles)");
+    console.log("comm", avis);
+    this.service.post("api/faireCommentaire/" + this.activatedRouter.snapshot.params['id'], avis, ((reponse: any) => {
+      console.log("reponse", reponse);
+      if (this.note == 0 || this.commentaire == "") {
+        this.service.message("Oop's", "error", "Veuillez vérifier la saisie(pour noter cliquer sur les étoiles)");
 
-      }else{
+      } else {
 
-        if (reponse.status==200) {
-          this.service.message("Parfait","success","avis envoyé avec succès");
-          this.commentaire="";
-          this.note=0;
+        if (reponse.status == 200) {
+          this.service.message("Parfait", "success", "avis envoyé avec succès");
+          this.commentaire = "";
+          this.note = 0;
           this.closeAddExpenseModal.nativeElement.click();
         }
+        this.loadCommentaires();
+
       }
     }));
   }

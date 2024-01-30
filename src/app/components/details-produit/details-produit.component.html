@@ -121,12 +121,35 @@
         tabindex="0"
       >
         <div class="avis-items">
-          <div class="avis-item p-2">
+
+          @if (commentaires.length==0) {
+            <div class="m-auto text-center">
+              <img src="assets/empty_image.png" alt="" style="height: 250px;width: 250px;">
+              <h5 class="text-center">Pas d'avis pour le moment,soyez le premier à en faire</h5>
+            </div>
+          }
+          @for (item of commentaires; track $index) {
+
+            <div class="avis-item p-2">
+              <div class="d-flex justify-content-between w-50 m-auto mt-2 mb-2">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+              </div>
+              <span class="fw-bold mt-3 mb-3">{{item.Client}}</span>
+              <p>
+                {{item.Commentaires}}
+              </p>
+            </div>
+          }
+          <!-- <div class="avis-item p-2">
             <div class="d-flex justify-content-between w-50 m-auto mt-2 mb-2">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star"></i>
+              <i class="bi bi-star"></i>
               <i class="bi bi-star"></i>
             </div>
             <span class="fw-bold mt-3 mb-3">Explosion de Fraîcheur!</span>
@@ -139,20 +162,6 @@
             <div class="d-flex justify-content-between w-50 m-auto mt-2 mb-2">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star"></i>
-              <i class="bi bi-star"></i>
-              <i class="bi bi-star"></i>
-            </div>
-            <span class="fw-bold mt-3 mb-3">Explosion de Fraîcheur!</span>
-            <p>
-              "Ce jus de citron est une révélation! Son goût pétillant et ses
-              bienfaits m'ont conquise. Parfait pour tous les jours.”
-            </p>
-          </div>
-          <div class="avis-item p-2">
-            <div class="d-flex justify-content-between w-50 m-auto mt-2 mb-2">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -162,7 +171,7 @@
               "Ce jus de citron est une révélation! Son goût pétillant et ses
               bienfaits m'ont conquise. Parfait pour tous les jours.”
             </p>
-          </div>
+          </div> -->
         </div>
       </div>
       <div
