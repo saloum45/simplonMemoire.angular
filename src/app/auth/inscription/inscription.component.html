@@ -1,39 +1,58 @@
 <div class="container mt-3">
   <div class="form-container">
-    <h5 class="fw-bold fs-4 text-center">Inscription</h5>
+    <!-- <h5 class="fw-bold fs-4 text-center">Inscription</h5> -->
+    @if (!displayForme) {
+    <h5 class="fw-bold fs-4 text-center">
+      Veuillez choisir votre type de profil, pour l'inscription
+    </h5>
+    <div class="button-choix">
+      <button class="btn" (click)="formTypeDisplay(true)">
+        Je suis Vendeur
+      </button>
+      <button class="btn" (click)="formTypeDisplay(false)">
+        Je suis Client
+      </button>
+    </div>
+    } @if (displayForme) {
+    <h5 class="fw-bold fs-4 text-center">
+      Inscription en tant que @if (formType) {Vendeur}@else{Client}
+    </h5>
+
+    } @if (displayForme) {
     <div class="d-flex justify-content-between px-4 w-100">
       <div class="form-left">
         <div class="form-element">
           <label for="">Nom</label>
-          <input type="text" [(ngModel)]="nom">
+          <input type="text" [(ngModel)]="nom" />
         </div>
         <div class="form-element">
           <label for="">Naissance</label>
-          <input type="date" [(ngModel)]="naissance">
+          <input type="date" [(ngModel)]="naissance" />
         </div>
         <div class="form-element">
           <label for="">Adresse</label>
-          <input type="text" [(ngModel)]="adresse">
+          <input type="text" [(ngModel)]="adresse" />
         </div>
         <div class="form-element">
           <label for="">Email</label>
-          <input type="text" [(ngModel)]="email">
+          <input type="text" [(ngModel)]="email" />
         </div>
+        @if (formType) {
+
         <div class="form-element">
           <label for="">NIN</label>
-          <input type="text" [(ngModel)]="nin">
+          <input type="text" [(ngModel)]="nin" />
         </div>
+        }
       </div>
-
 
       <div class="form-left">
         <div class="form-element">
           <label for="">Prenom</label>
-          <input type="text" [(ngModel)]="prenom">
+          <input type="text" [(ngModel)]="prenom" />
         </div>
         <div class="form-element">
           <label for="">Genre</label>
-          <!-- <input type="text" > -->
           <select name="" id="" [(ngModel)]="genre">
             <option value="homme">Homme</option>
             <option value="femme">Femme</option>
@@ -41,24 +60,31 @@
         </div>
         <div class="form-element">
           <label for="">Telephone</label>
-          <input type="text" [(ngModel)]="numero">
+          <input type="text" [(ngModel)]="numero" />
         </div>
+        @if (formType) {
+
         <div class="form-element">
           <label for="">NINEA</label>
-          <input type="text" [(ngModel)]="ninea">
+          <input type="text" [(ngModel)]="ninea" />
         </div>
+        }
         <div class="form-element">
           <label for="">Passe</label>
-          <input type="password" [(ngModel)]="pass">
-
+          <input type="password" [(ngModel)]="pass" />
         </div>
       </div>
-      <!-- <div class="form-image">
-        <img src="assets/login_image.png" alt="">
-      </div> -->
     </div>
     <div class="text-center w-100 mt-5">
-      <button class="btn" (click)="inscription()">Inscription</button>
+      <i class="bi bi-arrow-return-left" (click)="getBackChoice()"></i>
+      @if (formType) {
+
+        <button class="btn" (click)="inscription('api/registerCommercant')">Inscription</button>
+      }@else {
+        <button class="btn" (click)="inscription('api/registerClient')">Inscription</button>
+
+      }
     </div>
+    }
   </div>
 </div>

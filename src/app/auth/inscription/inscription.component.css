@@ -51,3 +51,33 @@
     justify-content: space-between;
   }
 }
+
+
+/* choix du type d'inscription */
+.button-choix{
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.button-choix button{
+  background-color: var(--darkbluecolor);
+  color: white;
+  font-weight: bold;
+  width: 49%;
+}
+
+
+/* incons retour */
+
+.bi-arrow-return-left
+{
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 18px;
+  background-color: white;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}

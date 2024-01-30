@@ -6,17 +6,17 @@ import { HeaderComponent } from "./components/header/header.component";
 import { AllservicesService } from './services/allservices.service';
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    imports: [
-      CommonModule,
-      RouterOutlet,
-      FooterComponent,
-      HeaderComponent,
-      RouterLink
-    ]
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    FooterComponent,
+    HeaderComponent,
+    RouterLink
+  ]
 })
 export class AppComponent {
   // Attributs
@@ -25,10 +25,16 @@ export class AppComponent {
 
 
   // Methodes
-  constructor(private service:AllservicesService){
+  constructor(private service: AllservicesService) {
 
   }
-  isOnline(){
+
+
+  isOnline() {
     return this.service.IsOnline();
-   }
+  }
+
+  whoIsOnline(){
+  return  this.service.whoIsOnline();
+  }
 }
