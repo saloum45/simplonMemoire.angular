@@ -1,12 +1,11 @@
-.produit-container{
+.produit-container {
   display: flex;
   justify-content: space-between;
   height: auto;
   /* margin-top: 100px; */
 }
 
-
-.produit-left{
+.produit-left {
   width: 25%;
   height: 300px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
@@ -16,106 +15,113 @@
   align-items: center;
   justify-content: center;
 }
-.produit-left img{
+.produit-left img {
   height: 200px;
   width: 80%;
 }
 
-
-.produit-right{
+.produit-right {
   width: 72%;
   background-color: white;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
-.produit-right{
+.produit-right {
   width: 72%;
   background-color: white;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
-.produit-right i{
+.produit-right i {
   font-size: 20px;
   color: var(--darkbluecolor);
   cursor: pointer;
 }
-.produit-right span{
+.produit-right span {
   cursor: pointer;
 }
-.produit-right p.description{
- min-height: 150px;
+.produit-right p.description {
+  min-height: 150px;
 }
-.produit-right input{
+.produit-right input {
   width: 50px;
   text-align: center;
 }
-.produit-right button{
- background-color: var(--darkbluecolor);
- color: white;
- width: 180px;
+.produit-right button {
+  background-color: var(--darkbluecolor);
+  color: white;
+  width: 180px;
 }
 
-
-.quant
-{
+.quant {
   /* background-color: var(--darkbluecolor); */
   padding: 1px;
   color: white;
-
 }
-
 
 /* tabs secrion  */
 
-.tabs-contanier{
+.tabs-contanier {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   height: 400px;
   padding: 10px;
 }
 
-
 /* nav personnalization */
-#nav-tab button{
- color: var(--darkbluecolor);
- font-weight: bold;
+#nav-tab button {
+  color: var(--darkbluecolor);
+  font-weight: bold;
 }
 
-nav{
+nav {
   text-align: center;
 }
 
-
-.modal button{
+.modal button {
   background-color: var(--darkbluecolor);
   font-weight: bold;
   color: white;
 }
 
 /* avis tabs */
-#nav-tabContent{
+#nav-tabContent {
   height: 90%;
   /* background-color: green; */
 }
 
-.tab-pane{
+.tab-pane {
   height: 100%;
   /* background-color: bisque; */
 }
-.avis-items{
+.avis-items {
   display: flex;
   justify-content: space-between;
   height: 100%;
   /* background-color: red; */
   align-items: center;
 }
-.avis-items .avis-item{
+.avis-items .avis-item {
   width: 30%;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   height: 160px;
   border-radius: 5px;
 }
-i{
+i {
   color: var(--darkbluecolor);
- }
+  font-size: 20px;
+  cursor: pointer;
+}
 /* .active
 {
   color: red;
 } */
+
+/* textarea */
+textarea {
+  width: 75%;
+  border: none;
+  border: 2px var(--darkbluecolor) solid;
+  padding-left: 20px;
+  transition: 1s ease;
+  height: 100px;
+  resize: none;
+  border-radius: 5px;
+}

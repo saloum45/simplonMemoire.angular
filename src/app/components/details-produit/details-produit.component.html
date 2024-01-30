@@ -1,10 +1,10 @@
 <div class="container mt-5">
   <div class="produit-container mb-5">
     <div class="produit-left">
-      <img src="http://localhost:8000/images/{{produit.image}}" alt="" />
+      <img src="http://localhost:8000/images/{{ produit.image }}" alt="" />
     </div>
     <div class="produit-right p-2">
-      <h5>{{produit.nom_produit}}</h5>
+      <h5>{{ produit.nom_produit }}</h5>
       <!-- top  -->
       <div class="d-flex justify-content-between w-75">
         <span>
@@ -37,21 +37,21 @@
       <div class="d-flex justify-content-between w-75 mt-2">
         <p>
           Disponibilité :
-          <span>En stock({{produit.quantite}})</span>
+          <span>En stock({{ produit.quantite }})</span>
         </p>
         <p>
           Vendeur :
-          <span>{{produit.commercant}}</span>
+          <span>{{ produit.commercant }}</span>
         </p>
         <p>
           Portable :
-          <span>{{produit.numero_tel}}</span>
+          <span>{{ produit.numero_tel }}</span>
         </p>
       </div>
       <!-- description  -->
       <hr />
       <p class="description">
-       {{produit.description}}
+        {{ produit.description }}
       </p>
       <!-- <p class="description">
         Plongez dans une expérience gustative éclatante avec notre jus de citron
@@ -65,7 +65,7 @@
         sens.
       </p> -->
       <hr />
-      <h5>{{produit.prix}} fcfa</h5>
+      <h5>{{ produit.prix }} fcfa</h5>
       <p>
         Quantité :
         <i class="bi bi-caret-up-fill" (click)="upOrDownQuantity('up')"></i>
@@ -74,7 +74,9 @@
         <i class="bi bi-caret-down-fill" (click)="upOrDownQuantity('down')"></i>
       </p>
       <div class="d-flex justify-content-between w-50">
-        <button class="btn" (click)="postPanier(produit)">Ajouter au panier</button>
+        <button class="btn" (click)="postPanier(produit)">
+          Ajouter au panier
+        </button>
         <button class="btn">Commander</button>
       </div>
     </div>
@@ -234,7 +236,6 @@
   </div>
 </div>
 
-
 <!-- popup -->
 <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -242,28 +243,49 @@
 </button> -->
 
 <!-- Modal -->
-<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  data-bs-backdrop='static'
+>
+  <div class="modal-dialog modal-dialog-centered " >
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 m-auto" id="exampleModalLabel">Ecrivez un avis</h1>
+        <h1 class="modal-title fs-5 m-auto" id="exampleModalLabel">
+          Ecrivez un avis
+        </h1>
       </div>
       <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       <div class="modal-body">
-        <div class="d-flex w-50 justify-content-between">
+        <div class="d-flex w-50 justify-content-between mb-2">
           <span>La note : </span>
           <div class="w-50 d-flex justify-content-between">
-            <i class="bi bi-star"></i>
-              <i class="bi bi-star"></i>
-              <i class="bi bi-star"></i>
-              <i class="bi bi-star"></i>
-              <i class="bi bi-star"></i>
+            <i class="bi bi-star" id="star" (click)="noteStar(1)"></i>
+            <i class="bi bi-star" id="star" (click)="noteStar(2)"></i>
+            <i class="bi bi-star" id="star" (click)="noteStar(3)"></i>
+            <i class="bi bi-star" id="star" (click)="noteStar(4)"></i>
+            <i class="bi bi-star" id="star" (click)="noteStar(5)"></i>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn " data-bs-dismiss="modal" aria-label="Close">Annuler</button>
-        <button type="button" class="btn ">Envoyer</button>
+        <div class="d-flex w-100 justify-content-between mb-2">
+          <span>Avis : </span>
+          <textarea name="" id="" [(ngModel)]="commentaire"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            #closeAddExpenseModal
+          >
+            Annuler
+          </button>
+          <button type="button" class="btn" (click)="envoyerAvis()">Envoyer</button>
+        </div>
       </div>
     </div>
   </div>
