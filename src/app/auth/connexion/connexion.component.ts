@@ -42,7 +42,7 @@ connexion() {
         this.service.message("Merci!!!", "success", "Connexion faite avec succès");
         // console.log("reponse conn",reponse);
       } else {
-        console.log('error ',reponse);
+        // console.log('error ',reponse);
         this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
       }
     });

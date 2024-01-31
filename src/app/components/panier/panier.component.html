@@ -23,7 +23,7 @@
                 (click)="upOrDownQuantity('down',item.produit.id)"
               ></i>
             </p>
-            <span>{{item.produit.prix*item.quantitePanier}} fcfa</span>
+            <span class="som-prix">{{item.produit.prix*item.quantitePanier}} fcfa</span>
             <i class="bi bi-trash3" (click)="deleteFromPanier(item.produit.id)"></i>
           </div>
         }
@@ -40,20 +40,20 @@
           style="height: 150px"
         >
           <div class="d-flex justify-content-between w-100">
-            <span>{{panier.length}} Articles</span>
-            <span>3000 fcfa</span>
+            <span>{{nombreArticles}} Articles</span>
+            <span>{{sommeArticles}} fcfa</span>
           </div>
           <div class="d-flex justify-content-between w-100">
             <span>Livraison</span>
-            <span>2000 fcfa</span>
+            <span>{{prixLivraion}} fcfa</span>
           </div>
           <hr />
           <div class="d-flex justify-content-between w-100">
             <span>Total</span>
-            <span>5000 fcfa</span>
+            <span>{{prixLivraion+this.sommeArticles}} fcfa</span>
           </div>
           <hr />
-          <button class="btn" [routerLink]="['/confirmCommand']">Commander</button>
+          <button class="btn" (click)="isOnline()" >Commander</button>
         </div>
       </div>
       <div class="nb px-3">
