@@ -76,11 +76,21 @@ export class AllservicesService {
     }
   }
 
-  postToPanier(produit: any) {
+  postToPanier(produit: any, quantite = 0) {
+    let produitPanier={};
     if (localStorage.getItem('panier') == null || localStorage.getItem('panier') == undefined) {
-      let produitPanier = {
-        produit: produit,
-        quantitePanier: 1
+      if (quantite != 0) {
+
+        produitPanier = {
+          produit: produit,
+          quantitePanier: quantite
+        }
+      } else {
+
+        produitPanier = {
+          produit: produit,
+          quantitePanier: 1
+        }
       }
       localStorage.setItem('panier', JSON.stringify([produitPanier]));
       this.message("parfait", "success", "produit ajouté au panier");
@@ -92,10 +102,23 @@ export class AllservicesService {
 
         this.message("oops", "warning", "Ce produit existe déja dans le panier");
       } else {
-        let produitPanier = {
-          produit: produit,
-          quantitePanier: 1
+        if (quantite != 0) {
+
+          produitPanier = {
+            produit: produit,
+            quantitePanier: quantite
+          }
+        } else {
+
+          produitPanier = {
+            produit: produit,
+            quantitePanier: 1
+          }
         }
+        // let produitPanier = {
+        //   produit: produit,
+        //   quantitePanier: 1
+        // }
         panier.push(produitPanier);
         localStorage.setItem('panier', JSON.stringify(panier));
         this.message("parfait", "success", "produit ajouté au panier");

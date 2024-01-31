@@ -19,7 +19,7 @@
           <i class="bi bi-pen-fill"></i>
           Ecrire un avis
         </span>
-        <span>
+        <span data-bs-toggle="modal" data-bs-target="#SignalModal">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -53,17 +53,7 @@
       <p class="description">
         {{ produit.description }}
       </p>
-      <!-- <p class="description">
-        Plongez dans une expérience gustative éclatante avec notre jus de citron
-        d'une fraîcheur inégalée. Pressé à partir de citrons juteux, ce nectar
-        pétillant ajoute une touche vivifiante à vos boissons et plats. <br />
-        <br />
-        Au-delà de son goût délicieusement acidulé, ce jus regorge de bienfaits.
-        Riche en vitamine C, il stimule l'immunité, favorise une peau éclatante
-        et offre une dose naturelle d'antioxydants. Découvrez la vitalité pure
-        dans chaque goutte, une invitation à la santé et à la délectation des
-        sens.
-      </p> -->
+
       <hr />
       <h5>{{ produit.prix }} fcfa</h5>
       <p>
@@ -74,7 +64,7 @@
         <i class="bi bi-caret-down-fill" (click)="upOrDownQuantity('down')"></i>
       </p>
       <div class="d-flex justify-content-between w-50">
-        <button class="btn" (click)="postPanier(produit)">
+        <button class="btn" (click)="postPanier(produit,quantite)">
           Ajouter au panier
         </button>
         <button class="btn">Commander</button>
@@ -132,11 +122,14 @@
 
             <div class="avis-item p-2">
               <div class="d-flex justify-content-between w-50 m-auto mt-2 mb-2">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star"></i>
+                @for (nombre of [1,2,3,4,5]; track $index) {
+                  @if (nombre<=item.Note) {
+                    <i class="bi bi-star-fill"></i>
+                  }@else {
+                    <i class="bi bi-star"></i>
+                  }
+                }
+
               </div>
               <span class="fw-bold mt-3 mb-3">{{item.Client}}</span>
               <p>
@@ -144,34 +137,25 @@
               </p>
             </div>
           }
-          <!-- <div class="avis-item p-2">
-            <div class="d-flex justify-content-between w-50 m-auto mt-2 mb-2">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star"></i>
-              <i class="bi bi-star"></i>
-              <i class="bi bi-star"></i>
-            </div>
-            <span class="fw-bold mt-3 mb-3">Explosion de Fraîcheur!</span>
-            <p>
-              "Ce jus de citron est une révélation! Son goût pétillant et ses
-              bienfaits m'ont conquise. Parfait pour tous les jours.”
-            </p>
-          </div>
-          <div class="avis-item p-2">
-            <div class="d-flex justify-content-between w-50 m-auto mt-2 mb-2">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-            </div>
-            <span class="fw-bold mt-3 mb-3">Explosion de Fraîcheur!</span>
-            <p>
-              "Ce jus de citron est une révélation! Son goût pétillant et ses
-              bienfaits m'ont conquise. Parfait pour tous les jours.”
-            </p>
-          </div> -->
+          <!-- <p-carousel [value]="commentaires" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template let-product pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                    <div class="mb-3">
+                        <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" [alt]="product.name" class="w-6 shadow-2" />
+                    </div>
+                    <div>
+                        <h4 class="mb-1">{{ product.name }}</h4>
+                        <h6 class="mt-0 mb-3">{{ '$' + product.price }}</h6>
+                        <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag>
+                        <div class="mt-5 flex align-items-center justify-content-center gap-2">
+                            <p-button icon="pi pi-search" [rounded]="true" />
+                            <p-button icon="pi pi-star-fill" [rounded]="true" severity="secondary" />
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel> -->
+
         </div>
       </div>
       <div
@@ -245,7 +229,7 @@
   </div>
 </div>
 
-<!-- popup -->
+<!-- popup avis-->
 <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
@@ -294,6 +278,53 @@
             Annuler
           </button>
           <button type="button" class="btn" (click)="envoyerAvis()">Envoyer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- popup signalement-->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="SignalModal"
+  tabindex="-1"
+  aria-labelledby="SignalModalLabel"
+  aria-hidden="true"
+  data-bs-backdrop='static'
+>
+  <div class="modal-dialog modal-dialog-centered " >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 m-auto" id="SignalModalLabel">
+          Faire un signalement
+        </h1>
+      </div>
+      <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+      <div class="modal-body">
+
+        <div class="d-flex w-100 justify-content-between mb-2">
+          <span>Motif : </span>
+          <textarea name="" id="" [(ngModel)]="commentaire"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            #closeAddExpenseModal
+          >
+            Annuler
+          </button>
+          <button type="button" class="btn" (click)="envoyerSignalement()">Envoyer</button>
         </div>
       </div>
     </div>

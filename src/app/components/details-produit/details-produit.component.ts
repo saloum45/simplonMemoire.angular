@@ -2,18 +2,22 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AllservicesService } from '../../services/allservices.service';
 import { FormsModule } from '@angular/forms';
+import { CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-details-produit',
   standalone: true,
   imports: [
     RouterLink,
-    FormsModule
+    FormsModule,
+    CarouselModule,
+
   ],
   templateUrl: './details-produit.component.html',
   styleUrl: './details-produit.component.css'
 })
 export class DetailsProduitComponent implements OnInit {
+
 
   // Attributs
   public quantite = 1;
@@ -69,24 +73,23 @@ export class DetailsProduitComponent implements OnInit {
     }
   }
 
-  postPanier(produit: any) {
-    this.service.postToPanier(produit);
+  postPanier(produit: any, quantite = 0) {
+    this.service.postToPanier(produit, quantite);
   }
 
   envoyerAvis() {
-    let avis = {
-      note: this.note,
-      commentaire: this.commentaire,
-      // prduit_id: this.activatedRouter.snapshot.params['id'],
-      // client_id: this.service.idOnline()
-    }
-    console.log("comm", avis);
-    this.service.post("api/faireCommentaire/" + this.activatedRouter.snapshot.params['id'], avis, ((reponse: any) => {
-      console.log("reponse", reponse);
-      if (this.note == 0 || this.commentaire == "") {
-        this.service.message("Oop's", "error", "Veuillez vérifier la saisie(pour noter cliquer sur les étoiles)");
+    if (this.note == 0 || this.commentaire == "") {
+      this.service.message("Oop's", "error", "Veuillez vérifier la saisie(pour noter cliquer sur les étoiles)");
 
-      } else {
+    } else {
+
+      let avis = {
+        note: this.note,
+        commentaire: this.commentaire,
+      }
+      this.service.post("api/faireCommentaire/" + this.activatedRouter.snapshot.params['id'], avis, ((reponse: any) => {
+        console.log("reponse", reponse);
+
 
         if (reponse.status == 200) {
           this.service.message("Parfait", "success", "avis envoyé avec succès");
@@ -95,8 +98,30 @@ export class DetailsProduitComponent implements OnInit {
           this.closeAddExpenseModal.nativeElement.click();
         }
         this.loadCommentaires();
+      }));
+    }
+  }
 
+
+  envoyerSignalement() {
+    if (this.commentaire == "") {
+      this.service.message("Oop's", "error", "Veuillez saisir le motif du signalement");
+
+    } else {
+      let signalement = {
+        motif: this.commentaire
       }
-    }));
+      console.log("comm", signalement);
+      this.service.post("api/signalerProduit/" + this.activatedRouter.snapshot.params['id'], signalement, ((reponse: any) => {
+        console.log("reponse", reponse);
+        if (reponse.status == 200) {
+          this.service.message("Parfait", "success", "signalment avec succès");
+          this.commentaire = "";
+          this.closeAddExpenseModal.nativeElement.click();
+        }
+      }));
+
+    }
+
   }
 }
