@@ -15,11 +15,11 @@ export class PanierComponent implements OnInit {
   // Attributs
   public quantite = 1;
   public panier: any = [];
-  public nombreArticles=0;
-  public sommeArticles=0;
-  public readonly prixLivraion=2000;
+  public nombreArticles = 0;
+  public sommeArticles = 0;
+  public prixLivraion = this.service.prixLivraion;
   // Methodes
-  constructor(private service: AllservicesService,private router:Router) {
+  constructor(private service: AllservicesService, private router: Router) {
 
   }
 
@@ -52,16 +52,17 @@ export class PanierComponent implements OnInit {
     this.panier = this.service.getFromPanier();
   }
 
-  totalArticles(){
-    this.nombreArticles=0;
-    this.sommeArticles=0;
+  totalArticles() {
+    this.nombreArticles = 0;
+    this.sommeArticles = 0;
     let panierProduit = this.service.getFromPanier();
     panierProduit.forEach((element: any) => {
-      this.nombreArticles+=element.quantitePanier;
-      this.sommeArticles+=element.quantitePanier*element.produit.prix;
+      this.nombreArticles += element.quantitePanier;
+      this.sommeArticles += element.quantitePanier * element.produit.prix;
     });
 
   }
+
   deleteFromPanier(id: any) {
     let tab: any = [];
     tab = this.service.getFromPanier();
@@ -78,11 +79,19 @@ export class PanierComponent implements OnInit {
   }
 
   isOnline() {
-   if (this.service.IsOnline()) {
-    this.router.navigate(['/confirmCommand']);
-   }else{
-    this.service.message('Oop\'s',"error","La connexion est requise pour cette action");
-   }
+    let a = JSON.parse(localStorage.getItem('panier') ?? '[]');
+    // console.log(a.length);
+    if (a.length == 0) {
+
+      this.service.message('Oop\'s', "warning", "Le panier est vide veuillez le remplir d'abord");
+    }else{
+
+      if (this.service.IsOnline()) {
+        this.router.navigate(['/confirmCommand']);
+      } else {
+        this.service.message('Oop\'s', "error", "La connexion est requise pour cette action");
+      }
+    }
   }
 
 }

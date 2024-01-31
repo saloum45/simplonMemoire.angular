@@ -108,3 +108,17 @@ button:hover
   background-color: var(--darkbluecolor);
   color: white;
 }
+
+.nom_prix{
+  min-width: 150px;
+}.som-prix{
+  min-width: 100px;
+}
+
+.panier-items .panier-item img
+{
+  height: 100px;
+  width: 100px;
+  border-radius: 5px;
+  object-fit: cover;
+}

@@ -36,34 +36,26 @@
 
       <!-- articles -->
       <div class="articles mt-4">
-        <div class="section-title">
+        <div class="section-title pb-2">
           <h4 class="p-2 pb-3 fw-bold">3.ARTICLES DE LA COMMANDE</h4>
           <hr />
           <div class="panier-items">
-            <div class="panier-item">
-              <img src="assets/Madd.png" alt="" />
-              <p>
-                JUS DITAKH <br />
-                <span>2000 fcfa</span>
-              </p>
-              <p>
-                <!-- <i class="bi bi-plus quant" ></i> -->
-                <input type="text" [value]="1" />
-              </p>
-              <span>2000 fcfa</span>
-            </div>
-            <div class="panier-item">
-              <img src="assets/Madd.png" alt="" />
-              <p>
-                JUS DITAKH <br />
-                <span>2000 fcfa</span>
-              </p>
-              <p>
-                <!-- <i class="bi bi-plus quant" ></i> -->
-                <input type="text" [value]="1" />
-              </p>
-              <span>2000 fcfa</span>
-            </div>
+            @for (item of panierProduits; track $index) {
+
+              <div class="panier-item">
+                <img src="http://localhost:8000/images/{{item.produit.image}}" alt="" />
+                <p>
+                  {{item.produit.nom_produit}} <br />
+                  <span>{{item.produit.prix }} fcfa</span>
+                </p>
+                <p>
+                  <!-- <i class="bi bi-plus quant" ></i> -->
+                  <input type="text" [value]="item.quantitePanier" disabled />
+                </p>
+                <span class="som-prix">{{item.produit.prix*item.quantitePanier}} fcfa</span>
+              </div>
+            }
+
             <!-- <div class="panier-item"></div> -->
           </div>
         </div>
@@ -77,20 +69,20 @@
         </div>
         <div class="d-flex justify-content-between px-5">
           <h5>Articles</h5>
-          <span>4000 fcfa</span>
+          <span>{{sommeArticles}} fcfa</span>
         </div>
         <div class="d-flex justify-content-between px-5">
           <h5>Livraison</h5>
-          <span>2000 fcfa</span>
+          <span>{{prixLivraion}} fcfa</span>
         </div>
         <div class="d-flex justify-content-between px-5">
           <h5>Frais de tranfert 1%</h5>
-          <span>600 fcfa</span>
+          <span>{{(sommeArticles+prixLivraion)*0.1 }} fcfa</span>
         </div>
         <hr />
         <div class="d-flex justify-content-between px-5">
           <h5>TOTAL</h5>
-          <span>6600 fcfa</span>
+          <span>{{sommeArticles+prixLivraion+(sommeArticles+prixLivraion)*0.1}} fcfa</span>
         </div>
         <div class="w-50 m-auto mt-3">
 
@@ -107,17 +99,17 @@
           style="height: 150px"
         >
           <div class="d-flex justify-content-between w-100">
-            <span>6 Articles</span>
-            <span>3000 fcfa</span>
+            <span>{{nombreArticles}} Articles</span>
+            <span>{{sommeArticles}} fcfa</span>
           </div>
           <div class="d-flex justify-content-between w-100">
             <span>Livraison</span>
-            <span>2000 fcfa</span>
+            <span>{{prixLivraion}} fcfa</span>
           </div>
           <hr />
           <div class="d-flex justify-content-between w-100">
             <span>Total</span>
-            <span>5000 fcfa</span>
+            <span>{{prixLivraion+sommeArticles}} fcfa</span>
           </div>
           <hr />
         </div>

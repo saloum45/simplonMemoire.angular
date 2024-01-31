@@ -15,13 +15,13 @@
               <span>{{item.produit.prix}} fcfa</span>
             </p>
             <p>
-              <i class="bi bi-caret-up-fill" (click)="upOrDownQuantity('up',item.produit.id)"></i>
               <!-- <i class="bi bi-plus quant" ></i> -->
-              <input type="text" [value]="item.quantitePanier" />
               <i
                 class="bi bi-caret-down-fill"
                 (click)="upOrDownQuantity('down',item.produit.id)"
               ></i>
+              <input type="text" [value]="item.quantitePanier" />
+              <i class="bi bi-caret-up-fill" (click)="upOrDownQuantity('up',item.produit.id)"></i>
             </p>
             <span class="som-prix">{{item.produit.prix*item.quantitePanier}} fcfa</span>
             <i class="bi bi-trash3" (click)="deleteFromPanier(item.produit.id)"></i>
