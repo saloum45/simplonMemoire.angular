@@ -38,6 +38,10 @@ export class PanierComponent implements OnInit {
         if (type == 'up') {
           // this.quantite++;
           element.quantitePanier++;
+          if (element.quantitePanier>element.produit.quantite) {
+            element.quantitePanier--;
+            this.service.message("Oops","warning",`il n'en reste que ${element.produit.quantite} produit en stock`);
+          }
         } else {
           // this.quantite--;
           element.quantitePanier--;
