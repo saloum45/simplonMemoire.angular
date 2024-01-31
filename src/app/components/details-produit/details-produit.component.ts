@@ -68,6 +68,10 @@ export class DetailsProduitComponent implements OnInit {
     // }
     if (type == 'up') {
       this.quantite++;
+      if (this.quantite>this.produit.quantite) {
+        this.quantite--;
+        this.service.message("Oops","warning",`il n'en reste que ${this.produit.quantite} produit en stock`);
+      }
     } else {
       this.quantite--;
     }
