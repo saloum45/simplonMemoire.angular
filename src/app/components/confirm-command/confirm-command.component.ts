@@ -40,4 +40,8 @@ constructor(private service:AllservicesService){
 
   }
 
+  payer(){
+    this.service.message("En cours de developpement","warning","Cette fonctionnalité n'est encore disponible");
+  }
+
 }

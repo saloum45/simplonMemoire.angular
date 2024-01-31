@@ -74,7 +74,7 @@
         <i class="bi bi-caret-down-fill" (click)="upOrDownQuantity('down')"></i>
       </p>
       <div class="d-flex justify-content-between w-50">
-        <button class="btn" (click)="postPanier(produit)">
+        <button class="btn" (click)="postPanier(produit,quantite)">
           Ajouter au panier
         </button>
         <button class="btn">Commander</button>
@@ -132,11 +132,14 @@
 
             <div class="avis-item p-2">
               <div class="d-flex justify-content-between w-50 m-auto mt-2 mb-2">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star"></i>
+                @for (nombre of [1,2,3,4,5]; track $index) {
+                  @if (nombre<=item.Note) {
+                    <i class="bi bi-star-fill"></i>
+                  }@else {
+                    <i class="bi bi-star"></i>
+                  }
+                }
+
               </div>
               <span class="fw-bold mt-3 mb-3">{{item.Client}}</span>
               <p>
@@ -144,34 +147,25 @@
               </p>
             </div>
           }
-          <!-- <div class="avis-item p-2">
-            <div class="d-flex justify-content-between w-50 m-auto mt-2 mb-2">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star"></i>
-              <i class="bi bi-star"></i>
-              <i class="bi bi-star"></i>
-            </div>
-            <span class="fw-bold mt-3 mb-3">Explosion de Fraîcheur!</span>
-            <p>
-              "Ce jus de citron est une révélation! Son goût pétillant et ses
-              bienfaits m'ont conquise. Parfait pour tous les jours.”
-            </p>
-          </div>
-          <div class="avis-item p-2">
-            <div class="d-flex justify-content-between w-50 m-auto mt-2 mb-2">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-            </div>
-            <span class="fw-bold mt-3 mb-3">Explosion de Fraîcheur!</span>
-            <p>
-              "Ce jus de citron est une révélation! Son goût pétillant et ses
-              bienfaits m'ont conquise. Parfait pour tous les jours.”
-            </p>
-          </div> -->
+          <!-- <p-carousel [value]="commentaires" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template let-product pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                    <div class="mb-3">
+                        <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" [alt]="product.name" class="w-6 shadow-2" />
+                    </div>
+                    <div>
+                        <h4 class="mb-1">{{ product.name }}</h4>
+                        <h6 class="mt-0 mb-3">{{ '$' + product.price }}</h6>
+                        <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag>
+                        <div class="mt-5 flex align-items-center justify-content-center gap-2">
+                            <p-button icon="pi pi-search" [rounded]="true" />
+                            <p-button icon="pi pi-star-fill" [rounded]="true" severity="secondary" />
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel> -->
+
         </div>
       </div>
       <div

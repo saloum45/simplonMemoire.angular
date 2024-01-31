@@ -2,18 +2,22 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AllservicesService } from '../../services/allservices.service';
 import { FormsModule } from '@angular/forms';
+import { CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-details-produit',
   standalone: true,
   imports: [
     RouterLink,
-    FormsModule
+    FormsModule,
+    CarouselModule,
+    
   ],
   templateUrl: './details-produit.component.html',
   styleUrl: './details-produit.component.css'
 })
 export class DetailsProduitComponent implements OnInit {
+
 
   // Attributs
   public quantite = 1;
@@ -69,8 +73,8 @@ export class DetailsProduitComponent implements OnInit {
     }
   }
 
-  postPanier(produit: any) {
-    this.service.postToPanier(produit);
+  postPanier(produit: any,quantite=0) {
+    this.service.postToPanier(produit,quantite);
   }
 
   envoyerAvis() {
@@ -98,5 +102,9 @@ export class DetailsProduitComponent implements OnInit {
 
       }
     }));
+  }
+
+  showStar() {
+    alert('hello');
   }
 }
