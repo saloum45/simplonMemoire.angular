@@ -63,21 +63,6 @@
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
           @for (item of getArticlesPage(); track $index) {
-
-            <!-- <div class="col" [routerLink]="['/detailsProduit',item.id]">
-              <div class="card" id="card">
-                <div class="text-center image">
-                  <img src="http://localhost:8000/images/{{item.image}}" alt="" />
-                </div>
-                <div class="card-text">
-                  <h6 class="text-center">{{item.nom_produit}}</h6>
-                  <span class="text-center">{{item.prix}} fcfa</span>
-                  <div class="text-center">
-                    <button class="btn">Ajouter au panier</button>
-                  </div>
-                </div>
-              </div>
-            </div> -->
             <div class="col" >
               <div class="card" id="card">
                 <div class="text-center image" [routerLink]="['/detailsProduit',item.id]">
@@ -109,19 +94,7 @@
           }
           <button [disabled]="pageActuelle === totalPages" (click)="pageActuelle = pageActuelle + 1">Suivant</button>
         </div>
-<!--
-        <div class="d-flex justify-content-center my-5">
-          <button class="btn btnColor me-2" [disabled]="pageActuelle === 1" (click)="pageActuelle = pageActuelle - 1">
-            Précédent
-          </button>
-          <button class="btn btnColor ms-2" *ngFor="let page of pages" (click)="pageActuelle = page">
-            {{ page }}
-          </button>
-          <button class="btn btnColor ms-2" [disabled]="pageActuelle === totalPages" (click)="pageActuelle = pageActuelle + 1">
-            Suivant
-          </button>
 
-      </div> -->
       </div>
     </div>
   </div>
