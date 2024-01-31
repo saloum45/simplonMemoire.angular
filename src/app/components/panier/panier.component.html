@@ -9,22 +9,22 @@
         @for (item of panier; track $index) {
 
           <div class="panier-item">
-            <img src="http://localhost:8000/images/{{item.image}}" alt="" [routerLink]="['/detailsProduit',item.id]" />
-            <p class="nom_prix" [routerLink]="['/detailsProduit',item.id]">
-              {{item.nom_produit}} <br />
-              <span>{{item.prix}} fcfa</span>
+            <img src="http://localhost:8000/images/{{item.produit.image}}" alt="" [routerLink]="['/detailsProduit',item.produit.id]" />
+            <p class="nom_prix" [routerLink]="['/detailsProduit',item.produit.id]">
+              {{item.produit.nom_produit}} <br />
+              <span>{{item.produit.prix}} fcfa</span>
             </p>
             <p>
-              <i class="bi bi-caret-up-fill" (click)="upOrDownQuantity('up')"></i>
+              <i class="bi bi-caret-up-fill" (click)="upOrDownQuantity('up',item.produit.id)"></i>
               <!-- <i class="bi bi-plus quant" ></i> -->
-              <input type="text" [value]="quantite" />
+              <input type="text" [value]="item.quantitePanier" />
               <i
                 class="bi bi-caret-down-fill"
-                (click)="upOrDownQuantity('down')"
+                (click)="upOrDownQuantity('down',item.produit.id)"
               ></i>
             </p>
-            <span>{{item.prix*quantite}} fcfa</span>
-            <i class="bi bi-trash3" (click)="deleteFromPanier(item.id)"></i>
+            <span>{{item.produit.prix*item.quantitePanier}} fcfa</span>
+            <i class="bi bi-trash3" (click)="deleteFromPanier(item.produit.id)"></i>
           </div>
         }
 

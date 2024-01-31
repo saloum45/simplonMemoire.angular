@@ -25,22 +25,35 @@ export class PanierComponent implements OnInit {
     this.panier=this.service.getFromPanier();
   }
 
-  upOrDownQuantity(type: string) {
+  upOrDownQuantity(type: string,id:any) {
     // if (this.quantite<1) {
     //   this.quantite=1;
     // }
-    if (type == 'up') {
-      this.quantite++;
-    } else {
-      this.quantite--;
-    }
+    let panierProduit=this.service.getFromPanier();
+    panierProduit.forEach((element:any) => {
+      if (element.produit.id==id ) {
+        if (type == 'up') {
+          // this.quantite++;
+          element.quantitePanier++;
+        } else {
+          // this.quantite--;
+          element.quantitePanier--;
+          if (element.quantitePanier<1) {
+            element.quantitePanier=1;
+
+          }
+        }
+      }
+    });
+    localStorage.setItem("panier",JSON.stringify(panierProduit));
+    this.panier=this.service.getFromPanier();
   }
 
   deleteFromPanier(id:any){
     let tab:any=[];
     tab=this.service.getFromPanier();
     tab.forEach((element:any,index:any) => {
-      if (element.id==id) {
+      if (element.produit.id==id) {
         tab.splice(index,1);
       }
     });
@@ -48,4 +61,6 @@ export class PanierComponent implements OnInit {
     this.panier=this.service.getFromPanier();
     this.service.message("Parfait","success","produit retiré du panier");
   }
+
+
 }

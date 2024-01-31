@@ -77,19 +77,25 @@ export class AllservicesService {
 
   postToPanier(produit: any) {
     if (localStorage.getItem('panier') == null || localStorage.getItem('panier') == undefined) {
-
-      localStorage.setItem('panier', JSON.stringify([produit]));
+      let produitPanier = {
+        produit: produit,
+        quantitePanier: 1
+      }
+      localStorage.setItem('panier', JSON.stringify([produitPanier]));
       this.message("parfait", "success", "produit ajouté au panier");
     } else {
       let panier = JSON.parse(localStorage.getItem('panier') ?? '[]');
-      let a = panier.filter((item: any) => item.id == produit.id);
+      let a = panier.filter((item: any) => item.produit.id == produit.id);
       // console.log(a.length);
       if (a.length > 0) {
 
         this.message("oops", "warning", "Ce produit existe déja dans le panier");
       } else {
-
-        panier.push(produit);
+        let produitPanier = {
+          produit: produit,
+          quantitePanier: 1
+        }
+        panier.push(produitPanier);
         localStorage.setItem('panier', JSON.stringify(panier));
         this.message("parfait", "success", "produit ajouté au panier");
       }
