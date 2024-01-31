@@ -80,5 +80,9 @@ export const routes: Routes = [
   {
     path:"listVente",
     component:VenteComponent
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
   }
 ];
