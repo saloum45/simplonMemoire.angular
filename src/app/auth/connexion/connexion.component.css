@@ -42,6 +42,9 @@
     padding-left: 20px;
     transition: 1s ease;
   }
+  input:focus {
+    border-bottom: 5px var(--darkbluecolor) solid;
+  }
   textarea {
     width: 100%;
     border: none;
@@ -51,9 +54,6 @@
     height: 100px;
   }
 
-  input:focus {
-    border-bottom: 5px var(--darkbluecolor) solid;
-  }
   .form-element {
     display: flex;
   }
