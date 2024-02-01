@@ -84,7 +84,7 @@
 }
 
 /* pagination */
-
+/*
 .pagination {
   width: 250px;
   height: 40px;
@@ -109,12 +109,29 @@
  background-color: transparent;
  border: none;
  color: white;
-}
+} */
 
 .adminTitle{
   text-align: center;
   font-weight: 700;
   color: var(--darkbluecolor);
+  margin-bottom: 30px;
   letter-spacing: 5px;
   margin-top: 30px;
+}
+
+
+
+thead#thead th
+{
+  background-color: #F0F0F0;
+  /* box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1); */
+}
+thead#thead th:nth-child(1)
+{
+  border-radius: 5px 0px 0px 5px;
+}
+thead#thead .last-th
+{
+  border-radius: 0px 5px 5px 0px;
 }

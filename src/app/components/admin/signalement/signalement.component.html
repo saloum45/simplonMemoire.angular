@@ -1,1 +1,29 @@
 <h4 class="adminTitle">Liste des produits signalés</h4>
+<div class="data-table-container px-5">
+
+  @if (signalement.length>0) {
+
+    <table datatable [dtOptions]="dtOptions" class="table">
+      <thead id="thead">
+        <tr>
+          <th>Image</th>
+          <th>Nom</th>
+          <th>Commerçant</th>
+          <th>Etat</th>
+          <th class="last-th">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of signalement; track $index) {
+        <tr>
+          <td>img</td>
+          <td>{{ item.nom }}</td>
+          <td>{{ item.commercant}}</td>
+          <td>{{ item.etat }}</td>
+          <td class="text-center"><i class="bi bi-eye"></i></td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  }
+</div>

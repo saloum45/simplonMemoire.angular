@@ -1,1 +1,31 @@
 <h4 class="adminTitle">Liste des utilisateurs</h4>
+<div class="data-table-container px-5">
+
+  @if (tab.length>0) {
+
+    <table datatable [dtOptions]="dtOptions" class="table">
+      <thead id="thead">
+        <tr>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Numero</th>
+          <th>Adresse</th>
+          <th>Etat</th>
+          <th class="last-th">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of tab; track $index) {
+        <tr>
+          <td>{{ item.nom }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.numero }}</td>
+          <td>{{ item.adresse }}</td>
+          <td>{{ item.etat }}</td>
+          <td class="text-center"><i class="bi bi-eye"></i></td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  }
+</div>
