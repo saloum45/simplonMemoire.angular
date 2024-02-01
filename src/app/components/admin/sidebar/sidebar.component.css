@@ -110,3 +110,8 @@
   cursor: pointer;
   color: var(--darkbluecolor);
 }
+
+.active-link
+{
+  background-color: var(--bgcolor);
+}
