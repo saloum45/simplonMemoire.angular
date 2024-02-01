@@ -16,64 +16,66 @@ export class SignalementComponent implements OnInit {
   public signalement = [
     {
       nom: "Jus de mangue",
+      image: "https://www.consommonslocal.net/wp-content/uploads/2020/06/bisap-1L-PET-1-scaled.jpg",
       etat: "non bloqué",
-      commercant: "Fatou Ndiaye"
+      commercant: "FatouNdiaye@gmail.com"
     },
-
     {
       nom: "Boisson gazeuse",
+      image: "https://www.consommonslocal.net/wp-content/uploads/2020/06/bisap-1L-PET-1-scaled.jpg",
       etat: "bloqué",
-      commercant: "Mamadou Fall"
+      commercant: "MamadouFall@gmail.com"
     },
-
     {
       nom: "Sirop de grenadine",
+      image: "https://www.consommonslocal.net/wp-content/uploads/2020/06/bisap-1L-PET-1-scaled.jpg",
       etat: "bloqué",
-      commercant: "Aminata Sow"
+      commercant: "AminataSow@gmail.com"
     },
-
     {
       nom: "Thé glacé",
+      image: "https://www.consommonslocal.net/wp-content/uploads/2020/06/bisap-1L-PET-1-scaled.jpg",
       etat: "non bloqué",
-      commercant: "Ousmane Diop"
+      commercant: "OusmaneDiop@gmail.com"
     },
-
     {
       nom: "Jus d'ananas",
+      image: "https://www.consommonslocal.net/wp-content/uploads/2020/06/bisap-1L-PET-1-scaled.jpg",
       etat: "non bloqué",
-      commercant: "Mariama Gueye"
+      commercant: "MariamaGueye@gmail.com"
     },
-
     {
       nom: "Cocktail de fruits",
+      image: "https://www.consommonslocal.net/wp-content/uploads/2020/06/bisap-1L-PET-1-scaled.jpg",
       etat: "bloqué",
-      commercant: "Ibrahima Seck"
+      commercant: "IbrahimaSeck@gmail.com"
     },
-
     {
       nom: "Eau de coco",
+      image: "https://www.consommonslocal.net/wp-content/uploads/2020/06/bisap-1L-PET-1-scaled.jpg",
       etat: "non bloqué",
-      commercant: "Khady Camara"
+      commercant: "KhadyCamara@gmail.com"
     },
-
     {
       nom: "Soda à l'orange",
+      image: "https://www.consommonslocal.net/wp-content/uploads/2020/06/bisap-1L-PET-1-scaled.jpg",
       etat: "bloqué",
-      commercant: "Abdoulaye Diallo"
+      commercant: "AbdoulayeDiallo@gmail.com"
     },
-
     {
       nom: "Jus de pamplemousse",
+      image: "https://www.consommonslocal.net/wp-content/uploads/2020/06/bisap-1L-PET-1-scaled.jpg",
       etat: "non bloqué",
-      commercant: "Aïssatou Mbengue"
+      commercant: "AïssatouMbengue@gmail.com"
     },
-
     {
       nom: "Boisson énergisante",
+      image: "https://www.consommonslocal.net/wp-content/uploads/2020/06/bisap-1L-PET-1-scaled.jpg",
       etat: "bloqué",
-      commercant: "Moussa Ndiaye"
+      commercant: "MoussaNdiaye@gmail.com"
     }
-  ];
+]
+
 
 
   // Methodes
@@ -84,7 +86,7 @@ export class SignalementComponent implements OnInit {
       lengthChange: false,
       paging: true,
       info: false,
-      pageLength: 9,
+      pageLength: 7,
       language: {
         url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json',
       }
