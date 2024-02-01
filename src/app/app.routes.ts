@@ -22,7 +22,7 @@ export const routes: Routes = [
   //   component:AccueilComponent
   // },
   {
-    path:"",redirectTo:"admin",pathMatch:"full"
+    path:"",redirectTo:"accueil",pathMatch:"full"
   },
   {
     path:"accueil",

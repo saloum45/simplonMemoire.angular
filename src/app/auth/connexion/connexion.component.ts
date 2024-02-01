@@ -38,7 +38,13 @@ connexion() {
           type:reponse.user.type
         }
         localStorage.setItem("onlineUser",JSON.stringify(onlineUser));
-        this.router.navigate(['/accueil']);
+        if(reponse.user.type=="admin"){
+          this.router.navigate(['/admin']);
+
+        }else{
+
+          this.router.navigate(['/accueil']);
+        }
         this.service.message("Merci!!!", "success", "Connexion faite avec succès");
         // console.log("reponse conn",reponse);
       } else {
