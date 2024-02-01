@@ -110,3 +110,11 @@
  border: none;
  color: white;
 }
+
+.adminTitle{
+  text-align: center;
+  font-weight: 700;
+  color: var(--darkbluecolor);
+  letter-spacing: 5px;
+  margin-top: 30px;
+}

@@ -7,6 +7,8 @@ import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 import { SignalementComponent } from './signalement/signalement.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { LivraisonComponent } from './livraison/livraison.component';
+import { CategorieComponent } from './categorie/categorie.component';
+import { LivreurComponent } from './livreur/livreur.component';
 
 const routes: Routes = [
 
@@ -44,6 +46,14 @@ const routes: Routes = [
       {
         path: "newsletter",
         component: NewsletterComponent
+      },
+      {
+        path: "categorie",
+        component: CategorieComponent
+      },
+      {
+        path: "livreur",
+        component: LivreurComponent
       },
 
     ]
