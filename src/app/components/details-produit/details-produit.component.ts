@@ -82,6 +82,8 @@ export class DetailsProduitComponent implements OnInit {
   }
 
   envoyerAvis() {
+    if (this.service.IsOnline()) {
+
     if (this.note == 0 || this.commentaire == "") {
       this.service.message("Oop's", "error", "Veuillez vérifier la saisie(pour noter cliquer sur les étoiles)");
 
@@ -104,27 +106,37 @@ export class DetailsProduitComponent implements OnInit {
         this.loadCommentaires();
       }));
     }
+    }else{
+      this.service.message("Oops", "warning", "La connexion est requise pour cette action");
+
+    }
   }
 
 
   envoyerSignalement() {
-    if (this.commentaire == "") {
-      this.service.message("Oop's", "error", "Veuillez saisir le motif du signalement");
+    if (this.service.IsOnline()) {
 
-    } else {
-      let signalement = {
-        motif: this.commentaire
-      }
-      console.log("comm", signalement);
-      this.service.post("api/signalerProduit/" + this.activatedRouter.snapshot.params['id'], signalement, ((reponse: any) => {
-        console.log("reponse", reponse);
-        if (reponse.status == 200) {
-          this.service.message("Parfait", "success", "signalment avec succès");
-          this.commentaire = "";
-          this.closeAddExpenseModal.nativeElement.click();
+      if (this.commentaire == "") {
+        this.service.message("Oop's", "error", "Veuillez saisir le motif du signalement");
+
+      } else {
+        let signalement = {
+          motif: this.commentaire
         }
-      }));
+        console.log("comm", signalement);
+        this.service.post("api/signalerProduit/" + this.activatedRouter.snapshot.params['id'], signalement, ((reponse: any) => {
+          console.log("reponse", reponse);
+          if (reponse.status == 200) {
+            this.service.message("Parfait", "success", "signalment avec succès");
+            this.commentaire = "";
+            this.closeAddExpenseModal.nativeElement.click();
+          }
+        }));
 
+      }
+    }else{
+
+      this.service.message("Oops", "warning", "La connexion est requise pour cette action");
     }
 
   }

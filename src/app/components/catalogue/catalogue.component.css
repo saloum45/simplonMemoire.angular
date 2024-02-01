@@ -74,3 +74,31 @@
     height: auto;
   }
 }
+
+/* pagination */
+
+.pagination {
+  width: 250px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: var(--darkbluecolor);
+  margin-top: 20px;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+}
+.pagination span {
+  background-color: white;
+  color: var(--darkbluecolor);
+  padding: 2px;
+  border-radius: 2px;
+}
+.pagination button {
+ background-color: transparent;
+ border: none;
+ color: white;
+}
