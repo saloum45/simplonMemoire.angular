@@ -5,18 +5,18 @@
       <img src="assets/panierLocal-logo.png" alt="" />
     </div>
     <!-- admin -->
-    <div class="sidebar-items" >
-      <div class="dashboard" routerLink="statistique">
+    <div class="sidebar-items">
+      <div class="dashboard" routerLink="statistique" routerLink="accueil">
         <span> <i class="bi bi-pie-chart"></i> Statistiques </span>
       </div>
 
-      <div class="sidebar-item" routerLink="listClasse">
+      <div class="sidebar-item" routerLink="listClasse" routerLink="utilisateur">
         <span> <i class="bi bi-people-fill"></i> Utilisateurs </span>
       </div>
-      <div class="sidebar-item" routerLink="addMatiere">
+      <div class="sidebar-item" routerLink="addMatiere" routerLink="livraison">
         <span> <i class="bi bi-truck"></i> Livraison </span>
       </div>
-      <div class="sidebar-item" routerLink="addMatiere">
+      <div class="sidebar-item" routerLink="addMatiere" routerLink="newsletter">
         <span> <i class="bi bi-card-text"></i> Newsletter </span>
       </div>
       <div class="sidebar-item" routerLink="addMatiere">
@@ -34,23 +34,22 @@
     </div>
     <!-- prof -->
 
-
-
-
-    <div class="logout" >
+    <div class="logout">
       <span><i class="bi bi-box-arrow-left"></i> Déconnexion</span>
     </div>
   </div>
 
   <div class="right-content">
-    <div class="right-top d-flex justify-content-end ">
-      <div class="d-flex justify-content-between profile align-items-center px-4">
+    <div class="right-top d-flex justify-content-end">
+      <div
+        class="d-flex justify-content-between profile align-items-center px-4"
+      >
         <i class="bi bi-bell-fill"></i>
         <i class="bi bi-person-circle"></i>
       </div>
     </div>
-    <div class="right-container">
-
+    <div class="right-container p-3">
+      <router-outlet> </router-outlet>
     </div>
   </div>
 </div>

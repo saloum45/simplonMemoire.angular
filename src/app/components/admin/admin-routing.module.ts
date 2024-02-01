@@ -9,37 +9,46 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
 import { LivraisonComponent } from './livraison/livraison.component';
 
 const routes: Routes = [
+
   {
-    path:"sidebar",
-    component:SidebarComponent
+    path: "",
+    component: SidebarComponent,
+    children: [
+      {
+        path: "",
+        component: AccueilAdminComponent,
+      },
+      {
+        path: "accueil",
+        component: AccueilAdminComponent,
+      },
+      {
+        path: "", redirectTo: "sidebar", pathMatch: "full"
+      },
+      {
+        path: "feedback",
+        component: FeedbackComponent
+      },
+      {
+        path: "utilisateur",
+        component: UtilisateurComponent
+      },
+      {
+        path: "signalement",
+        component: SignalementComponent
+      },
+      {
+        path: "livraison",
+        component: LivraisonComponent
+      },
+      {
+        path: "newsletter",
+        component: NewsletterComponent
+      },
+
+    ]
   },
-  {
-    path:"accueil",
-    component:AccueilAdminComponent
-  },
-  {
-    path:"",redirectTo:"sidebar",pathMatch:"full"
-  },
-  {
-    path:"feedback",
-    component:FeedbackComponent
-  },
-  {
-    path:"utilisateur",
-    component:UtilisateurComponent
-  },
-  {
-    path:"signalement",
-    component:SignalementComponent
-  },
-  {
-    path:"livraison",
-    component:LivraisonComponent
-  },
-  {
-    path:"newsletter",
-    component:NewsletterComponent
-  },
+
 ];
 
 @NgModule({
