@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilAdminComponent } from './accueil-admin/accueil-admin.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { SignalementComponent } from './signalement/signalement.component';
+import { NewsletterComponent } from './newsletter/newsletter.component';
+import { LivraisonComponent } from './livraison/livraison.component';
 
 const routes: Routes = [
   {
@@ -13,8 +18,28 @@ const routes: Routes = [
     component:AccueilAdminComponent
   },
   {
-    path:"",redirectTo:"accueil",pathMatch:"full"
-  }
+    path:"",redirectTo:"sidebar",pathMatch:"full"
+  },
+  {
+    path:"feedback",
+    component:FeedbackComponent
+  },
+  {
+    path:"utilisateur",
+    component:UtilisateurComponent
+  },
+  {
+    path:"signalement",
+    component:SignalementComponent
+  },
+  {
+    path:"livraison",
+    component:LivraisonComponent
+  },
+  {
+    path:"newsletter",
+    component:NewsletterComponent
+  },
 ];
 
 @NgModule({

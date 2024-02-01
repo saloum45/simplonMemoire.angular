@@ -17,9 +17,12 @@ import { VenteComponent } from './components/vente/vente.component';
 
 export const routes: Routes = [
 
+  // {
+  //   path:"",
+  //   component:AccueilComponent
+  // },
   {
-    path:"",
-    component:AccueilComponent
+    path:"",redirectTo:"admin",pathMatch:"full"
   },
   {
     path:"accueil",
