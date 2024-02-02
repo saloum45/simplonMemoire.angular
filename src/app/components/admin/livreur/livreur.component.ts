@@ -129,10 +129,11 @@ AjouterLivreur(){
       this.service.message('Parfait','success','Livreur ajouté avec succès');
     }
   }));
+  this.getLivreurs();
 }
 
 getLivreurs(){
-  this.service.get("api/ListerLivreurDisponible",((reponse:any)=>{
+  this.service.get("api/ListerLivreur",((reponse:any)=>{
     console.log(reponse);
     this.livreurs=reponse.data;
   }));

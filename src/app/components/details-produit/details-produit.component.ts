@@ -25,7 +25,7 @@ export class DetailsProduitComponent implements OnInit {
   public note = 0;
   public commentaire = "";
   public commentaires: any[] = [];
-
+  public moyenneNote:any;
 
   // Methodes
   constructor(private service: AllservicesService, private activatedRouter: ActivatedRoute) {
@@ -43,7 +43,9 @@ export class DetailsProduitComponent implements OnInit {
   loadCommentaires() {
     this.service.get("api/commentaires/" + this.activatedRouter.snapshot.params['id'], ((reponse: any) => {
       this.commentaires = reponse.data;
-      console.log('commmentaires', reponse);
+      // console.log('commmentaires', reponse);
+      // this.moyenneNote=this.commentaires.reduce((accumulator:any, currentValue:any) => accumulator + currentValue,0)/this.commentaires.length;
+      // console.log('moy',this.moyenneNote);
     }));
 
   }

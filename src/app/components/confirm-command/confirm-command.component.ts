@@ -41,7 +41,28 @@ constructor(private service:AllservicesService){
   }
 
   payer(){
-    this.service.message("En cours de developpement","warning","Cette fonctionnalité n'est encore disponible");
+    let addedToPanier=false;
+    // this.service.getFromPanier().forEach((element:any) => {
+
+    //   this.service.simplePost("ajoutProduitPanier/"+element.produit.id,((reponse:any)=>{
+    //     if (reponse.status==200) {
+    //       addedToPanier=!addedToPanier;
+    //     }
+    //   }));
+    // });
+    {
+      quantite:14
+    }
+    this.service.simplePost("api/ajoutProduitPanier/"+17,((reponse:any)=>{
+      if (reponse.status==200) {
+        addedToPanier=!addedToPanier;
+      }
+      console.warn(reponse);
+    }));
+    if (addedToPanier) {
+      alert('okay');
+    }
+    // this.service.message("En cours de developpement","warning","Cette fonctionnalité n'est encore disponible");
   }
 
 }

@@ -37,7 +37,7 @@
     width: 60%;
     border: none;
     border-bottom: 2px var(--darkbluecolor) solid;
-    padding-left: 20px;
+    /* padding-left: 20px; */
     transition: 1s ease;
   }
 
@@ -57,7 +57,7 @@ textarea {
   width: 60%;
   border: none;
   border-bottom: 2px var(--darkbluecolor) solid;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   transition: 1s ease;
   height: 100px;
   resize: none;

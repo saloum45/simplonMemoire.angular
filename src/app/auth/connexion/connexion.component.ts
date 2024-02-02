@@ -37,6 +37,7 @@ connexion() {
           id:reponse.user.id,
           type:reponse.user.type
         }
+        console.warn("logged user",reponse);
         localStorage.setItem("onlineUser",JSON.stringify(onlineUser));
         localStorage.setItem("tokenExpiryTime",JSON.stringify(10000));
         if(reponse.user.type=="admin"){

@@ -10,7 +10,7 @@ import { Produit } from '../models/produit';
 })
 export class AllservicesService {
   urlBase = 'http://localhost:8000/';
-  public readonly prixLivraion = 2000;
+  public readonly prixLivraion = 0;
 
   constructor(private http: HttpClient) {
 

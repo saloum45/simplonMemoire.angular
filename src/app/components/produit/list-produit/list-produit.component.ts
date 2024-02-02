@@ -45,6 +45,7 @@ export class ListProduitComponent implements OnInit {
         alert("fait");
         this.loadAll();
         console.log(reponse);
+        console.warn('idTodel',produitId);
       } else {
 
         console.log(reponse);
