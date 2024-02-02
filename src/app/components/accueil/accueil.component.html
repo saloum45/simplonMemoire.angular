@@ -76,12 +76,12 @@
           }
 
         </div>
-        <div class="pagination">
+        <!-- <div class="pagination">
           <span>Précedent</span>
           <span>1</span>
           <span>2</span>
           <span>Suivant</span>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -97,7 +97,7 @@
       <div class="col" >
         <div class="card" id="card">
           <div class="text-center image" [routerLink]="['/detailsProduit',item.id]">
-            <img src="http://localhost:8000/images/{{item.image}}" alt="" />
+            <img src="http://localhost:8000/images/{{item.image}}" alt=""  style="height: 150px;width: 90%;" />
           </div>
           <div class="card-text">
             <h6 class="text-center" [routerLink]="['/detailsProduit',item.id]">{{item.nom_produit}}</h6>
@@ -170,7 +170,7 @@
   <!-- section desccription -->
   <div class="description">
     <div class="img-logo">
-      <img src="assets/panierLocal-logo.png" alt="" />
+      <img src="assets/panierLocal-logo.png" alt=""  style="height: 150px;width: 90%;" />
     </div>
     <p>
       Bienvenue dans le marché en ligne dédié aux produits locaux alimentaires!

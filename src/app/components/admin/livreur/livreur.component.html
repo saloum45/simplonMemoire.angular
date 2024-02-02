@@ -48,19 +48,23 @@
           <div class="form-left">
             <div class="form-element">
               <label for="">Nom</label>
-              <input type="text" >
+              <input type="text" [(ngModel)]="livreur.nom" >
             </div>
             <div class="form-element">
               <label for="">Prenom</label>
-              <input type="text" >
+              <input type="text" [(ngModel)]="livreur.prenom" >
             </div>
             <div class="form-element">
               <label for="">Adresse</label>
-              <input type="text" >
+              <input type="text" [(ngModel)]="livreur.adresse">
             </div>
             <div class="form-element">
               <label for="">Email</label>
-              <input type="text" >
+              <input type="text" [(ngModel)]="livreur.email">
+            </div>
+            <div class="form-element">
+              <label for="">Matricule</label>
+              <input type="text" [(ngModel)]="livreur.matricule">
             </div>
 
           </div>
@@ -70,7 +74,7 @@
         </div>
         <div class="d-flex justify-content-between w-50 m-auto">
           <button class="btn" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
-          <button class="btn">Ajouter</button>
+          <button class="btn" (click)="AjouterLivreur()">Ajouter</button>
         </div>
       <!-- </div> -->
       <!-- <div class="modal-footer w-75 m-auto d-flex justify-content-between" >
