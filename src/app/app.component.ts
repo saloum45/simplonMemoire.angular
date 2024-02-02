@@ -34,7 +34,7 @@ export class AppComponent {
     return this.service.IsOnline();
   }
 
-  whoIsOnline(){
-  return  this.service.whoIsOnline();
+  whoIsOnline() {
+    return this.service.whoIsOnline();
   }
 }

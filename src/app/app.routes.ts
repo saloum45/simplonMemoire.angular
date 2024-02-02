@@ -14,6 +14,8 @@ import { AdresseComponent } from './components/adresse/adresse.component';
 import { CommandeComponent } from './components/commande/commande.component';
 import { EditProduitComponent } from './components/produit/edit-produit/edit-produit.component';
 import { VenteComponent } from './components/vente/vente.component';
+import { AdminGuard } from './guards/admin.guard';
+
 
 export const routes: Routes = [
 
@@ -86,6 +88,7 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule),
+    canActivate:[AdminGuard]
   }
 ];

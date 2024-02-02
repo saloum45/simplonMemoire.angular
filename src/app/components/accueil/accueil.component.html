@@ -92,7 +92,25 @@
     <hr />
   </div>
   <div class="row row-cols-1 row-cols-md-4 g-4">
-    <div class="col">
+    @for (item of  produits.slice(10,14); track $index) {
+
+      <div class="col" >
+        <div class="card" id="card">
+          <div class="text-center image" [routerLink]="['/detailsProduit',item.id]">
+            <img src="http://localhost:8000/images/{{item.image}}" alt="" />
+          </div>
+          <div class="card-text">
+            <h6 class="text-center" [routerLink]="['/detailsProduit',item.id]">{{item.nom_produit}}</h6>
+            <span class="text-center" [routerLink]="['/detailsProduit',item.id]">{{item.prix}} fcfa</span>
+            <div class="text-center">
+              <button class="btn" (click)="postPanier(item)">Ajouter au panier</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- <div class="col">
       <div class="card" id="card">
         <div class="text-center image">
           <img src="assets/Madd.png" alt="" />
@@ -147,7 +165,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <!-- section desccription -->
   <div class="description">

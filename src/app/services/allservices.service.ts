@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Produit } from '../models/produit';
 // import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +12,10 @@ export class AllservicesService {
   urlBase = 'http://localhost:8000/';
   public readonly prixLivraion = 2000;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+  }
+
 
   post(path: string, dataToSend: any, onSuccess: Function) {
     const httpOptions = {
@@ -77,7 +80,7 @@ export class AllservicesService {
   }
 
   postToPanier(produit: any, quantite = 0) {
-    let produitPanier={};
+    let produitPanier = {};
     if (localStorage.getItem('panier') == null || localStorage.getItem('panier') == undefined) {
       if (quantite != 0) {
 
@@ -130,4 +133,42 @@ export class AllservicesService {
     return JSON.parse(localStorage.getItem('panier') ?? '[]');
   }
 
+
+
+  // gestion du token déconnexion après le délai du token
+  setTokenTimeValidity(key: any, value: any, ttl: any) {
+    const dateActuelle = new Date();
+
+    // `item` is an object which contains the original value
+    // as well as the time when it's supposed to expire
+    const userOnline = {
+      value: value,
+      délai: dateActuelle.getTime() + ttl,
+    }
+    localStorage.setItem(key, JSON.stringify(userOnline));
+  }
+
+
+  isTokenStillValid(expirykey: any, expiryToken: any) {
+    const tokenExpiryTime = JSON.parse(localStorage.getItem(expirykey) ?? '[]');
+    alert('loken validyty verif')
+    // if the item doesn't exist, return null
+    if (!tokenExpiryTime) {
+      return null
+    }
+    const item = tokenExpiryTime;
+    const now = new Date()
+    // compare the délai time of the item with the current time
+    if (now.getTime() > item) {
+      // If the item is expired, delete the item from storage
+      // and return null
+      localStorage.removeItem(expiryToken);
+      this.message('Raison de sécurité','warning','Pour des raisons de sécurité la déconnexionn se fait après une de temps')
+      // alert('supprimé')
+      return null
+    // this.isTokenStillValid("tokenExpiryTime","onlineUser");
+
+    }
+    return item
+  }
 }

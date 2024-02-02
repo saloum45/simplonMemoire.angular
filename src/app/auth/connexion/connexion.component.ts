@@ -38,6 +38,7 @@ connexion() {
           type:reponse.user.type
         }
         localStorage.setItem("onlineUser",JSON.stringify(onlineUser));
+        localStorage.setItem("tokenExpiryTime",JSON.stringify(10000));
         if(reponse.user.type=="admin"){
           this.router.navigate(['/admin']);
 
