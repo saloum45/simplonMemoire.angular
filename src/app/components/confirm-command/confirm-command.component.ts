@@ -11,20 +11,20 @@ import { AllservicesService } from '../../services/allservices.service';
   templateUrl: './confirm-command.component.html',
   styleUrl: './confirm-command.component.css'
 })
-export class ConfirmCommandComponent implements OnInit{
-  public nombreArticles: number=0;
-  public sommeArticles: number=0;
+export class ConfirmCommandComponent implements OnInit {
+  public nombreArticles: number = 0;
+  public sommeArticles: number = 0;
   public prixLivraion = this.service.prixLivraion;
-  public panierProduits:any[]=[];
-// Attributs
+  public panierProduits: any[] = [];
+  // Attributs
 
 
 
 
-// Methodes
-constructor(private service:AllservicesService){
+  // Methodes
+  constructor(private service: AllservicesService) {
 
-}
+  }
   ngOnInit(): void {
     this.totalArticles();
   }
@@ -40,7 +40,7 @@ constructor(private service:AllservicesService){
 
   }
 
-  payer(){
+  payer() {
     // let addedToPanier=false;
     // this.service.getFromPanier().forEach((element:any) => {
 
@@ -53,35 +53,42 @@ constructor(private service:AllservicesService){
     // {
     //   quantite:14
     // }
-    // {
-    //   produit_id:9,
-    //   nombre_produit:1,
-    // },
-    // {
-    //   produit_id:12,
-    //   nombre_produit:2,
-    // },
-    let panier=this.service.getFromPanier();
-    let panierProduit:any[]=[];
+    // let panierToSend={
+    //   panier:[
+    //     {
+    //       produit_id:9,
+    //       nombre_produit:1,
+    //       montant:300
+    //     },
+    //     {
+    //       produit_id:12,
+    //       nombre_produit:2,
+    //       montant:200
+    //     }
 
-    panier.forEach((element:any) => {
+    //   ]
+    // }
+    let panier = this.service.getFromPanier();
+    let panierProduit: any[] = [];
+
+    panier.forEach((element: any) => {
       panierProduit.push({
-        produit_id:element.produit.id,
-        nombre_produit:element.quantitePanier,
+        produit_id: element.produit.id,
+        nombre_produit: element.quantitePanier,
+        montant: element.produit.prix*element.quantitePanier
       });
     });
-    let panierToSend={
-      panier:panierProduit,
-      montant:this.sommeArticles
+    let panierToSend = {
+      panier: panierProduit
     }
     console.log(panierToSend);
 
-    this.service.post("api/passerCommande",panierToSend,((reponse:any)=>{
+    // this.service.post("api/passerCommande", panierToSend, ((reponse: any) => {
 
-      // if (reponse.status==200) {
-      // }
-      console.warn(reponse);
-    }));
+    //   // if (reponse.status==200) {
+    //   // }
+    //   console.warn(reponse);
+    // }));
     // if (addedToPanier) {
     //   alert('okay');
     // }
