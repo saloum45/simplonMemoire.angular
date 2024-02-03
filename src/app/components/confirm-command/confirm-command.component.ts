@@ -53,14 +53,28 @@ constructor(private service:AllservicesService){
     // {
     //   quantite:14
     // }
-    // let panier=this.service.getFromPanier();
+    // {
+    //   produit_id:9,
+    //   nombre_produit:1,
+    // },
+    // {
+    //   produit_id:12,
+    //   nombre_produit:2,
+    // },
+    let panier=this.service.getFromPanier();
+    let panierProduit:any[]=[];
 
-
+    panier.forEach((element:any) => {
+      panierProduit.push({
+        produit_id:element.produit.id,
+        nombre_produit:element.quantitePanier,
+      });
+    });
     let panierToSend={
-      produit_id:8,
-      nombre_produit:2,
-      montant:200
+      panier:panierProduit,
+      montant:this.sommeArticles
     }
+    console.log(panierToSend);
 
     this.service.post("api/passerCommande",panierToSend,((reponse:any)=>{
 
