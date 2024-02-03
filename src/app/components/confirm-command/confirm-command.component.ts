@@ -83,12 +83,12 @@ export class ConfirmCommandComponent implements OnInit {
     }
     console.log(panierToSend);
 
-    // this.service.post("api/passerCommande", panierToSend, ((reponse: any) => {
+    this.service.post("api/passerCommande", panierToSend, ((reponse: any) => {
 
-    //   // if (reponse.status==200) {
-    //   // }
-    //   console.warn(reponse);
-    // }));
+      // if (reponse.status==200) {
+      // }
+      console.warn(reponse);
+    }));
     // if (addedToPanier) {
     //   alert('okay');
     // }
