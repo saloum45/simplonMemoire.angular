@@ -37,18 +37,34 @@ export class ProfileComponent implements OnInit {
   }
 
   loadProfil() {
-    this.service.get('api/showCommercant', (reponse: any) => {
-      console.log("user", reponse);
-      this.nom = reponse.commercant.nom;
-      this.prenom = reponse.commercant.prenom;
-      this.email = reponse.commercant.email;
-      this.nin = reponse.commercant.nin;
-      this.naissance = reponse.commercant.date_naiss;
-      this.numero = reponse.commercant.numero_tel;
-      this.genre = reponse.commercant.genre;
-      this.ninea = reponse.commercant.ninea;
-      this.adresse = reponse.commercant.adresse;
-    });
+    if (this.whoIsOnline()=="commercant") {
+alert("commmercant")
+this.service.get('api/showCommercant', (reponse: any) => {
+  console.log("user", reponse);
+  this.nom = reponse.commercant.nom;
+  this.prenom = reponse.commercant.prenom;
+  this.email = reponse.commercant.email;
+  this.nin = reponse.commercant.nin;
+  this.naissance = reponse.commercant.date_naiss;
+  this.numero = reponse.commercant.numero_tel;
+  this.genre = reponse.commercant.genre;
+  this.ninea = reponse.commercant.ninea;
+  this.adresse = reponse.commercant.adresse;
+});
+}else if (this.whoIsOnline()=="client") {
+      alert("client")
+      this.service.get('api/showClient', (reponse: any) => {
+        console.log("user", reponse);
+        this.nom = reponse.commercant.nom;
+        this.prenom = reponse.commercant.prenom;
+        this.email = reponse.commercant.email;
+        this.naissance = reponse.commercant.date_naiss;
+        this.numero = reponse.commercant.numero_tel;
+        this.genre = reponse.commercant.genre;
+        this.adresse = reponse.commercant.adresse;
+      });
+
+    }
   }
   // la fonction qui permet d'inscrire un utilisateur
   modification() {
@@ -75,5 +91,9 @@ export class ProfileComponent implements OnInit {
 
   showPassword() {
 
+  }
+
+  whoIsOnline(){
+    return this.service.whoIsOnline();
   }
 }

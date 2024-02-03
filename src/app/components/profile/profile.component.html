@@ -5,32 +5,34 @@
       <div class="form-left">
         <div class="form-element">
           <label for="">Nom</label>
-          <input type="text" [(ngModel)]="nom">
+          <input type="text" [(ngModel)]="nom" />
         </div>
         <div class="form-element">
           <label for="">Naissance</label>
-          <input type="date" [(ngModel)]="naissance">
+          <input type="date" [(ngModel)]="naissance" />
         </div>
 
         <div class="form-element">
           <label for="">Email</label>
-          <input type="text" [(ngModel)]="email">
+          <input type="text" [(ngModel)]="email" />
         </div>
+        @if (whoIsOnline()=="commercant") {
+
         <div class="form-element">
           <label for="">NIN</label>
-          <input type="text" [(ngModel)]="nin">
+          <input type="text" [(ngModel)]="nin" />
         </div>
+        }
         <div class="form-element">
           <label for="">Passe</label>
-          <input type="text"  [(ngModel)]="pass">
+          <input type="text" [(ngModel)]="pass" />
         </div>
       </div>
-
 
       <div class="form-left">
         <div class="form-element">
           <label for="">Prenom</label>
-          <input type="text" [(ngModel)]="prenom">
+          <input type="text" [(ngModel)]="prenom" />
         </div>
         <div class="form-element">
           <label for="">Genre</label>
@@ -42,16 +44,18 @@
         </div>
         <div class="form-element">
           <label for="">Telephone</label>
-          <input type="text" [(ngModel)]="numero">
+          <input type="text" [(ngModel)]="numero" />
         </div>
+        @if (whoIsOnline()=="commercant") {
+
         <div class="form-element">
           <label for="">NINEA</label>
-          <input type="text" [(ngModel)]="ninea">
+          <input type="text" [(ngModel)]="ninea" />
         </div>
+        }
         <div class="form-element">
           <label for="">Nouveau Pass</label>
-          <input type="password">
-
+          <input type="password" />
         </div>
       </div>
       <!-- <div class="form-image">
