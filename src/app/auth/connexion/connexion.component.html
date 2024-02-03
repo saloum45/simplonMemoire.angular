@@ -10,8 +10,8 @@
         </div>
         <div class="form-element">
           <label for="">Pass</label>
-          <input type="password" [(ngModel)]="password" style="margin-left: 10px;">
-          <i class="bi bi-eye"></i>
+          <input type="password" id="passwordInput" [(ngModel)]="password" style="margin-left: 10px;">
+          <i class="bi bi-eye"  (click)="showPassword()"></i>
         </div>
       </div>
       <div class="form-image">

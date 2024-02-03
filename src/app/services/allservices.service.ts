@@ -34,6 +34,15 @@ export class AllservicesService {
     };
     this.http.post(this.urlBase + path, httpOptions).subscribe((reponse: any) => onSuccess(reponse));
   }
+  deleteFunction(path: string, onSuccess: Function) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: "Bearer" + JSON.parse(localStorage.getItem("onlineUser") ?? '{}').token
+      })
+    };
+    this.http.delete(this.urlBase + path, httpOptions).subscribe((reponse: any) => onSuccess(reponse));
+  }
+  
   get(path: string, onSuccess: Function) {
     const httpOptions = {
       headers: new HttpHeaders({

@@ -58,3 +58,7 @@
     display: flex;
   }
 }
+
+i{
+  cursor: pointer;
+}

@@ -18,7 +18,7 @@ export class ConnexionComponent {
 // Attributs
 public password="Saloum45";
 public email="saloumfall45@gmail.com";
-
+public showHidePassword:any;
 // Methodes
 constructor(private service:AllservicesService, private router:Router){
 
@@ -54,6 +54,15 @@ connexion() {
         this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
       }
     });
+  }
+}
+
+showPassword(){
+  this.showHidePassword=document.getElementById('passwordInput');
+  if (this.showHidePassword.type=='text') {
+    this.showHidePassword.type='password';
+  }else{
+    this.showHidePassword.type='text';
   }
 }
 }
