@@ -37,31 +37,31 @@ export class ProfileComponent implements OnInit {
   }
 
   loadProfil() {
-    if (this.whoIsOnline()=="commercant") {
-alert("commmercant")
-this.service.get('api/showCommercant', (reponse: any) => {
-  console.log("user", reponse);
-  this.nom = reponse.commercant.nom;
-  this.prenom = reponse.commercant.prenom;
-  this.email = reponse.commercant.email;
-  this.nin = reponse.commercant.nin;
-  this.naissance = reponse.commercant.date_naiss;
-  this.numero = reponse.commercant.numero_tel;
-  this.genre = reponse.commercant.genre;
-  this.ninea = reponse.commercant.ninea;
-  this.adresse = reponse.commercant.adresse;
-});
-}else if (this.whoIsOnline()=="client") {
-      alert("client")
-      this.service.get('api/showClient', (reponse: any) => {
+    if (this.whoIsOnline() == "commercant") {
+      alert("commmercant")
+      this.service.get('api/showCommercant', (reponse: any) => {
         console.log("user", reponse);
         this.nom = reponse.commercant.nom;
         this.prenom = reponse.commercant.prenom;
         this.email = reponse.commercant.email;
+        this.nin = reponse.commercant.nin;
         this.naissance = reponse.commercant.date_naiss;
         this.numero = reponse.commercant.numero_tel;
         this.genre = reponse.commercant.genre;
+        this.ninea = reponse.commercant.ninea;
         this.adresse = reponse.commercant.adresse;
+      });
+    } else if (this.whoIsOnline() == "client") {
+      alert("client")
+      this.service.get('api/showClient', (reponse: any) => {
+        console.log("user", reponse);
+        this.nom = reponse.client.nom;
+        this.prenom = reponse.client.prenom;
+        this.email = reponse.client.email;
+        this.naissance = reponse.client.date_naiss;
+        this.numero = reponse.client.numero_tel;
+        this.genre = reponse.client.genre;
+        this.adresse = reponse.client.adresse;
       });
 
     }
@@ -82,7 +82,7 @@ this.service.get('api/showCommercant', (reponse: any) => {
 
 
         } else {
-          console.log('error ',reponse);
+          console.log('error ', reponse);
           this.service.message("Désolé!!!", "error", "modification a échouée, vérifier la saisie");
         }
       });
@@ -93,7 +93,7 @@ this.service.get('api/showCommercant', (reponse: any) => {
 
   }
 
-  whoIsOnline(){
+  whoIsOnline() {
     return this.service.whoIsOnline();
   }
 }
