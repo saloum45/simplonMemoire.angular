@@ -53,15 +53,15 @@ constructor(private service:AllservicesService){
     {
       quantite:14
     }
-    this.service.simplePost("api/ajoutProduitPanier/"+17,((reponse:any)=>{
-      if (reponse.status==200) {
-        addedToPanier=!addedToPanier;
-      }
+    this.service.simplePost("api/passerCommande",((reponse:any)=>{
+      // if (reponse.status==200) {
+      //   addedToPanier=!addedToPanier;
+      // }
       console.warn(reponse);
     }));
-    if (addedToPanier) {
-      alert('okay');
-    }
+    // if (addedToPanier) {
+    //   alert('okay');
+    // }
     // this.service.message("En cours de developpement","warning","Cette fonctionnalité n'est encore disponible");
   }
 

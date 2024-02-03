@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AllservicesService } from '../../services/allservices.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,6 +8,22 @@ import { Component } from '@angular/core';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit{
+  // Attributs
 
+
+
+
+
+  // Methodes
+  constructor(private service:AllservicesService){
+
+  }
+  ngOnInit(): void {
+
+  }
+
+  newsletterSubscribe(){
+    this.service.message('Oops','warning','Cette fonctionnalité n\'est encore disponible')
+  }
 }
