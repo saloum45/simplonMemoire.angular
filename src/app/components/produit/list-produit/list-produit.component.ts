@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AllservicesService } from '../../../services/allservices.service';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-produit',
@@ -40,18 +41,34 @@ export class ListProduitComponent implements OnInit {
   }
 
   suppression(produitId: any) {
-    this.service.simplePost("api/produit/"+produitId, (reponse: any) => {
-      if (reponse.status == 200) {
-        alert("fait");
-        this.loadAll();
-        console.log(reponse);
-        console.warn('idTodel',produitId);
-      } else {
+    Swal.fire({
+      title: "Etes vous sûr ",
+      text: "Cette action est irréversible!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Oui",
+      cancelButtonText: "Non"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.deleteFunction("api/produit/" + produitId, (reponse: any) => {
+          if (reponse.status == 200) {
+            // alert("fait");
+            this.service.message('Parfait', 'success', 'Suppression faite avec succès');
+            this.loadAll();
+            console.log(reponse);
+            console.warn('idTodel', produitId);
+          } else {
 
-        console.log(reponse);
-        alert("pas fait");
+            this.service.message('Oops', 'error', 'Suppression échouée');
+            console.log(reponse);
+            // alert("pas fait");
+          }
+        });
       }
     });
+
 
   }
 }

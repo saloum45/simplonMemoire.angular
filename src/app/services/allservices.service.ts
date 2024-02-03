@@ -42,7 +42,7 @@ export class AllservicesService {
     };
     this.http.delete(this.urlBase + path, httpOptions).subscribe((reponse: any) => onSuccess(reponse));
   }
-  
+
   get(path: string, onSuccess: Function) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -172,12 +172,31 @@ export class AllservicesService {
       // If the item is expired, delete the item from storage
       // and return null
       localStorage.removeItem(expiryToken);
-      this.message('Raison de sécurité','warning','Pour des raisons de sécurité la déconnexionn se fait après une de temps')
+      this.message('Raison de sécurité', 'warning', 'Pour des raisons de sécurité la déconnexionn se fait après une de temps')
       // alert('supprimé')
       return null
-    // this.isTokenStillValid("tokenExpiryTime","onlineUser");
+      // this.isTokenStillValid("tokenExpiryTime","onlineUser");
 
     }
     return item
+  }
+
+  messageConfirm(){
+    Swal.fire({
+      title: "Etes vous sûr ",
+      text: "Cette action est irréversible!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Oui",
+      cancelButtonText: "Non"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
   }
 }

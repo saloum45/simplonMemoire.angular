@@ -41,7 +41,7 @@ constructor(private service:AllservicesService){
   }
 
   payer(){
-    let addedToPanier=false;
+    // let addedToPanier=false;
     // this.service.getFromPanier().forEach((element:any) => {
 
     //   this.service.simplePost("ajoutProduitPanier/"+element.produit.id,((reponse:any)=>{
@@ -50,12 +50,21 @@ constructor(private service:AllservicesService){
     //     }
     //   }));
     // });
-    {
-      quantite:14
+    // {
+    //   quantite:14
+    // }
+    // let panier=this.service.getFromPanier();
+
+
+    let panierToSend={
+      produit_id:8,
+      nombre_produit:2,
+      montant:200
     }
-    this.service.simplePost("api/passerCommande",((reponse:any)=>{
+
+    this.service.post("api/passerCommande",panierToSend,((reponse:any)=>{
+
       // if (reponse.status==200) {
-      //   addedToPanier=!addedToPanier;
       // }
       console.warn(reponse);
     }));
