@@ -24,7 +24,6 @@ export class NewsletterComponent implements OnInit{
   }
 
   informer(){
-    alert('test');
     this.service.post('api/envoyerMail',{letter:this.letter},((reponse:any)=>{
       console.log(reponse);
     }));
