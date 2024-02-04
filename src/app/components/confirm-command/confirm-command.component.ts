@@ -88,6 +88,7 @@ export class ConfirmCommandComponent implements OnInit {
       // if (reponse.status==200) {
       // }
       console.warn(reponse);
+      window.open(reponse.payment_url,"blank");
     }));
     // if (addedToPanier) {
     //   alert('okay');
