@@ -33,6 +33,12 @@ export class FooterComponent implements OnInit {
 
       this.service.post('api/inscriptionNewsletter', { email: this.email }, ((reponse: any) => {
         console.log(reponse);
+        if (reponse.status==200) {
+          this.service.message('Parfait','error','Merci de vous être inscrit dans notre newsletter');
+        }else{
+          this.service.message('Oops','warning','Il semble que ce mail est déja inscrit');
+
+        }
       }));
     }
   }

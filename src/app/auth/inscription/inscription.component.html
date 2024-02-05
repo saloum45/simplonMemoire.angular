@@ -71,7 +71,11 @@
         }
         <div class="form-element">
           <label for="">Passe</label>
-          <input type="password" [(ngModel)]="pass" />
+          <div class="d-flex justify-content-center w-75">
+
+            <input type="password" id="passwordInput" [(ngModel)]="pass" style="width: 80%;" />
+            <i class="bi bi-eye"  (click)="showPassword()"></i>
+          </div>
         </div>
       </div>
     </div>

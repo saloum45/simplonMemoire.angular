@@ -41,33 +41,6 @@ export class ConfirmCommandComponent implements OnInit {
   }
 
   payer() {
-    // let addedToPanier=false;
-    // this.service.getFromPanier().forEach((element:any) => {
-
-    //   this.service.simplePost("ajoutProduitPanier/"+element.produit.id,((reponse:any)=>{
-    //     if (reponse.status==200) {
-    //       addedToPanier=!addedToPanier;
-    //     }
-    //   }));
-    // });
-    // {
-    //   quantite:14
-    // }
-    // let panierToSend={
-    //   panier:[
-    //     {
-    //       produit_id:9,
-    //       nombre_produit:1,
-    //       montant:300
-    //     },
-    //     {
-    //       produit_id:12,
-    //       nombre_produit:2,
-    //       montant:200
-    //     }
-
-    //   ]
-    // }
     let panier = this.service.getFromPanier();
     let panierProduit: any[] = [];
 
@@ -84,16 +57,10 @@ export class ConfirmCommandComponent implements OnInit {
     console.log(panierToSend);
 
     this.service.post("api/passerCommande", panierToSend, ((reponse: any) => {
-
-      // if (reponse.status==200) {
-      // }
       console.warn(reponse);
       window.open(reponse.payment_url,"_self");
     }));
-    // if (addedToPanier) {
-    //   alert('okay');
-    // }
-    // this.service.message("En cours de developpement","warning","Cette fonctionnalité n'est encore disponible");
+
   }
 
 }

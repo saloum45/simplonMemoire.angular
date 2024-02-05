@@ -3,8 +3,12 @@
   justify-content: space-between;
 }
 .newsletter-bloc .news-list {
-  width: 35%;
-  background-color: red;
+  width: 48%;
+  /* background-color: red; */
+  overflow: hidden;
+}
+.newsletter-bloc .news-list input{
+  
 }
 .newsletter-bloc .news-text {
   width: 50%;

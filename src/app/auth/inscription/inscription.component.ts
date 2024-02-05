@@ -30,6 +30,11 @@ export class InscriptionComponent {
   public user: any;
   public displayForme = false;
   public formType = false;
+  public showHidePassword: any;
+
+
+
+
   // Methodes
   constructor(private service: AllservicesService, private router: Router) {
 
@@ -37,7 +42,7 @@ export class InscriptionComponent {
   // la fonction qui permet d'inscrire un utilisateur
   inscription(chemin: any) {
     // alert(chemin);
-    if (this.nom == "" || this.prenom == "" || this.naissance == undefined || this.genre == ""  || this.adresse == "" || this.numero == "" || this.pass == "" || this.email == "") {
+    if (this.nom == "" || this.prenom == "" || this.naissance == undefined || this.genre == "" || this.adresse == "" || this.numero == "" || this.pass == "" || this.email == "") {
       this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
     } else {
       this.user = new Commerçant(this.nom, this.prenom, this.email, this.pass, this.numero, this.nin, this.ninea, this.adresse, this.genre, this.naissance);
@@ -63,5 +68,15 @@ export class InscriptionComponent {
   // retour sur choix de l'inscription
   getBackChoice() {
     this.displayForme = false;
+  }
+
+
+  showPassword() {
+    this.showHidePassword = document.getElementById('passwordInput');
+    if (this.showHidePassword.type == 'text') {
+      this.showHidePassword.type = 'password';
+    } else {
+      this.showHidePassword.type = 'text';
+    }
   }
 }
