@@ -86,7 +86,7 @@ export class SignalementComponent implements OnInit {
       lengthChange: false,
       paging: true,
       info: false,
-      pageLength: 7,
+      pageLength: 6,
       language: {
         url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json',
       }

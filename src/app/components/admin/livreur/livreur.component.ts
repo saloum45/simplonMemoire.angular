@@ -16,7 +16,7 @@ import { AllservicesService } from '../../../services/allservices.service';
 })
 export class LivreurComponent implements OnInit{
 // Attributs
-public livreur=new Livreur("","","","livreur1234","","");
+public livreur=new Livreur("","","","","","livreur1234","","","");
 public livreurs:any[]=[];
 dtOptions: DataTables.Settings = {};
 // public livreurs=[

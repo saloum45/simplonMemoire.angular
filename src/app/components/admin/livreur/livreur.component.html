@@ -20,7 +20,7 @@
         <tr>
           <td>{{ item.Nom }}</td>
           <td>{{ item.Email }}</td>
-          <td>{{ item.numero }}</td>
+          <td>{{ item.numero_tel }}</td>
           <td>{{ item.Adresse }}</td>
           <td>{{ item.statut }}</td>
           <td class="text-center"><i class="bi bi-eye"></i></td>
@@ -53,6 +53,21 @@
             <div class="form-element">
               <label for="">Prenom</label>
               <input type="text" [(ngModel)]="livreur.prenom" >
+            </div>
+            <div class="form-element">
+              <label for="">Numero</label>
+              <input type="text" [(ngModel)]="livreur.numero_tel" >
+            </div>
+            <div class="form-element">
+              <label for="">Genre</label>
+              <select name="" id="" [(ngModel)]="livreur.genre">
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+              </select>
+            </div>
+            <div class="form-element">
+              <label for="">Naissance</label>
+              <input type="date" [(ngModel)]="livreur.date_naiss">
             </div>
             <div class="form-element">
               <label for="">Adresse</label>

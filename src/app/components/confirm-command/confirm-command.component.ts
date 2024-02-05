@@ -12,11 +12,11 @@ import { AllservicesService } from '../../services/allservices.service';
   styleUrl: './confirm-command.component.css'
 })
 export class ConfirmCommandComponent implements OnInit {
+  // Attributs
   public nombreArticles: number = 0;
   public sommeArticles: number = 0;
   public prixLivraion = this.service.prixLivraion;
   public panierProduits: any[] = [];
-  // Attributs
 
 
 

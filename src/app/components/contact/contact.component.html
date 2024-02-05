@@ -6,19 +6,19 @@
       <div class="form-left">
         <div class="form-element">
           <label for="">Nom</label>
-          <input type="text">
+          <input type="text" [(ngModel)]="nom">
         </div>
         <div class="form-element">
           <label for="">Email</label>
-          <input type="email">
+          <input type="email" [(ngModel)]="email">
         </div>
         <div class="form-element">
           <label for="">Numero</label>
-          <input type="text">
+          <input type="text" [(ngModel)]="numero">
         </div>
         <div class="form-element">
           <label for="">Message</label>
-          <input type="text">
+          <input type="text" [(ngModel)]="message">
         </div>
       </div>
       <div class="form-image">
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="text-center w-100">
-      <button class="btn">Envoyer</button>
+      <button class="btn" (click)="envoyer()">Envoyer</button>
     </div>
   </div>
 </div>

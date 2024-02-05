@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './feedback.component.css'
 })
 export class FeedbackComponent {
+  // Attributs
 
+
+
+  // Methodes
+envoyer(){
+  
+}
 }

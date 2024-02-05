@@ -34,7 +34,7 @@ export class CategorieComponent {
       lengthChange: false,
       paging: true,
       info: false,
-      pageLength: 9,
+      pageLength: 7,
       language: {
         url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json',
       }
@@ -47,5 +47,22 @@ export class CategorieComponent {
       this.categories=reponse.data;
       console.log(this.categories);
     }));
+  }
+
+  envoyer(){
+    if (this.categorie=="") {
+      this.service.message('Oops','error','Veuillez renseigner le champs');
+    }else{
+
+      this.service.post("api/categorie/create",{nom_categorie:this.categorie},((reponse:any)=>{
+        if (reponse.status==200) {
+          this.service.message('Parfait','success','Ajout fait avec succès');
+          this.loadAllCategories();
+        }else{
+          this.service.message('Oops','error','Ajout échoué');
+
+        }
+      }))
+    }
   }
 }
