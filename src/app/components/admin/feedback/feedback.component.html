@@ -1,1 +1,26 @@
 <h4 class="adminTitle">Liste des feedbacks</h4>
+<div class="container px-5 mt-5">
+  @if (feedbacks.length>0) {
+
+  <table datatable [dtOptions]="dtOptions" class="table">
+    <thead id="thead">
+      <tr>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Numero</th>
+        <th class="last-th">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of feedbacks; track $index) {
+      <tr>
+        <td>{{ item.nom }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.numero_tel }}</td>
+        <td class="text-center"><i class="bi bi-eye"></i></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  }
+</div>
