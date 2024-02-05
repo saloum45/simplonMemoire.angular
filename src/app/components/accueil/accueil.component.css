@@ -80,9 +80,14 @@
   font-weight: bold;
   height: 18px;
 }
-/* .avantage .avantage-gauche{
-  border-right: 2px var(--darkbluecolor) solid ;
-} */
+.avantage .avantage-gauche{
+  /* border-right: 2px var(--darkbluecolor) solid ; */
+  width: 50%;
+}
+.avantage .avantage-droite{
+  /* border-right: 2px var(--darkbluecolor) solid ; */
+  width: 50%;
+}
 
 
 /* cards */
@@ -144,13 +149,27 @@
     flex-direction: column;
     height: auto;
     padding: 10px;
+    text-align: justify;
   }
   .description p{
     width: 100%;
   }
   .description .img-logo{
-    width: 70%;
+    width: 55%;
     text-align: center;
   }
 
+  .avantage .avantage-container{
+    flex-direction: column;
+    text-align: justify;
+  }
+
+  .avantage .avantage-gauche{
+    /* border-right: 2px var(--darkbluecolor) solid ; */
+    width: 100%;
+  }
+  .avantage .avantage-droite{
+    /* border-right: 2px var(--darkbluecolor) solid ; */
+    width: 100%;
+  }
 }
