@@ -15,10 +15,10 @@
       <tbody>
         @for (item of commandes; track $index) {
         <tr>
-          <td>{{ item.date_commande }}</td>
-          <td>{{ item.adresse }}</td>
-          <td>{{ item.etat }}</td>
-          <td class="text-center" data-bs-toggle="modal" data-bs-target="#detailsCommande"><i class="bi bi-eye"></i></td>
+          <td>{{ item.Date_commande | date:'d/M/yy à h:mm'}}</td>
+          <td>{{ item.Adresse_Client }}</td>
+          <td>{{ item.Etat }}</td>
+          <td class="text-center" data-bs-toggle="modal" data-bs-target="#detailsCommande" (click)="showCommande(1)"><i class="bi bi-eye"></i></td>
         </tr>
       }
       </tbody>
@@ -41,9 +41,9 @@
           </div>
           <div>
             <p>Client :</p>
-            <span class="mx-2">Nom: Moussa diop</span> <br>
-            <span class="mx-2">Tel: 778549632</span> <br>
-            <span class="mx-2">Adresse: Pikine</span> <br>
+            <span class="mx-2">Nom: {{nom}}</span> <br>
+            <span class="mx-2">Tel: {{numero}}</span> <br>
+            <span class="mx-2">Adresse: {{adresse}}</span> <br>
 
           </div>
           <div>
