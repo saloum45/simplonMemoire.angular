@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTablesModule } from 'angular-datatables';
+import { AllservicesService } from '../../../services/allservices.service';
 
 @Component({
   selector: 'app-signalement',
@@ -79,7 +80,9 @@ export class SignalementComponent implements OnInit {
 
 
   // Methodes
+  constructor(private service:AllservicesService){
 
+  }
   ngOnInit(): void {
     this.dtOptions = {
       searching: true,
@@ -91,5 +94,8 @@ export class SignalementComponent implements OnInit {
         url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json',
       }
     };
+    this.service.get('api/ListeProduitSignaler',((reponse:any)=>{
+      console.log(reponse);
+    }));
   }
 }
