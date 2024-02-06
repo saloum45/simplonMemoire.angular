@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
 
   loadProfil() {
     if (this.whoIsOnline() == "commercant") {
-      alert("commmercant")
+      // alert("commmercant")
       this.service.get('api/showCommercant', (reponse: any) => {
         console.log("user", reponse);
         this.nom = reponse.commercant.nom;
@@ -52,7 +52,7 @@ export class ProfileComponent implements OnInit {
         this.adresse = reponse.commercant.adresse;
       });
     } else if (this.whoIsOnline() == "client") {
-      alert("client")
+      // alert("client")
       this.service.get('api/showClient', (reponse: any) => {
         console.log("user", reponse);
         this.nom = reponse.client.nom;

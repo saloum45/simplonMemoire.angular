@@ -42,12 +42,10 @@ connexion() {
         localStorage.setItem("tokenExpiryTime",JSON.stringify(10000));
         if(reponse.user.type=="admin"){
           this.router.navigate(['/admin']);
-
         }else{
-
           this.router.navigate(['/accueil']);
         }
-        this.service.message("Merci!!!", "success", "Connexion faite avec succès");
+        this.service.message("Cher "+reponse.user.type, "success", "Connexion faite avec succès");
         // console.log("reponse conn",reponse);
       } else {
         // console.log('error ',reponse);

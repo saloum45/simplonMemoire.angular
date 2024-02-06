@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DataTablesModule } from 'angular-datatables';
 import { Livreur } from '../../../models/livreur';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import { AllservicesService } from '../../../services/allservices.service';
 })
 export class LivreurComponent implements OnInit{
 // Attributs
+@ViewChild('closeAddExpenseModal') closeAddExpenseModal!: ElementRef; //closing the bootstrap modal
 public livreur=new Livreur("","","","","","livreur1234","","","");
 public livreurs:any[]=[];
 dtOptions: DataTables.Settings = {};
@@ -123,10 +124,12 @@ ngOnInit(): void {
 
 
 AjouterLivreur(){
+  console.log(this.livreur);
   this.service.post("api/registerLivreur",this.livreur,((reponse:any)=>{
     if (reponse.status==200) {
       console.log("liv",reponse);
       this.service.message('Parfait','success','Livreur ajouté avec succès');
+      this.closeAddExpenseModal.nativeElement.click();
     }
   }));
   this.getLivreurs();
