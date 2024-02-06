@@ -91,6 +91,6 @@ export class ConnexionComponent {
           }
         });
       }
-    }, 27000000);
+    }, 1200000);
   }
 }

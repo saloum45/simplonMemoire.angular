@@ -1,4 +1,4 @@
-<h4 class="adminTitle">Liste des livraison à faire</h4>
+<h4 class="adminTitle">Liste des livraisons à faire</h4>
 <div class="data-table-container px-5">
 
   @if (commandes.length>0) {
@@ -51,11 +51,10 @@
           <div>
             <p>Affecter à un livreur :</p>
             <div class="form-element">
-              <select name="" id="" >
+              <select name="" id=""  (change)="AffecterLivreur($event)">
                 <option selected>Livreurs</option>
                 @for (item of livreurs; track $index) {
                   @if (item.statut=="disponible") {
-
                     <option value="{{item.Id}}">{{item.Nom}}-{{item.Numero}}</option>
                   }
                 }

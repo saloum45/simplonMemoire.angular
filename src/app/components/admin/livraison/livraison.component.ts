@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AllservicesService } from '../../../services/allservices.service';
 import { DataTablesModule } from 'angular-datatables';
 import { DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-livraison',
   standalone: true,
   imports: [
     DataTablesModule,
-    DatePipe
+    DatePipe,
+    FormsModule
   ],
   templateUrl: './livraison.component.html',
   styleUrl: './livraison.component.css'
@@ -19,6 +21,8 @@ export class LivraisonComponent implements OnInit {
   public numero = "";
   public adresse = "";
   public adresse_vendeurs:any[]=[];
+  public livreur_id="";
+  public commande_id="";
 
   dtOptions: DataTables.Settings = {};
   public livreurs: any[] = [];
@@ -63,9 +67,20 @@ export class LivraisonComponent implements OnInit {
       this.nom=reponse.data.nom_client;
       this.adresse=reponse.data.adresse_client;
       this.numero=reponse.data.numero_tel;
+      this.commande_id=reponse.data.commande_id;
       this.adresse_vendeurs=reponse.data.details_commande;
-      // console.warn(this.adresse_vendeurs);
+      console.warn(this.commande_id);
     }));
 
+  }
+
+  AffecterLivreur(event:any){
+    // console.log(event.target.value)
+    this.service.post('api/AffecterLivreur/'+this.commande_id,{livreur_id:+event.target.value},((reponse:any)=>{
+      console.warn(reponse);
+      this.livreur_id="";
+      this.getLivreurs();
+      this.loadAllCommands();
+    }));
   }
 }
