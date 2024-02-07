@@ -84,7 +84,7 @@ export class SignalementComponent implements OnInit {
   bloquerPRoduitSignaler() {
     Swal.fire({
       title: "Etes vous sûr ",
-      text: "De vouloir bloquer ce produit",
+      text: "De vouloir faire cette action",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -94,8 +94,12 @@ export class SignalementComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        this.service.simplePost("api/bloquerProduitSignaler/" + this.produitSignale.id, ((reponse: any) => {
+        this.service.get("api/bloquerProduitSignaler/" + this.produitSignale.id, ((reponse: any) => {
           console.log(reponse);
+          if (reponse.status==200) {
+            this.service.message('Parfait','success',reponse.status_message);
+            this.showProduitSignaler(this.produitSignale.id);
+          }
         }));
       }
     });
