@@ -66,7 +66,7 @@
             <div class="col" >
               <div class="card" id="card">
                 <div class="text-center image" [routerLink]="['/detailsProduit',item.id]">
-                  <img src="http://localhost:8000/images/{{item.image}}" alt="" />
+                  <img src="{{urlBaseImage}}{{item.image}}" alt="" />
                 </div>
                 <div class="card-text">
                   <h6 class="text-center" [routerLink]="['/detailsProduit',item.id]">{{item.nom_produit}}</h6>

@@ -15,6 +15,7 @@ import { Produit } from '../../models/produit';
 export class AccueilComponent implements OnInit{
   // Attributs
   public produits:any=[];
+  public urlBaseImage=this.service.urlBaseImage;
 
 
  // Methodes

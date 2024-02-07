@@ -1,7 +1,7 @@
 <h4 class="adminTitle">Liste des produits signalés</h4>
 <div class="data-table-container px-5">
 
-  @if (signalement.length>0) {
+  @if (signalements.length>0) {
 
     <table datatable [dtOptions]="dtOptions" class="table">
       <thead id="thead">
@@ -14,12 +14,12 @@
         </tr>
       </thead>
       <tbody>
-        @for (item of signalement; track $index) {
+        @for (item of signalements; track $index) {
         <tr>
-          <td><img src="{{item.image}}" alt=""></td>
-          <td>{{ item.nom }}</td>
-          <td>{{ item.commercant}}</td>
-          <td>{{ item.etat }}</td>
+          <td><img src="{{urlBaseImage}}{{item.Image}}" alt=""></td>
+          <td>{{ item.Produit }}</td>
+          <td>{{ item.email_commercant}}</td>
+          <td>{{ item.Etat }}</td>
           <td class="text-center"><i class="bi bi-eye"></i></td>
         </tr>
       }

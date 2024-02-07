@@ -26,12 +26,13 @@ export class DetailsProduitComponent implements OnInit {
   public commentaire = "";
   public commentaires: any[] = [];
   public moyenneNote:any;
-
+  public urlBaseImage=this.service.urlBaseImage;
   // Methodes
   constructor(private service: AllservicesService, private activatedRouter: ActivatedRoute) {
 
   }
   @ViewChild('closeAddExpenseModal') closeAddExpenseModal!: ElementRef;
+  @ViewChild('closeAddExpenseModalSignalement') closeAddExpenseModalSignalement!: ElementRef;
   ngOnInit(): void {
     this.service.simplePost("api/Detailsproduits/" + this.activatedRouter.snapshot.params['id'], (reponse: any) => {
       this.produit = reponse.data;
@@ -131,7 +132,7 @@ export class DetailsProduitComponent implements OnInit {
           if (reponse.status == 200) {
             this.service.message("Parfait", "success", "signalment avec succès");
             this.commentaire = "";
-            this.closeAddExpenseModal.nativeElement.click();
+            this.closeAddExpenseModalSignalement.nativeElement.click();
           }
         }));
 

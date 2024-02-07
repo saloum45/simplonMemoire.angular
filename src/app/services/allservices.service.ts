@@ -10,6 +10,7 @@ import { Produit } from '../models/produit';
 })
 export class AllservicesService {
   urlBase = 'http://localhost:8000/';
+  urlBaseImage = 'http://localhost:8000/images/';
   public readonly prixLivraion = 2000;
 
   constructor(private http: HttpClient) {

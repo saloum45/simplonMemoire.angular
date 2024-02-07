@@ -22,7 +22,7 @@ export class CatalogueComponent implements OnInit {
   public searchInput = "";
   public pageActuelle: number = 1;
   public articlesParPage: number = 9;
-
+  public urlBaseImage:any="";
 
   // Methodes
   constructor(private service: AllservicesService) {
@@ -35,6 +35,7 @@ export class CatalogueComponent implements OnInit {
       this.categories = reponse.data;
       // console.log(reponse.data);
     });
+    this.urlBaseImage=this.service.urlBaseImage;
   }
 
   loadAllProducts() {

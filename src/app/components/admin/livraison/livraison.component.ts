@@ -69,7 +69,7 @@ export class LivraisonComponent implements OnInit {
       this.numero=reponse.data.numero_tel;
       this.commande_id=reponse.data.commande_id;
       this.adresse_vendeurs=reponse.data.details_commande;
-      console.warn(this.commande_id);
+      // console.warn(this.commande_id);
     }));
 
   }
