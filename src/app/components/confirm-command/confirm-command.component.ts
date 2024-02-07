@@ -17,7 +17,11 @@ export class ConfirmCommandComponent implements OnInit {
   public sommeArticles: number = 0;
   public prixLivraion = this.service.prixLivraion;
   public panierProduits: any[] = [];
-
+  public profile={
+    nom:"",
+    adresse:"",
+    numero:""
+  };
 
 
 
@@ -27,6 +31,7 @@ export class ConfirmCommandComponent implements OnInit {
   }
   ngOnInit(): void {
     this.totalArticles();
+    this.loadProfile();
   }
 
   totalArticles() {
@@ -38,6 +43,24 @@ export class ConfirmCommandComponent implements OnInit {
       this.sommeArticles += element.quantitePanier * element.produit.prix;
     });
 
+  }
+
+  loadProfile(){
+    if (this.service.whoIsOnline()=='commercant') {
+
+      this.service.get('api/showCommercant',((reponse:any)=>{
+        console.log(reponse);
+      }));
+    }else if (this.service.whoIsOnline()=='client') {
+
+      this.service.get('api/showClient',((reponse:any)=>{
+        console.log(reponse);
+        this.profile.adresse=reponse.client.adresse;
+        this.profile.nom=reponse.client.prenom+" "+reponse.client.nom;
+        this.profile.numero=reponse.client.numero_tel;
+
+      }));
+    }
   }
 
   payer() {
@@ -57,7 +80,7 @@ export class ConfirmCommandComponent implements OnInit {
     console.log(panierToSend);
 
     this.service.post("api/passerCommande", panierToSend, ((reponse: any) => {
-      console.warn(reponse);
+      // console.warn(reponse);
       window.open(reponse.payment_url,"_self");
     }));
 
