@@ -11,7 +11,7 @@ i{
 }
 
 select {
-  width: 100%;
+  width: 200px;
   /* border-bottom: 2px var(--darkbluecolor) solid; */
   background-color: var(--darkbluecolor);
   /* padding-left: 20px; */
