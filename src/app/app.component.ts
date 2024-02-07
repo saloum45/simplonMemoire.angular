@@ -15,7 +15,7 @@ import { AllservicesService } from './services/allservices.service';
     RouterOutlet,
     FooterComponent,
     HeaderComponent,
-    RouterLink
+    RouterLink,
   ]
 })
 export class AppComponent {

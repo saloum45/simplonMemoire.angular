@@ -64,3 +64,10 @@ i{
     margin-top: 120px;
   }
 }
+
+.active-link{
+  border-bottom: 3px var(--goldcolor) solid;
+  border-bottom-left-radius: 5px 5px;
+  border-bottom-right-radius: 5px 5px;
+
+}
