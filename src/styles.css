@@ -12,6 +12,9 @@
   --clearcolor: #737373;
 }
 
+i{
+  cursor: pointer;
+}
 /* i{
  color: var(--goldcolor);
 } */

@@ -1,0 +1,24 @@
+button.btn{
+  width: 48%;
+  background-color: var(--darkbluecolor);
+  color: white;
+  font-weight: bold;
+}
+
+
+.reponse{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reponse textarea{
+  border-radius: 10px;
+  height: 100px;
+  width: 85%;
+  resize: none;
+}
+
+.message{
+  width: 70%;
+}
