@@ -47,7 +47,7 @@ export class ConnexionComponent {
             this.router.navigate(['/accueil']);
           }
           this.service.message("Cher " + reponse.user.type, "success", "Connexion faite avec succès");
-          // this.deconnexionAutomatique()
+          // this.deconnexionAutomatique();
           // console.log("reponse conn",reponse);
         } else {
           // console.log('error ',reponse);
@@ -91,6 +91,6 @@ export class ConnexionComponent {
           }
         });
       }
-    }, 1200000);
+    }, 10000);
   }
 }

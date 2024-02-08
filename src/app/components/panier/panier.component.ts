@@ -91,7 +91,12 @@ export class PanierComponent implements OnInit {
     }else{
 
       if (this.service.IsOnline()) {
-        this.router.navigate(['/confirmCommand']);
+        if (this.service.whoIsOnline()=="livreur" || this.service.whoIsOnline()=="commercant" ) {
+          this.service.message('Oop\'s', "warning", "Il vous faut un compte client pour cette action");
+        }else{
+
+          this.router.navigate(['/confirmCommand']);
+        }
       } else {
         this.service.message('Oop\'s', "error", "La connexion est requise pour cette action");
       }

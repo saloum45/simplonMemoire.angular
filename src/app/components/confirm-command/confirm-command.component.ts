@@ -83,7 +83,6 @@ export class ConfirmCommandComponent implements OnInit {
       // console.warn(reponse);
       window.open(reponse.payment_url,"_self");
     }));
-
   }
 
 }
