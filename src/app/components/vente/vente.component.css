@@ -12,3 +12,11 @@ img {
   height: 35px;
   border-radius: 50%;
 }
+
+
+button.btn{
+  width: 48%;
+  background-color: var(--darkbluecolor);
+  color: white;
+  font-weight: bold;
+}

@@ -61,10 +61,10 @@
       } -->
       <p>
         Quantité :
-        <i class="bi bi-caret-up-fill" (click)="upOrDownQuantity('up')"></i>
         <!-- <i class="bi bi-plus quant" ></i> -->
-        <input type="text" [value]="quantite" />
         <i class="bi bi-caret-down-fill" (click)="upOrDownQuantity('down')"></i>
+        <input type="text" [value]="quantite" />
+        <i class="bi bi-caret-up-fill" (click)="upOrDownQuantity('up')"></i>
       </p>
       <div class="d-flex justify-content-between w-50">
         <button class="btn" (click)="postPanier(produit,quantite)">
