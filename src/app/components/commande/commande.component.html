@@ -11,18 +11,18 @@
           <th>Date</th>
           <th>Nombre d'articles</th>
           <th>Montant</th>
-          <th>Etat</th>
+          <th>Livraison</th>
           <th class="last-th">Paiment</th>
         </tr>
       </thead>
       <tbody>
         @for (item of commandes; track $index) {
         <tr>
-          <td>{{ item.date_commande }}</td>
+          <td>{{ item.date_commande | date:'dd/MM/yy à hh:mm' }}</td>
           <td>{{ item.nombre_articles }}</td>
-          <td>{{ item.montant }}</td>
-          <td>{{ item.etat }}</td>
-          <td><img src="{{item.mode_paiement}}" alt="" /></td>
+          <td>{{ item.montant_total }}</td>
+          <td>{{ item.etat_commande }}</td>
+          <td><img src="https://pbs.twimg.com/profile_images/1416037687128113160/O5-WNBK6_400x400.jpg" alt="" /></td>
 
         </tr>
         }

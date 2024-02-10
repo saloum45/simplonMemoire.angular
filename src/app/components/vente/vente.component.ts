@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataTablesModule } from 'angular-datatables';
+import { AllservicesService } from '../../services/allservices.service';
 
 @Component({
   selector: 'app-vente',
@@ -98,6 +99,9 @@ export class VenteComponent {
 ;
 
 // Methodes
+constructor(private service:AllservicesService){
+
+}
 ngOnInit(): void {
  this.dtOptions = {
    searching: true,
@@ -109,5 +113,8 @@ ngOnInit(): void {
      url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json',
    }
  };
+ this.service.get('api/listeVentes',((reponse:any)=>{
+  console.log(reponse);
+ }));
 }
 }
