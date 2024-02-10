@@ -33,7 +33,15 @@
             {{item.client.numero}}
             {{item.client.adresse}}
           </td>
-          <td  class="align-middle">{{ item.etat }}</td>
+          <!-- <td  class="align-middle">{{ item.etat }}</td> -->
+          <td class="align-middle">
+            <div class="form-element">
+              <select name="" id=""  (change)="changerEtatCommande()">
+                <option value="en_cours">En cours</option>
+                <option value="terminée">Terminée</option>
+              </select>
+            </div>
+          </td>
 
         </tr>
         }

@@ -208,13 +208,19 @@ ngOnInit(): void {
     lengthChange: false,
     paging: true,
     info: false,
-    pageLength: 6,
+    pageLength: 4,
     language: {
       url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json',
     }
   };
 
   this.service.get('api/listeCommandeAffecter',((reponse:any)=>{
+    console.warn(reponse);
+  }));
+}
+
+changerEtatCommande(){
+  this.service.simplePost('api/ChangerStatut',((reponse:any)=>{
     console.warn(reponse);
   }));
 }
