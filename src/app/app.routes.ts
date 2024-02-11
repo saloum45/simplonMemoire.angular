@@ -16,6 +16,8 @@ import { EditProduitComponent } from './components/produit/edit-produit/edit-pro
 import { VenteComponent } from './components/vente/vente.component';
 import { AdminGuard } from './guards/admin.guard';
 import { LivraisonLivreurComponent } from './components/livraison-livreur/livraison-livreur.component';
+import { ConditionUtilisationComponent } from './components/condition-utilisation/condition-utilisation.component';
+import { ConfidentialiteSecuriteComponent } from './components/confidentialite-securite/confidentialite-securite.component';
 
 
 export const routes: Routes = [
@@ -95,5 +97,13 @@ export const routes: Routes = [
   {
     path:'livraisonLivreur',
     component:LivraisonLivreurComponent
+  },
+  {
+    path:'conditionUtilisation',
+    component:ConditionUtilisationComponent
+  },
+  {
+    path:'confidentialiteSecurite',
+    component:ConfidentialiteSecuriteComponent
   }
 ];
