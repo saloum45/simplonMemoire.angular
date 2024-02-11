@@ -25,8 +25,8 @@ export class DetailsProduitComponent implements OnInit {
   public note = 0;
   public commentaire = "";
   public commentaires: any[] = [];
-  public moyenneNote:any;
-  public urlBaseImage=this.service.urlBaseImage;
+  public moyenneNote: any;
+  public urlBaseImage = this.service.urlBaseImage;
   // Methodes
   constructor(private service: AllservicesService, private activatedRouter: ActivatedRoute) {
 
@@ -71,9 +71,9 @@ export class DetailsProduitComponent implements OnInit {
     // }
     if (type == 'up') {
       this.quantite++;
-      if (this.quantite>this.produit.quantite) {
+      if (this.quantite > this.produit.quantite) {
         this.quantite--;
-        this.service.message("Oops","warning",`il n'en reste que ${this.produit.quantite} produit en stock`);
+        this.service.message("Oops", "warning", `il n'en reste que ${this.produit.quantite} produit en stock`);
       }
     } else {
       this.quantite--;
@@ -86,30 +86,35 @@ export class DetailsProduitComponent implements OnInit {
 
   envoyerAvis() {
     if (this.service.IsOnline()) {
+      if (this.service.whoIsOnline()=="livreur" || this.service.whoIsOnline()=="commercant" ) {
+        this.service.message('Oop\'s', "warning", "Il vous faut un compte client pour cette action");
+      }else{
 
-    if (this.note == 0 || this.commentaire == "") {
-      this.service.message("Oop's", "error", "Veuillez vérifier la saisie(pour noter cliquer sur les étoiles)");
-
-    } else {
-
-      let avis = {
-        note: this.note,
-        commentaire: this.commentaire,
-      }
-      this.service.post("api/faireCommentaire/" + this.activatedRouter.snapshot.params['id'], avis, ((reponse: any) => {
-        console.log("reponse", reponse);
-
-
-        if (reponse.status == 200) {
-          this.service.message("Parfait", "success", "avis envoyé avec succès");
-          this.commentaire = "";
-          this.note = 0;
-          this.closeAddExpenseModal.nativeElement.click();
+        // this.router.navigate(['/confirmCommand']);
+        if (this.note == 0 || this.commentaire == "") {
+          this.service.message("Oop's", "error", "Veuillez vérifier la saisie(pour noter cliquer sur les étoiles)");
+  
+        } else {
+  
+          let avis = {
+            note: this.note,
+            commentaire: this.commentaire,
+          }
+          this.service.post("api/faireCommentaire/" + this.activatedRouter.snapshot.params['id'], avis, ((reponse: any) => {
+            console.log("reponse", reponse);
+  
+  
+            if (reponse.status == 200) {
+              this.service.message("Parfait", "success", "avis envoyé avec succès");
+              this.commentaire = "";
+              this.note = 0;
+              this.closeAddExpenseModal.nativeElement.click();
+            }
+            this.loadCommentaires();
+          }));
         }
-        this.loadCommentaires();
-      }));
-    }
-    }else{
+      }
+    } else {
       this.service.message("Oops", "warning", "La connexion est requise pour cette action");
 
     }
@@ -118,26 +123,31 @@ export class DetailsProduitComponent implements OnInit {
 
   envoyerSignalement() {
     if (this.service.IsOnline()) {
-
-      if (this.commentaire == "") {
-        this.service.message("Oop's", "error", "Veuillez saisir le motif du signalement");
-
+      if (this.service.whoIsOnline() == "livreur" || this.service.whoIsOnline() == "commercant") {
+        this.service.message('Oop\'s', "warning", "Il vous faut un compte client pour cette action");
       } else {
-        let signalement = {
-          motif: this.commentaire
-        }
-        console.log("comm", signalement);
-        this.service.post("api/signalerProduit/" + this.activatedRouter.snapshot.params['id'], signalement, ((reponse: any) => {
-          console.log("reponse", reponse);
-          if (reponse.status == 200) {
-            this.service.message("Parfait", "success", "signalment avec succès");
-            this.commentaire = "";
-            this.closeAddExpenseModalSignalement.nativeElement.click();
-          }
-        }));
 
+        // this.router.navigate(['/confirmCommand']);
+        if (this.commentaire == "") {
+          this.service.message("Oop's", "error", "Veuillez saisir le motif du signalement");
+
+        } else {
+          let signalement = {
+            motif: this.commentaire
+          }
+          console.log("comm", signalement);
+          this.service.post("api/signalerProduit/" + this.activatedRouter.snapshot.params['id'], signalement, ((reponse: any) => {
+            console.log("reponse", reponse);
+            if (reponse.status == 200) {
+              this.service.message("Parfait", "success", "signalment avec succès");
+              this.commentaire = "";
+              this.closeAddExpenseModalSignalement.nativeElement.click();
+            }
+          }));
+
+        }
       }
-    }else{
+    } else {
 
       this.service.message("Oops", "warning", "La connexion est requise pour cette action");
     }
