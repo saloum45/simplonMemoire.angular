@@ -17,21 +17,21 @@
       <tbody>
         @for (item of livraisons; track $index) {
         <tr>
-          <td class="align-middle">{{ item.date_commande }}</td>
+          <td class="align-middle">{{ item.Date_commande | date:'dd/MM/yy à hh:mm'}}</td>
           <td  class="align-middle">
-            @for (item1 of item.vendeurs; track $index) {
+            @for (item1 of item.commercants; track $index) {
               <p>
 
-                {{ item1.numero }} =>
-                {{ item1.adresse }}
+                {{ item1.numero_tel_commercant }} =>
+                {{ item1.adresse_commercant }}
               </p>
 
 
             }
           </td>
           <td  class="align-middle">
-            {{item.client.numero}}
-            {{item.client.adresse}}
+            {{item.client.numero_tel_client}}
+            {{item.client.Adresse_Client}}
           </td>
           <!-- <td  class="align-middle">{{ item.etat }}</td> -->
           <td class="align-middle">

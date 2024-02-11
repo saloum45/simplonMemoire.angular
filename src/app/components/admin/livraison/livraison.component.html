@@ -15,7 +15,7 @@
       <tbody>
         @for (item of commandes; track $index) {
         <tr>
-          <td>{{ item.Date_commande | date:'d/M/yy à h:mm'}}</td>
+          <td>{{ item.Date_commande | date:'dd/MM/yy à hh:mm'}}</td>
           <td>{{ item.Adresse_Client }}</td>
           <td>{{ item.Etat }}</td>
           <td class="text-center" data-bs-toggle="modal" data-bs-target="#detailsCommande" (click)="showCommande(item.Id)"><i class="bi bi-eye"></i></td>
