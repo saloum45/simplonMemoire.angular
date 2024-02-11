@@ -143,6 +143,10 @@ export class AllservicesService {
     return JSON.parse(localStorage.getItem('panier') ?? '[]');
   }
 
+  clearPanier(){
+    localStorage.removeItem('panier');
+  }
+
 
 
   // gestion du token déconnexion après le délai du token

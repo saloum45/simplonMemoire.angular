@@ -78,9 +78,9 @@ export class ConfirmCommandComponent implements OnInit {
       panier: panierProduit
     }
     console.log(panierToSend);
-
     this.service.post("api/passerCommande", panierToSend, ((reponse: any) => {
-      // console.warn(reponse);
+      console.warn(reponse);
+      this.service.clearPanier();
       window.open(reponse.payment_url,"_self");
     }));
   }
