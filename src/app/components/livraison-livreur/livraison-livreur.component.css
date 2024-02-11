@@ -24,3 +24,9 @@ select {
   color: white;
   padding: 5px;
 }
+
+
+i{
+  color: var(--darkbluecolor);
+
+}
