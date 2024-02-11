@@ -216,18 +216,22 @@ ngOnInit(): void {
       url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json',
     }
   };
+this.loadLivraisons();
+ 
+}
 
+
+loadLivraisons(){
   this.service.get('api/listeCommandeAffecter',((reponse:any)=>{
     console.warn(reponse);
     this.livraisons=reponse.data;
     console.table(this.livraisons);
   }));
 }
-
 changerEtatCommande(){
-  this.service.simplePost('api/ChangerStatut',((reponse:any)=>{
+  this.service.get('api/ChangerStatut',((reponse:any)=>{
     console.warn(reponse);
-   
+    this.loadLivraisons();
   }));
 }
 }

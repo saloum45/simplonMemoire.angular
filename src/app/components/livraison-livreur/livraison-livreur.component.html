@@ -35,10 +35,17 @@
           <!-- <td  class="align-middle">{{ item.etat }}</td> -->
           <td class="align-middle">
             <div class="form-element">
-              <select name="" id=""  (change)="changerEtatCommande()">
-                <option value="en_cours">En cours</option>
-                <option value="terminée">Terminée</option>
-              </select>
+              @if(item.Etat=="terminer"){
+
+                <select name="" id=""  (change)="changerEtatCommande()" disabled >
+                  <option >{{item.Etat}}</option>
+                </select>
+              }@else{
+                <select name="" id=""  (change)="changerEtatCommande()" >
+                  <option >{{item.Etat}}</option>
+                  <option >Terminée</option>
+                </select>
+              }
             </div>
           </td>
 
