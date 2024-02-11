@@ -20,17 +20,16 @@
           <td class="align-middle">{{ item.Date_commande | date:'dd/MM/yy à hh:mm'}}</td>
           <td  class="align-middle">
             @for (item1 of item.commercants; track $index) {
-              <p>
-
-                {{ item1.numero_tel_commercant }} =>
-                {{ item1.adresse_commercant }}
-              </p>
+              <span class="align-middle">
+                {{ item1.numero_tel_commercant }} <i class="bi bi-geo-alt-fill"></i> 
+                {{ item1.adresse_commercant }} <br>
+              </span>
 
 
             }
           </td>
           <td  class="align-middle">
-            {{item.client.numero_tel_client}}
+            {{item.client.numero_tel_client}} <i class="bi bi-geo-alt-fill"></i> 
             {{item.client.Adresse_Client}}
           </td>
           <!-- <td  class="align-middle">{{ item.etat }}</td> -->
