@@ -18,6 +18,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { LivraisonLivreurComponent } from './components/livraison-livreur/livraison-livreur.component';
 import { ConditionUtilisationComponent } from './components/condition-utilisation/condition-utilisation.component';
 import { ConfidentialiteSecuriteComponent } from './components/confidentialite-securite/confidentialite-securite.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 export const routes: Routes = [
@@ -105,5 +106,9 @@ export const routes: Routes = [
   {
     path:'confidentialiteSecurite',
     component:ConfidentialiteSecuriteComponent
+  },
+  {
+    path:'**',
+    component:PageNotFoundComponent
   }
 ];

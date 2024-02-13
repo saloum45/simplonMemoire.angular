@@ -23,9 +23,17 @@
         @for (item of navLinks; track $index) {
 
         <li class="nav-item fw-bold mx-3">
-          <a class="nav-link active text-white" aria-current="page" routerLinkActive="active-link" [routerLink]="[item.path]" id="linkItem">
-            <i class="{{ item.icon }}"></i> {{ item.name }}</a
-          >
+          @if (item.path=="panier") {
+
+            <a class="nav-link active text-white" aria-current="page" routerLinkActive="active-link" [routerLink]="[item.path]" id="linkItem">
+              <i class="{{ item.icon }}"></i> {{ item.name }} {{item.nombreArticlesPanier}}</a
+              >
+            }@else {
+
+              <a class="nav-link active text-white" aria-current="page" routerLinkActive="active-link" [routerLink]="[item.path]" id="linkItem">
+                <i class="{{ item.icon }}"></i> {{ item.name }}</a
+              >
+          }
         </li>
         }
 

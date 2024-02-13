@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
 
 
   // Attributs
+  public nombreArticlesPanier=this.service.getFromPanier().length;
   // public isOnline=this.service.IsOnline();
   public navLinks=[
     {
@@ -38,7 +39,8 @@ export class HeaderComponent implements OnInit {
     {
       path:"panier",
       name:"Panier",
-      icon:"bi bi-cart3"
+      icon:"bi bi-cart3",
+      nombreArticlesPanier:this.nombreArticlesPanier
     }
   ];
 constructor(private service:AllservicesService, private router:Router){
