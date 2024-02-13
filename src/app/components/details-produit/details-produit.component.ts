@@ -93,22 +93,25 @@ export class DetailsProduitComponent implements OnInit {
         // this.router.navigate(['/confirmCommand']);
         if (this.note == 0 || this.commentaire == "") {
           this.service.message("Oop's", "error", "Veuillez vérifier la saisie(pour noter cliquer sur les étoiles)");
-  
+
         } else {
-  
+
           let avis = {
             note: this.note,
             commentaire: this.commentaire,
           }
           this.service.post("api/faireCommentaire/" + this.activatedRouter.snapshot.params['id'], avis, ((reponse: any) => {
             console.log("reponse", reponse);
-  
-  
+
+
             if (reponse.status == 200) {
               this.service.message("Parfait", "success", "avis envoyé avec succès");
               this.commentaire = "";
               this.note = 0;
               this.closeAddExpenseModal.nativeElement.click();
+            }else{
+
+              this.service.message("Parfait", "warning", "envoie échoué, Vérifiez la saisie => "+Object.values(reponse.errorsList).join('--'));
             }
             this.loadCommentaires();
           }));
@@ -142,6 +145,8 @@ export class DetailsProduitComponent implements OnInit {
               this.service.message("Parfait", "success", "signalment avec succès");
               this.commentaire = "";
               this.closeAddExpenseModalSignalement.nativeElement.click();
+            }else{
+              this.service.message("Parfait", "warning", "envoie échoué, Vérifiez la saisie => "+Object.values(reponse.errorsList).join('--'));
             }
           }));
 
