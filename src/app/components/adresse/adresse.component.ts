@@ -77,7 +77,7 @@ export class AdresseComponent {
         if (reponse.status == 200) {
           // console.log('success',reponse);
           //  this.router.navigate(['/connexion']);
-          this.service.message("Parfait", "success", "Profil modifié avec succès");
+          this.service.message("Parfait", "success", "adresse modifiée avec succès");
           this.loadProfil();
 
 

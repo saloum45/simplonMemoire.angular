@@ -51,7 +51,15 @@ export class ConnexionComponent {
           // console.log("reponse conn",reponse);
         } else {
           // console.log('error ',reponse);
-          this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
+          // this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
+          if (reponse.errorsList) {
+
+            this.service.message("Désolé!!!", "error", "Connexion  échouée, vérifier la saisie => "+Object.values(reponse.errorsList).join('--'));
+          }else{
+
+            this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
+          }
+
         }
       });
     }

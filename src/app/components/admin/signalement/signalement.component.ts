@@ -55,6 +55,11 @@ export class SignalementComponent implements OnInit {
         url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json',
       }
     };
+    this.loadProduitSignaler();
+  }
+
+  loadProduitSignaler(){
+
     this.service.get('api/ListeProduitSignaler', ((reponse: any) => {
       console.log(reponse);
       this.signalements = reponse.data;
@@ -101,7 +106,9 @@ export class SignalementComponent implements OnInit {
             this.showProduitSignaler(this.produitSignale.id);
           }
         }));
+        this.loadProduitSignaler();
       }
     });
+
   }
 }

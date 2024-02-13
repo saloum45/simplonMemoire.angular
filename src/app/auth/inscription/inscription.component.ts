@@ -53,8 +53,17 @@ export class InscriptionComponent {
           this.router.navigate(['/connexion']);
           this.service.message("Merci!!!", "success", "Inscription faite avec succès,Veuillez vous connecter");
         } else {
+          console.table(reponse.errorsList);
           console.log('error ', reponse);
-          this.service.message("Désolé!!!", "error", "Inscription a échouée, vérifier la saisie ");
+          console.log('error eclaté', Object.values(reponse.errorsList));
+          // this.service.message("Désolé!!!", "error", "Inscription a échouée, vérifier la saisie =>"+Object.values(reponse.errorsList));
+          if (reponse.errorsList) {
+
+            this.service.message("Désolé!!!", "error", "Inscription  échouée, vérifier la saisie => "+Object.values(reponse.errorsList).join('--'));
+          }else{
+
+            this.service.message("Désolé!!!", "error", "Inscription  échouée, vérifier la saisie ");
+          }
         }
       });
     }

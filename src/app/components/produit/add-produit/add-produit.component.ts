@@ -65,7 +65,14 @@ export class AddProduitComponent implements OnInit {
           this.service.message("Parfait!!!", "success", "Ajout avec succès");
         } else {
           console.log('error ',reponse);
-          this.service.message("Désolé!!!", "error", "Ajout échoué, vérifier la saisie ");
+          // this.service.message("Désolé!!!", "error", "Ajout échoué, vérifier la saisie ");
+          // this.service.message("Désolé!!!", "error", "Ajout échouée, vérifier la saisie =>"+Object.values(reponse.errorsList));
+          if (reponse.errorsList) {
+            this.service.message("Désolé!!!", "error", "Inscription  échouée, vérifier la saisie => "+Object.values(reponse.errorsList));
+          }else{
+            this.service.message("Désolé!!!", "error", "Inscription  échouée, vérifier la saisie ");
+          }
+
         }
       });
     }
