@@ -38,7 +38,7 @@ export class ConnexionComponent {
             id: reponse.user.id,
             type: reponse.user.type
           }
-          console.warn("logged user", reponse);
+          // console.warn("logged user", reponse);
           localStorage.setItem("onlineUser", JSON.stringify(onlineUser));
           localStorage.setItem("tokenExpiryTime", JSON.stringify(10000));
           if (reponse.user.type == "admin") {
@@ -46,7 +46,7 @@ export class ConnexionComponent {
           } else {
             this.router.navigate(['/accueil']);
           }
-          this.service.message("Cher " + reponse.user.type, "success", "Connexion faite avec succès");
+          this.service.message("Bienvenue " + reponse.user.prenom+" "+reponse.user.nom, "success", "Connexion faite avec succès");
           // this.deconnexionAutomatique();
           // console.log("reponse conn",reponse);
         } else {
