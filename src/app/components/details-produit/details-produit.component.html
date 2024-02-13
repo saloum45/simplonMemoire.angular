@@ -54,7 +54,6 @@
       <p class="description">
         {{ produit.description }}
       </p>
-
       <hr />
       <h5>{{ produit.prix }} fcfa</h5>
       <!-- @if (produit.id) {
@@ -108,7 +107,7 @@
     </nav>
     <div class="tab-content" id="nav-tabContent">
       <div
-        class="tab-pane fade show active mx-5"
+        class="tab-pane fade show active mx-lg-5 mx-1"
         id="nav-home"
         role="tabpanel"
         aria-labelledby="nav-home-tab"
@@ -125,7 +124,7 @@
           @for (item of commentaires; track $index) {
 
             <div class="avis-item p-2">
-              <div class="d-flex justify-content-between w-50 m-auto mt-2 mb-2">
+              <div class="d-flex justify-content-between m-auto mt-2 mb-2">
                 @for (nombre of [1,2,3,4,5]; track $index) {
                   @if (nombre<=item.Note) {
                     <i class="bi bi-star-fill"></i>
@@ -163,13 +162,13 @@
         </div>
       </div>
       <div
-        class="tab-pane fade mx-5"
+        class="tab-pane fade mx-lg-5 mx-1"
         id="nav-profile"
         role="tabpanel"
         aria-labelledby="nav-profile-tab"
         tabindex="0"
       >
-        <div class="row row-cols-1 row-cols-md-4 g-4 mt-1">
+        <div class="row row-cols-2 row-cols-md-4 g-4 mt-1">
           <div class="col" [routerLink]="['/produit', 1]">
             <div class="card" id="card">
               <div class="text-center image">

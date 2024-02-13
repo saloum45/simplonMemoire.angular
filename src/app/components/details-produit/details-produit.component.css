@@ -118,6 +118,9 @@ nav {
   img {
     height: 150px;
   }
+  div{
+    width: 50%;
+  }
 }
 i {
   color: var(--darkbluecolor);
@@ -162,7 +165,7 @@ textarea {
   .produit-right {
     width: 100%;
     background-color: white;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
   }
   /* le bloc de commentaire et signalament */
   #interactProduct,
@@ -193,10 +196,97 @@ textarea {
   #imageReponsive {
     display: inline-block;
     border-radius: 10px;
+    position: absolute;
+    right: 15px;
+    top: 150px;
+    width: 150px;
+    height: 180px;
+    object-fit: cover;
   }
   .produit-right i {
     font-size: 20px;
     color: var(--darkbluecolor);
     cursor: pointer;
+  }
+  .avis-items {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    /* background-color: red; */
+    align-items: center;
+  }
+  .avis-items .avis-item {
+    width: 48%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    height: 180px;
+    border-radius: 5px;
+    flex-wrap: wrap;
+
+    p {
+      height: 100px;
+      /* background-color: red; */
+      overflow: hidden;
+    }
+    img {
+      height: 150px;
+    }
+    div{
+      width: 85%;
+    }
+  }
+  .avis-item i {
+    font-size: 16px;
+  }
+/* cards produits similaires */
+  #card {
+    height: 300px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    /* border: 1px var(--goldcolor) solid; */
+    border-radius: 20px;
+    padding-top: 25px;
+    cursor: pointer;
+  }
+  #card .image {
+    height: 180px;
+    /* background-color: rebeccapurple; */
+    padding: 10px;
+  }
+  #card .card-text {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    text-align: center;
+  }
+  #card img {
+    height: 100%;
+    width: 90%;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  #card h6 {
+    background-color: transparent;
+    color: var(--darkbluecolor);
+    text-align: start;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+  }
+  #card span {
+    background-color: transparent;
+    color: var(--clearcolor);
+    text-align: start;
+    padding: 0;
+    margin: 0;
+  }
+  #card button {
+    background-color: var(--darkbluecolor);
+    color: white;
+    width: 90%;
+    padding: 0;
+    padding-bottom: 3px;
+    font-weight: bold;
+    font-size: 14px;
   }
 }

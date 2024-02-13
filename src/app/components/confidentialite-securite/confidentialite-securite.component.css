@@ -13,3 +13,12 @@
   font-weight: bold;
   color: var(--darkbluecolor);
 }
+
+
+@media screen and (max-width:767px){
+  .panier-left {
+    width: 100%;
+    box-shadow: none;
+
+  }
+}
