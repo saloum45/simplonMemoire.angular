@@ -30,6 +30,9 @@
   background-color: white;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
+#imageReponsive {
+  display: none;
+}
 .produit-right i {
   font-size: 20px;
   color: var(--darkbluecolor);
@@ -49,6 +52,9 @@
   background-color: var(--darkbluecolor);
   color: white;
   width: 180px;
+}
+#actionButton {
+  width: 50%;
 }
 
 .quant {
@@ -104,12 +110,12 @@ nav {
   height: 180px;
   border-radius: 5px;
 
-  p{
+  p {
     height: 100px;
     /* background-color: red; */
     overflow: hidden;
   }
-  img{
+  img {
     height: 150px;
   }
 }
@@ -133,4 +139,64 @@ textarea {
   height: 100px;
   resize: none;
   border-radius: 5px;
+}
+
+/* reponsive design */
+@media screen and (max-width: 767px) {
+  .produit-left {
+    width: 25%;
+    height: 300px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    /* background-color: red; */
+    color: var(--darkbluecolor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+  }
+  .produit-left img {
+    height: 200px;
+    width: 80%;
+  }
+
+  .produit-right {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  }
+  /* le bloc de commentaire et signalament */
+  #interactProduct,
+  #infoVendeur {
+    width: 100%;
+    flex-direction: column;
+  }
+  /* #infoVendeur{
+    width: 100%;
+    flex-direction: column;
+  } */
+  /* .produit-right {
+    width: 72%;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  } */
+  .produit-right p.description {
+    text-align: justify;
+  }
+
+  /* section button ajouterpanier, commander */
+  #actionButton {
+    width: 100%;
+  }
+  .produit-right button {
+    width: 150px;
+  }
+  #imageReponsive {
+    display: inline-block;
+    border-radius: 10px;
+  }
+  .produit-right i {
+    font-size: 20px;
+    color: var(--darkbluecolor);
+    cursor: pointer;
+  }
 }

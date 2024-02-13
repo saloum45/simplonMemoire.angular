@@ -172,4 +172,11 @@
     /* border-right: 2px var(--darkbluecolor) solid ; */
     width: 100%;
   }
+
+
+  .processItem p{
+    font-size: 18px;
+
+  }
+
 }
