@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AllservicesService } from '../../services/allservices.service';
 
@@ -17,7 +17,9 @@ export class HeaderComponent implements OnInit {
 
 
   // Attributs
-  public nombreArticlesPanier=this.service.getFromPanier().length;
+  // public nombreArticlesPanier=signal<number>(0);
+  // public nombreArticlesPanier=this.service.getFromPanier().length;
+  // cardContent=1;
   // public isOnline=this.service.IsOnline();
   public navLinks=[
     {
@@ -40,7 +42,7 @@ export class HeaderComponent implements OnInit {
       path:"panier",
       name:"Panier",
       icon:"bi bi-cart3",
-      nombreArticlesPanier:this.nombreArticlesPanier
+      nombreArticlesPanier:this.service.nombreProduitPanier
     }
   ];
 constructor(private service:AllservicesService, private router:Router){

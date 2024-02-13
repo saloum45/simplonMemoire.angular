@@ -12,6 +12,7 @@ export class AllservicesService {
   urlBase = 'http://localhost:8000/';
   urlBaseImage = 'http://localhost:8000/images/';
   public readonly prixLivraion = 2000;
+  public nombreProduitPanier =JSON.parse(localStorage.getItem('panier') ?? '[]').length;
 
   constructor(private http: HttpClient) {
 
@@ -79,7 +80,7 @@ export class AllservicesService {
       return null;
     }
   }
-
+// la fonction qui retourne l'id de l'utilisateur connécté
   IsOnline() {
     if (localStorage.getItem("onlineUser") != null || localStorage.getItem("onlineUser") != undefined) {
       let data = JSON.parse(localStorage.getItem("onlineUser") ?? '{}');
@@ -137,13 +138,15 @@ export class AllservicesService {
         this.message("parfait", "success", "produit ajouté au panier");
       }
     }
+    // cardContent = JSON.parse(localStorage.getItem('panier') ?? '[]').length;
+    this.nombreProduitPanier =JSON.parse(localStorage.getItem('panier') ?? '[]').length;
   }
 
   getFromPanier() {
     return JSON.parse(localStorage.getItem('panier') ?? '[]');
   }
 
-  clearPanier(){
+  clearPanier() {
     localStorage.removeItem('panier');
   }
 
@@ -186,7 +189,7 @@ export class AllservicesService {
     return item
   }
 
-  messageConfirm(){
+  messageConfirm() {
     Swal.fire({
       title: "Etes vous sûr ",
       text: "Cette action est irréversible!",
