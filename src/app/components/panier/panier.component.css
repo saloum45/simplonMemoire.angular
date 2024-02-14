@@ -90,3 +90,71 @@ i{
 }.som-prix{
   min-width: 100px;
 }
+
+
+@media screen and (max-width:767px){
+  .panier-container{
+    flex-direction: column-reverse;
+    .panier-right{
+      width: 100%;
+    }
+    .panier-left{
+      width: 100%;
+      box-shadow: none;
+      /* margin-bottom: 10px; */
+    }
+  }
+
+
+/* panier items  */
+
+.panier-items
+{
+
+}
+.panier-items .panier-item
+{
+  width: 100%;
+  margin: 0 auto;
+  /* background-color: red; */
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--darkbluecolor);
+  align-items: center;
+  margin-top: 10px;
+}
+.panier-items .panier-item p
+{
+  font-weight: bold;
+  font-size: 14px;
+  /* height: 30px; */
+}
+.panier-items .panier-item img
+{
+  height: 70px;
+  width: 70px;
+}
+.panier-items .panier-item p span
+{
+  font-weight: normal;
+}
+
+input{
+  width: 25px;
+  text-align: center;
+}
+i{
+  color: var(--darkbluecolor);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.nom_prix{
+  min-width: 120px;
+}.som-prix{
+  min-width: 100px;
+  display: none;
+}
+
+}
