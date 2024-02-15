@@ -78,5 +78,9 @@ constructor(private service:AllservicesService, private router:Router){
     // this.service.simplePost("api/deconnexionCommercant",((reponse:any)=>{
     //   console.log(reponse);
     // }));
+
+  }
+  whoIsOnline() {
+    return this.service.whoIsOnline();
   }
 }

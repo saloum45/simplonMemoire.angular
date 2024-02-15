@@ -29,8 +29,7 @@
   cursor: pointer;
 }
 
-
-.sidemenu div span{
+.sidemenu div span {
   background-color: white;
   padding: 2px;
   width: 150px;
@@ -43,21 +42,18 @@
   margin-top: 10px;
   margin-left: 10px;
   display: none;
-
 }
 
-
-.sidemenu div:hover span{
+.sidemenu div:hover span {
   /* width: 100px;  */
-   display: inline-block;
- }
+  display: inline-block;
+}
 .router-section {
   width: 92%;
   margin-left: 8%;
 }
 
-
-@media screen and (max-width:767px){
+@media screen and (max-width: 767px) {
   .side-router-container {
     display: flex;
     justify-content: space-between;
@@ -77,6 +73,7 @@
     align-items: center;
     justify-content: space-evenly;
     padding: 5px;
+    display: none;
   }
 
   .sidemenu img {
@@ -86,8 +83,7 @@
     border-radius: 10px;
   }
 
-
-  .sidemenu div span{
+  .sidemenu div span {
     background-color: white;
     padding: 2px;
     width: 150px;
@@ -99,18 +95,15 @@
     text-align: center;
     margin-top: 10px;
     margin-left: 10px;
-    display: none;
-
+    /* display: none; */
   }
 
-
-  .sidemenu div:hover span{
+  .sidemenu div:hover span {
     /* width: 100px;  */
-     display: inline-block;
-   }
-  .router-section {
-    width: 92%;
-    margin-left: 8%;
+    display: inline-block;
   }
-
+  .router-section {
+    width: 100%;
+    margin-left: 0px;
+  }
 }

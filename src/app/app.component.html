@@ -30,8 +30,7 @@
       <span>Mes commandes</span>
     </div>
 
-    }
-    @if (whoIsOnline()=="livreur") {
+    } @if (whoIsOnline()=="livreur") {
     <div [routerLink]="['/livraisonLivreur']">
       <img src="assets/meslivraisons.png" alt="" />
       <span>Mes livraisons</span>
