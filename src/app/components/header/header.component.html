@@ -44,58 +44,60 @@
           >
           }
         </li>
-        } @if (isOnline()) { @if (whoIsOnline()=="commercant") {
-
-        <li class="nav-item fw-bold mx-3">
-          <a
-            class="nav-link active text-white"
-            aria-current="page"
-            routerLinkActive="active-link"
-            [routerLink]="['/listVente']"
-            id="linkItem"
-          >
-          <i class="bi bi-bag-fill"></i>
-            Mes ventes
-          </a>
-        </li>
-        <li class="nav-item fw-bold mx-3">
-          <a
-            class="nav-link active text-white"
-            aria-current="page"
-            routerLinkActive="active-link"
-            [routerLink]="['/listProduit']"
-            id="linkItem"
-          >
-            <i class="bi bi-tags"></i>
-            Mes produits
-          </a>
-        </li>
         }
-        <li class="nav-item fw-bold mx-3">
-          <a
-            class="nav-link active text-white"
-            aria-current="page"
-            routerLinkActive="active-link"
-            [routerLink]="['/profile']"
-            id="linkItem"
-          >
-            <i class="bi bi-person-check"></i>
-            Mon profile
-          </a>
-        </li>
-        <li class="nav-item fw-bold mx-3">
-          <a
-            class="nav-link active text-white"
-            aria-current="page"
-            routerLinkActive="active-link"
-            [routerLink]="['/adresse']"
-            id="linkItem"
-          >
-            <i class="bi bi-geo-alt-fill"></i>
-            Mon adresse
-          </a>
-        </li>
-        @if (whoIsOnline()=="client") {
+        <div class="sidebar-reponsive">
+          @if (isOnline()) { @if (whoIsOnline()=="commercant") {
+
+          <li class="nav-item fw-bold mx-3">
+            <a
+              class="nav-link active text-white"
+              aria-current="page"
+              routerLinkActive="active-link"
+              [routerLink]="['/listVente']"
+              id="linkItem"
+            >
+              <i class="bi bi-bag-fill"></i>
+              Mes ventes
+            </a>
+          </li>
+          <li class="nav-item fw-bold mx-3">
+            <a
+              class="nav-link active text-white"
+              aria-current="page"
+              routerLinkActive="active-link"
+              [routerLink]="['/listProduit']"
+              id="linkItem"
+            >
+              <i class="bi bi-tags"></i>
+              Mes produits
+            </a>
+          </li>
+          }
+          <li class="nav-item fw-bold mx-3">
+            <a
+              class="nav-link active text-white"
+              aria-current="page"
+              routerLinkActive="active-link"
+              [routerLink]="['/profile']"
+              id="linkItem"
+            >
+              <i class="bi bi-person-check"></i>
+              Mon profile
+            </a>
+          </li>
+          <li class="nav-item fw-bold mx-3">
+            <a
+              class="nav-link active text-white"
+              aria-current="page"
+              routerLinkActive="active-link"
+              [routerLink]="['/adresse']"
+              id="linkItem"
+            >
+              <i class="bi bi-geo-alt-fill"></i>
+              Mon adresse
+            </a>
+          </li>
+          @if (whoIsOnline()=="client") {
           <li class="nav-item fw-bold mx-3">
             <a
               class="nav-link active text-white"
@@ -108,8 +110,7 @@
               Mes commandes
             </a>
           </li>
-        }
-        @if (whoIsOnline()=="livreur") {
+          } @if (whoIsOnline()=="livreur") {
           <li class="nav-item fw-bold mx-3">
             <a
               class="nav-link active text-white"
@@ -118,13 +119,12 @@
               [routerLink]="['/livraisonLivreur']"
               id="linkItem"
             >
-            <i class="bi bi-truck"></i>
+              <i class="bi bi-truck"></i>
               Mes livraisons
             </a>
           </li>
-        }
-       }
-
+          } }
+        </div>
         <li class="nav-item dropdown mt-1" id="dropdown">
           <a
             class="nav-link dropdown-toggle text-center"

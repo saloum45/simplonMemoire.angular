@@ -47,6 +47,10 @@ i{
 #linkItem{
   font-size: 18px;
 }
+
+.sidebar-reponsive{
+  display: none;
+}
 @media screen and (max-width:767px){
   #nav{
     height: auto;
@@ -62,6 +66,10 @@ i{
   }
   .separateur{
     margin-top: 120px;
+  }
+
+  .sidebar-reponsive{
+    display: inline-block;
   }
 }
 
