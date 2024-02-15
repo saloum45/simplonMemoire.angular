@@ -17,8 +17,8 @@ import Swal from 'sweetalert2';
 })
 export class ConnexionComponent {
   // Attributs
-  public password = "Saloum45";
-  public email = "saloumfall45@gmail.com";
+  public password = "";
+  public email = "";
   public showHidePassword: any;
   // Methodes
   constructor(private service: AllservicesService, private router: Router) {

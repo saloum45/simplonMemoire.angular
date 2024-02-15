@@ -9,7 +9,7 @@
         @for (item of panier; track $index) {
 
           <div class="panier-item">
-            <img src="http://localhost:8000/images/{{item.produit.image}}" alt="" [routerLink]="['/detailsProduit',item.produit.id]" />
+            <img src="{{urlBaseImage}}{{item.produit.image}}" alt="" [routerLink]="['/detailsProduit',item.produit.id]" />
             <p class="nom_prix" [routerLink]="['/detailsProduit',item.produit.id]">
               {{item.produit.nom_produit}} <br />
               <span>{{item.produit.prix}} fcfa</span>

@@ -17,6 +17,8 @@ export class ConfirmCommandComponent implements OnInit {
   public sommeArticles: number = 0;
   public prixLivraion = this.service.prixLivraion;
   public panierProduits: any[] = [];
+  public urlBaseImage=this.service.urlBaseImage;
+
   public profile={
     nom:"",
     adresse:"",

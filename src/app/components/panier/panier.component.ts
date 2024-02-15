@@ -18,6 +18,8 @@ export class PanierComponent implements OnInit {
   public nombreArticles = 0;
   public sommeArticles = 0;
   public prixLivraion = this.service.prixLivraion;
+  public urlBaseImage=this.service.urlBaseImage;
+
   // Methodes
   constructor(private service: AllservicesService, private router: Router) {
 

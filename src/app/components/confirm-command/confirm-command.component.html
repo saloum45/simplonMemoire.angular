@@ -43,7 +43,7 @@
             @for (item of panierProduits; track $index) {
 
               <div class="panier-item">
-                <img src="http://localhost:8000/images/{{item.produit.image}}" alt="" />
+                <img src="{{urlBaseImage}}{{item.produit.image}}" alt="" />
                 <p>
                   {{item.produit.nom_produit}} <br />
                   <span>{{item.produit.prix }} fcfa</span>

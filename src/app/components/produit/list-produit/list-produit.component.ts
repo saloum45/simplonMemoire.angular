@@ -18,6 +18,7 @@ export class ListProduitComponent implements OnInit {
   // Attributs
   public produits: any = [];
   public searchInput = "";
+  public urlBaseImage = this.service.urlBaseImage;
 
 
   // Methodes
