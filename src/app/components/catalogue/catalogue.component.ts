@@ -53,6 +53,21 @@ export class CatalogueComponent implements OnInit {
       // console.log("prod: ",id,reponse.data);
     });
   }
+  getProductByCategorieSelect(id: any) {
+    // console.log(id.target.value);
+    if (id.target.value[0]==1) {
+      this.loadAllProducts();
+      // this.titre = "tout";
+    }else{
+      this.service.get("api/produits/" + id.target.value[0], (reponse: any) => {
+        this.produits = reponse.data;
+        this.titre = id.target.value.substring(2);
+        // console.log(id.target.value.substring(2));
+        // console.log("prod: ",id,reponse.data);
+      });
+    }
+  }
+
 
   search() {
     return this.produits.filter((prod: any) => prod.nom_produit.toLowerCase().includes(this.searchInput.toLowerCase()));

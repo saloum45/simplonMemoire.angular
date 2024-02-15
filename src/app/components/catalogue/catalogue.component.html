@@ -3,21 +3,19 @@
     <div class="catalogue-left">
       <div class="categorie">
         <h6 class="text-center pt-3 fw-bold">CATEGORIES</h6>
-        <div class="p-lg-4"  id="categorieElement">
+        <div class="p-lg-4" id="categorieElement">
           <span (click)="loadAllProducts()">Tout</span>
           @for (item of categories; track $index) {
-
           <span (click)="getProductByCategorie(item.id, item.nom_categorie)">{{
             item.nom_categorie
           }}</span>
           }
         </div>
 
-        <select name="" id="selectCategorie">
-          <option (click)="loadAllProducts()">Tout</option>
+        <select name="" id="selectCategorie" (click)="getProductByCategorieSelect($event)">
+          <option [value]="[1,1]">Tout</option>
           @for (item of categories; track $index) {
-
-          <option (click)="getProductByCategorie(item.id, item.nom_categorie)">
+          <option [value]="[item.id,item.nom_categorie]">
             {{ item.nom_categorie }}
           </option>
           }
