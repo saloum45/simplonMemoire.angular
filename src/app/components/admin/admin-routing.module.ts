@@ -21,6 +21,7 @@ const routes: Routes = [
         component: AccueilAdminComponent,
       },
       {
+        
         path: "accueil",
         component: AccueilAdminComponent,
       },
