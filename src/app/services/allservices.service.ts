@@ -62,11 +62,22 @@ export class AllservicesService {
 
 
   message(title: any, icon: any, message: any) {
-    Swal.fire({
-      title: title,
-      text: message,
-      icon: icon
-    });
+    if(icon=='success'){
+
+      Swal.fire({
+        title: title,
+        text: message,
+        icon: icon,
+        timer: 1000
+      });
+    }else{
+
+      Swal.fire({
+        title: title,
+        text: message,
+        icon: icon
+      });
+    }
   }
 
   whoIsOnline() {
