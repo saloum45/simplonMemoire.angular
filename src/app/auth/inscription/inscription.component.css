@@ -83,6 +83,10 @@
 }
 
 
+.error{
+  border: red;
+}
+
 
 /* responsive design */
 @media screen and (max-width:767px){

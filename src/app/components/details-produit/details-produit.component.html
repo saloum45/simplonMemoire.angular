@@ -113,17 +113,17 @@
         aria-labelledby="nav-home-tab"
         tabindex="0"
       >
-        <div class="avis-items">
+        <div class="avis-items gap-2 p-2">
 
           @if (commentaires.length==0) {
             <div class="m-auto text-center">
-              <img src="assets/empty_image.png" alt="" style="height: 250px;width: 250px;">
+              <img src="assets/empty_image.png" class="img-fluid" alt="" style="height: 250px;width: 250px;">
               <h5 class="text-center">Pas d'avis pour le moment,soyez le premier à en faire</h5>
             </div>
           }
           @for (item of commentaires; track $index) {
 
-            <div class="avis-item p-2">
+            <div class="avis-item p-lg-2 p-1">
               <div class="d-flex justify-content-between m-auto mt-2 mb-2">
                 @for (nombre of [1,2,3,4,5]; track $index) {
                   @if (nombre<=item.Note) {
@@ -168,7 +168,7 @@
         aria-labelledby="nav-profile-tab"
         tabindex="0"
       >
-        <div class="row row-cols-2 row-cols-md-4 g-4 mt-1">
+        <div class="row row-cols-2 row-cols-md-4 g-4 mt-1 similaire-items">
           <div class="col" [routerLink]="['/produit', 1]">
             <div class="card" id="card">
               <div class="text-center image">

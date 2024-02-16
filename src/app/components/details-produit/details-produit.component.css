@@ -118,7 +118,7 @@ nav {
   img {
     height: 150px;
   }
-  div{
+  div {
     width: 50%;
   }
 }
@@ -214,6 +214,10 @@ textarea {
     height: 100%;
     /* background-color: red; */
     align-items: center;
+    height: 330px;
+    overflow: scroll;
+    flex-wrap: wrap;
+    gap: 2px;
   }
   .avis-items .avis-item {
     width: 48%;
@@ -230,14 +234,19 @@ textarea {
     img {
       height: 150px;
     }
-    div{
+    div {
       width: 85%;
     }
   }
   .avis-item i {
     font-size: 16px;
   }
-/* cards produits similaires */
+
+  /* cards produits similaires */
+  .similaire-items {
+    height: 330px;
+    overflow: scroll;
+  }
   #card {
     height: 300px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);

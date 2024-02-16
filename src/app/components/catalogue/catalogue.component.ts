@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AllservicesService } from '../../services/allservices.service';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-catalogue',
@@ -9,6 +10,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     RouterLink,
     FormsModule,
+    JsonPipe
 
   ],
   templateUrl: './catalogue.component.html',

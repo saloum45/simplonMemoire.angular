@@ -3,13 +3,15 @@ import { AllservicesService } from '../../services/allservices.service';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Commerçant } from '../../models/commerçant';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-inscription',
   standalone: true,
   imports: [
     RouterLink,
-    FormsModule
+    FormsModule,
+    NgClass
   ],
   templateUrl: './inscription.component.html',
   styleUrl: './inscription.component.css'
@@ -31,7 +33,7 @@ export class InscriptionComponent {
   public displayForme = false;
   public formType = false;
   public showHidePassword: any;
-
+  public emailError:any;
 
 
 
@@ -87,5 +89,22 @@ export class InscriptionComponent {
     } else {
       this.showHidePassword.type = 'text';
     }
+  }
+
+  // validation
+  emailValidate(){
+    const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
+    this.emailError=emailRegex.test(this.email);
+    console.log(this.email);
+    console.log(emailRegex.test(this.email.trim()));
+  }
+
+  nomValidate(){
+    const nomPrenomRegex=/^[a-zA-Z]{6,}/;
+    return nomPrenomRegex.test(this.nom);
+  }
+  prenomValidate(){
+    const nomPrenomRegex=/^[a-zA-Z]{6,}/;
+    return nomPrenomRegex.test(this.prenom);
   }
 }
