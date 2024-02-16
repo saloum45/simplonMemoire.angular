@@ -17,9 +17,9 @@
           id="selectCategorie"
           (click)="getProductByCategorieSelect($event)"
         >
-          <option [value]="[1, 1]">Tout</option>
+          <option value="tout">Tout</option>
           @for (item of categories; track $index) {
-          <option [value]="[item.id, item.nom_categorie]">
+          <option [value]="item.id">
             {{ item.nom_categorie }}
           </option>
           }

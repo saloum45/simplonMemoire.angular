@@ -57,15 +57,15 @@ export class CatalogueComponent implements OnInit {
   }
   getProductByCategorieSelect(id: any) {
     // console.log(id.target.value);
-    if (id.target.value[0]==1) {
+    if (id.target.value=='tout') {
       this.loadAllProducts();
       // this.titre = "tout";
     }else{
-      this.service.get("api/produits/" + id.target.value[0], (reponse: any) => {
+      this.service.get("api/produits/" + id.target.value, (reponse: any) => {
         this.produits = reponse.data;
-        this.titre = id.target.value.substring(2);
+        // this.titre = id.target.value.substring(2);
         // console.log(id.target.value.substring(2));
-        // console.log("prod: ",id,reponse.data);
+        // console.log("prod: ",id.target.value,reponse.data);
       });
     }
   }

@@ -1,42 +1,44 @@
-<div class="panier-left p-2">
+<div class="panier-left p-lg-2 p-1">
   <div class="section-title">
     <h4>Historiques des ventes</h4>
     <hr />
   </div>
+  <div class="table-responsive">
   @if (ventes.length>0) {
 
-  <table datatable [dtOptions]="dtOptions" class="table">
-    <thead id="thead">
-      <tr>
-        <th>Date</th>
-        <th>Nombre d'articles</th>
-        <th>Montant</th>
-        <th>Paiment</th>
-        <th>Livraison</th>
-        <th class="last-th">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (item of ventes; track $index) {
-      <tr>
-        <td>{{ item.date_commande  | date:'dd/MM/yy à hh:mm'}}</td>
-        <td>{{ item.nombre_produit }}</td>
-        <td>{{ item.montant_total }}</td>
-        <td><img src="https://pbs.twimg.com/profile_images/1416037687128113160/O5-WNBK6_400x400.jpg" alt="" /></td>
-        <td>{{ item.etat_commande }}</td>
-        <td>
-          <i
-            class="bi bi-eye"
-            data-bs-toggle="modal"
-            data-bs-target="#detailsCommande"
-            (click)="showVente(item.Id)"
-          ></i>
-        </td>
-      </tr>
-      }
-    </tbody>
-  </table>
-  }
+    <table datatable [dtOptions]="dtOptions" class="table">
+      <thead id="thead">
+        <tr>
+          <th>Date</th>
+          <th>articles</th>
+          <th>Montant</th>
+          <th>Paiment</th>
+          <th>Livraison</th>
+          <th class="last-th">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of ventes; track $index) {
+        <tr>
+          <td>{{ item.date_commande  | date:'dd/MM/yy à hh:mm'}}</td>
+          <td>{{ item.nombre_produit }}</td>
+          <td>{{ item.montant_total }}</td>
+          <td><img src="https://pbs.twimg.com/profile_images/1416037687128113160/O5-WNBK6_400x400.jpg" alt="" /></td>
+          <td>{{ item.etat_commande }}</td>
+          <td>
+            <i
+              class="bi bi-eye"
+              data-bs-toggle="modal"
+              data-bs-target="#detailsCommande"
+              (click)="showVente(item.Id)"
+            ></i>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+</div>
 </div>
 
 <!-- Modal -->

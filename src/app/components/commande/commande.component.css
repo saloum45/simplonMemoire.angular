@@ -12,3 +12,21 @@ img {
   height: 35px;
   border-radius: 50%;
 }
+
+@media screen  and (max-width:767px){
+
+  .panier-left{
+    width: 100%;
+    /* background-color: black; */
+    box-shadow: none;
+    min-height: 500px;
+    margin: 0 auto;
+  }
+  th{
+    font-size: 12px;
+  }
+  td{
+    font-size: 12px;
+  }
+
+}
