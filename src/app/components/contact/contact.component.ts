@@ -31,10 +31,14 @@ export class ContactComponent implements OnInit {
     if (this.nom == "" || this.email == "" || this.numero == "" || this.message == "") {
       this.service.message('Oops', 'error', 'Veuillez renseigner tous les champs');
     } else {
-      this.service.post("api/faireFeedback", {nom:this.nom,email:this.email,numero_tel:this.numero,message:this.message},((reponse:any)=>{
-        if(reponse.status==200){
-          this.service.message('Parfait','success','Envoie fait avec succès');
-        }else{
+      this.service.post("api/faireFeedback", { nom: this.nom, email: this.email, numero_tel: this.numero, message: this.message }, ((reponse: any) => {
+        if (reponse.status == 200) {
+          this.nom = "";
+          this.email = "";
+          this.numero = "";
+          this.message = "";
+          this.service.message('Parfait', 'success', 'Envoie fait avec succès');
+        } else {
           this.service.message('Oops', 'error', 'Vériifer la saisie');
         }
       }));

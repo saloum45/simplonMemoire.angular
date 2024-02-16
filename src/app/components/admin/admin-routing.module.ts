@@ -9,6 +9,7 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
 import { LivraisonComponent } from './livraison/livraison.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import { LivreurComponent } from './livreur/livreur.component';
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 const routes: Routes = [
 
@@ -21,7 +22,7 @@ const routes: Routes = [
         component: AccueilAdminComponent,
       },
       {
-        
+
         path: "accueil",
         component: AccueilAdminComponent,
       },
@@ -56,6 +57,10 @@ const routes: Routes = [
         path: "livreur",
         component: LivreurComponent
       },
+      {
+        path: '**',
+        component: PageNotFoundComponent
+      }
 
     ]
   },
