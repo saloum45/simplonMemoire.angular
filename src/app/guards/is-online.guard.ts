@@ -5,7 +5,7 @@ import { AllservicesService } from '../services/allservices.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class IsOnlineGuard implements CanActivate {
 
   constructor(
     private router: Router,
@@ -13,10 +13,10 @@ export class AdminGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.allServicesService.whoIsOnline() === "admin") {
+    if (this.allServicesService.IsOnline()) {
       return true;
     } else {
-      this.allServicesService.message('Oops', 'warning', 'Veuillez vous authentifier en tant que admin');
+      this.allServicesService.message('Oops', 'warning', 'Veuillez vous authentifier');
       this.router.navigate(['/accueil']);
       return false;
     }

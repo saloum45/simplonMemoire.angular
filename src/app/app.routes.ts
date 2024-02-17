@@ -19,6 +19,10 @@ import { LivraisonLivreurComponent } from './components/livraison-livreur/livrai
 import { ConditionUtilisationComponent } from './components/condition-utilisation/condition-utilisation.component';
 import { ConfidentialiteSecuriteComponent } from './components/confidentialite-securite/confidentialite-securite.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ClientGuard } from './guards/client.guard';
+import { VendeurGuard } from './guards/vendeur.guard';
+import { LivreurGuard } from './guards/livreur.guard';
+import { IsOnlineGuard } from './guards/is-online.guard';
 
 
 export const routes: Routes = [
@@ -48,7 +52,8 @@ export const routes: Routes = [
   },
   {
     path:"confirmCommand",
-    component:ConfirmCommandComponent
+    component:ConfirmCommandComponent,
+    canActivate:[ClientGuard]
   },
   {
     path:"connexion",
@@ -64,31 +69,38 @@ export const routes: Routes = [
   },
   {
     path:"addProduit",
-    component:AddProduitComponent
+    component:AddProduitComponent,
+    canActivate:[VendeurGuard]
   },
   {
     path:"listProduit",
-    component:ListProduitComponent
+    component:ListProduitComponent,
+    canActivate:[VendeurGuard]
   },
   {
     path:"profile",
-    component:ProfileComponent
+    component:ProfileComponent,
+    canActivate:[IsOnlineGuard]
   },
   {
     path:"adresse",
-    component:AdresseComponent
+    component:AdresseComponent,
+    canActivate:[IsOnlineGuard]
   },
   {
     path:"commande",
-    component:CommandeComponent
+    component:CommandeComponent,
+    canActivate:[ClientGuard]
   },
   {
     path:"editProduit/:id",
-    component:EditProduitComponent
+    component:EditProduitComponent,
+    canActivate:[VendeurGuard]
   },
   {
     path:"listVente",
-    component:VenteComponent
+    component:VenteComponent,
+    canActivate:[VendeurGuard]
   },
   {
     path: 'admin',
@@ -97,7 +109,8 @@ export const routes: Routes = [
   },
   {
     path:'livraisonLivreur',
-    component:LivraisonLivreurComponent
+    component:LivraisonLivreurComponent,
+    canActivate:[LivreurGuard]
   },
   {
     path:'conditionUtilisation',

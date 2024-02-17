@@ -16,7 +16,7 @@ export class ClientGuard implements CanActivate {
     if (this.allServicesService.whoIsOnline() === "client") {
       return true;
     } else {
-      this.allServicesService.message('Oops', 'warning', 'Veuillez vous authentifier');
+      this.allServicesService.message('Oops', 'warning', 'Veuillez vous authentifier en tant que client');
       this.router.navigate(['/accueil']);
       return false;
     }

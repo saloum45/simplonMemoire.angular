@@ -16,7 +16,7 @@ export class VendeurGuard implements CanActivate {
     if (this.allServicesService.whoIsOnline() === "commercant") {
       return true;
     } else {
-      this.allServicesService.message('Oops', 'warning', 'Veuillez vous authentifier');
+      this.allServicesService.message('Oops', 'warning', 'Veuillez vous authentifier en tant que vendeur');
       this.router.navigate(['/accueil']);
       return false;
     }
