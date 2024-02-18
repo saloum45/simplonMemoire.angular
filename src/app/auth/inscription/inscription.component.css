@@ -130,3 +130,21 @@
     flex-direction: column;
   }
 }
+
+/* Validation */
+
+.form-element span
+{
+  font-size: 12px;
+  display: none;
+}
+.error
+{
+  display: inline-block !important;
+  color: red !important;
+}
+.success
+{
+  display: inline-block !important;
+  color: rgb(45, 194, 77) !important;
+}

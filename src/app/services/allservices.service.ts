@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Produit } from '../models/produit';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // import { HttpClientModule } from '@angular/common/http';
 
 
@@ -68,7 +69,7 @@ export class AllservicesService {
         title: title,
         text: message,
         icon: icon,
-        timer: 1000
+        timer: 800
       });
     }else{
 
@@ -223,5 +224,16 @@ export class AllservicesService {
         return 0;
       }
     });
+  }
+
+  // popup notiflix
+  errorMessage(message:any){
+    Notify.failure(message);
+
+    // Notify.
+  }
+
+  successMessage(message:any){
+    Notify.success(message);
   }
 }

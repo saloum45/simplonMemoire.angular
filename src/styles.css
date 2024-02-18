@@ -149,3 +149,17 @@ thead#thead .last-th
 
 
 }
+
+/* for input error */
+input.inputError
+{
+  border-bottom: 2px red solid !important;
+  width: 10%;
+  /* border-color: red; */
+}
+input.inputSuccess
+{
+  border-bottom: 2px rgb(71, 202, 71) solid !important;
+  /* width: 10%; */
+  /* border-color: red; */
+}
