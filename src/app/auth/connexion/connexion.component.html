@@ -5,12 +5,19 @@
 
       <div class="form-left">
         <div class="form-element">
-          <label for="">Email</label>
-          <input type="email" [(ngModel)]="email" style="margin-left: 10px;">
+          <div class="d-flex flex-column">
+            <span class="span_validate" id="validationEmail"></span>
+            <label for="">Email </label>
+          </div>
+          <input type="email" [(ngModel)]="email" style="margin-left: 10px;" (input)="emailValidate()">
         </div>
         <div class="form-element">
-          <label for="">Pass</label>
-          <input type="password" id="passwordInput" [(ngModel)]="password" style="margin-left: 10px;">
+          <div class="d-flex flex-column">
+            <span class="span_validate" id="validationPasse"></span>
+           
+            <label for="">Pass </label>
+          </div>
+          <input type="password" id="passwordInput" [(ngModel)]="password" style="margin-left: 10px;" (input)="passeValidate()">
           <i class="bi bi-eye"  (click)="showPassword()"></i>
         </div>
       </div>
@@ -19,7 +26,7 @@
       </div>
     </div>
     <div class="text-center w-100">
-      <button class="btn" (click)="connexion()">Connexion</button>
+      <button class="btn" (click)="connexion()" [disabled]="truthyTab.length<2">Connexion</button>
     </div>
   </div>
 </div>

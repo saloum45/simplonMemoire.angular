@@ -22,25 +22,25 @@
     <div class="d-flex justify-content-between px-4 w-100 form-left-container">
       <div class="form-left">
         <div class="form-element">
-          <label for="">Nom <span class="" id="validationNom"></span></label>
+          <label for="">Nom <span class="span_validate" id="validationNom"></span></label>
           <input type="text" [(ngModel)]="nom" (input)="nomValidate()"/>
         </div>
         <div class="form-element">
-          <label for="">Naissance <span class="" id="validationNaissance"></span></label>
+          <label for="">Naissance <span class="span_validate" id="validationNaissance"></span></label>
           <input type="date" [(ngModel)]="naissance" id="inputDate"/>
         </div>
         <div class="form-element">
-          <label for="">Adresse <span class="" id="validationAdresse"></span></label>
+          <label for="">Adresse <span class="span_validate" id="validationAdresse"></span></label>
           <input type="text" [(ngModel)]="adresse" (input)="adresseValidate()"/>
         </div>
         <div class="form-element">
-          <label for="">Email <span class="" id="validationEmail"></span></label>
+          <label for="">Email <span class="span_validate" id="validationEmail"></span></label>
           <input type="text" [(ngModel)]="email" (input)="emailValidate()"/>
         </div>
         @if (formType) {
 
         <div class="form-element">
-          <label for="">NIN <span class="" id="validationNIN"></span></label>
+          <label for="">NIN <span class="span_validate" id="validationNIN"></span></label>
           <input type="text" [(ngModel)]="nin" (input)="ninValidate()"/>
         </div>
         }
@@ -48,29 +48,29 @@
 
       <div class="form-left mt-3">
         <div class="form-element">
-          <label for="">Prenom <span class="" id="validationPrenom"></span></label>
+          <label for="">Prenom <span class="span_validate" id="validationPrenom"></span></label>
           <input type="text" [(ngModel)]="prenom"  (input)="prenomValidate()"/>
         </div>
         <div class="form-element">
-          <label for="">Genre <span class="" id="validationGenre"></span></label>
+          <label for="">Genre <span class="span_validate" id="validationGenre"></span></label>
           <select name="" id="" [(ngModel)]="genre" (change)="genreValidate()">
             <option value="homme">Homme</option>
             <option value="femme">Femme</option>
           </select>
         </div>
         <div class="form-element">
-          <label for="">Tel <span class="" id="validationTelephone"></span></label>
+          <label for="">Tel <span class="span_validate" id="validationTelephone"></span></label>
           <input type="text" [(ngModel)]="numero" (input)="telephoneValidate()" />
         </div>
         @if (formType) {
 
         <div class="form-element">
-          <label for="">NINEA <span class="" id="validationNinea"></span></label>
+          <label for="">NINEA <span class="span_validate" id="validationNinea"></span></label>
           <input type="text" [(ngModel)]="ninea" />
         </div>
         }
         <div class="form-element">
-          <label for="">Passe <span class="" id="validationPasse"></span></label>
+          <label for="">Passe <span class="span_validate" id="validationPasse"></span></label>
           <div class="d-flex justify-content-center w-75">
 
             <input type="password" id="passwordInput" [(ngModel)]="pass" (input)="passeValidate()" style="width: 80%;" />

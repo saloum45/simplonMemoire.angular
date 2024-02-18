@@ -20,6 +20,8 @@ export class ConnexionComponent {
   public password = "";
   public email = "";
   public showHidePassword: any;
+  public truthyTab:any[]=[];
+
   // Methodes
   constructor(private service: AllservicesService, private router: Router) {
 
@@ -27,7 +29,7 @@ export class ConnexionComponent {
 
   // la fonction qui permet d'inscrire un utilisateur
   connexion() {
-    if (this.password == "" || this.email == "") {
+    if (this.password == "" || this.email == "" || this.truthyTab.length<2) {
       this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
     } else {
 
@@ -100,5 +102,58 @@ export class ConnexionComponent {
         });
       }
     }, 10000);
+  }
+
+  // validation
+  emailValidate() {
+    let validationEmail = document.getElementById('validationEmail');
+    const emailRegexGegin = /^[a-zA-Z]+[.a-z0-9]+@[a-z]+[.]+[a-z]{2,}$/;
+    // this.emailError = emailRegexGegin.test(this.email);
+    if (emailRegexGegin.test(this.email)) {
+      // console.log(emailRegexGegin.test(this.email));
+      validationEmail!.innerHTML = 'valide';
+      validationEmail!.classList.remove('error');
+      validationEmail!.classList.add('success');
+      if (this.truthyTab.find((value:any)=>value.email==true)==undefined) {
+        this.truthyTab.push({email:true});
+      }
+      console.log(this.truthyTab);
+    } else {
+      // console.log(emailRegexGegin.test(this.email));
+      validationEmail!.innerHTML = 'invalide';
+      validationEmail!.classList.remove('success');
+      validationEmail!.classList.add('error');
+      if (this.truthyTab.find((value:any)=>value.email==true)!=undefined) {
+        this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.email==true),1);
+      }
+
+    }
+    // console.log(this.truthyTab);
+  }
+
+
+  passeValidate() {
+    let validationPrenom = document.getElementById('validationPasse');
+    const nomPrenomRegex = /^[a-zA-Z]+[a-z0-9]{7,}$/;
+    if (nomPrenomRegex.test(this.password)) {
+      // console.log(nomPrenomRegex.test(this.pass));
+      validationPrenom!.innerHTML = 'valide';
+      validationPrenom!.classList.remove('error');
+      validationPrenom!.classList.add('success');
+      if (this.truthyTab.find((value:any)=>value.passe==true)==undefined) {
+        this.truthyTab.push({passe:true});
+      }
+
+    } else {
+      // console.log(nomPrenomRegex.test(this.pass));
+      validationPrenom!.innerHTML = 'invalide';
+      validationPrenom!.classList.remove('success');
+      validationPrenom!.classList.add('error');
+      if (this.truthyTab.find((value:any)=>value.passe==true)!=undefined) {
+        this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.passe==true),1);
+      }
+    }
+    // console.log(this.truthyTab);
+    // console.log(this.truthyTab.length);
   }
 }

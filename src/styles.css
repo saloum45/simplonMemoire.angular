@@ -164,6 +164,12 @@ input.inputSuccess
   /* border-color: red; */
 }
 
+/* validation */
+span.span_validate
+{
+  font-size: 12px;
+  display: none;
+}
 
 .error
 {
