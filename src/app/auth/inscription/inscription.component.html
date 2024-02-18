@@ -27,7 +27,7 @@
         </div>
         <div class="form-element">
           <label for="">Naissance <span class="" id="validationNaissance"></span></label>
-          <input type="date" [(ngModel)]="naissance" id="inputDate" (input)="dateValidate()"/>
+          <input type="date" [(ngModel)]="naissance" id="inputDate"/>
         </div>
         <div class="form-element">
           <label for="">Adresse <span class="" id="validationAdresse"></span></label>
@@ -52,8 +52,8 @@
           <input type="text" [(ngModel)]="prenom"  (input)="prenomValidate()"/>
         </div>
         <div class="form-element">
-          <label for="">Genre</label>
-          <select name="" id="" [(ngModel)]="genre">
+          <label for="">Genre <span class="" id="validationGenre"></span></label>
+          <select name="" id="" [(ngModel)]="genre" (change)="genreValidate()">
             <option value="homme">Homme</option>
             <option value="femme">Femme</option>
           </select>
@@ -82,10 +82,9 @@
     <div class="text-center w-100 mt-5">
       <i class="bi bi-arrow-return-left" (click)="getBackChoice()"></i>
       @if (formType) {
-
-        <button class="btn" (click)="inscription('api/registerCommercant')" [disabled]="detectedInputError">Inscription</button>
+        <button class="btn" (click)="inscription('api/registerCommercant')" [disabled]="truthyTab.length<8">Inscription</button>
       }@else {
-        <button class="btn" (click)="inscription('api/registerClient')" [disabled]="detectedInputError">Inscription</button>
+        <button class="btn" (click)="inscription('api/registerClient')" [disabled]="truthyTab.length<7">Inscription</button>
 
       }
     </div>

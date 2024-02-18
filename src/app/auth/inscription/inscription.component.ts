@@ -36,7 +36,8 @@ export class InscriptionComponent {
   public showHidePassword: any;
   public emailError: any;
   public detectedInputError = true;
-
+  public validationCompter = 0;
+  public truthyTab:any[]=[];
 
   // Methodes
   constructor(private service: AllservicesService, private router: Router) {
@@ -103,11 +104,16 @@ export class InscriptionComponent {
       validationEmail!.innerHTML = 'valide';
       validationEmail!.classList.remove('error');
       validationEmail!.classList.add('success');
+      if (this.truthyTab.find((value:any)=>value.email==true)==undefined) {
+        this.truthyTab.push({email:true});
+      }
+      // console.log(this.truthyTab);
     } else {
       console.log(emailRegexGegin.test(this.email));
       validationEmail!.innerHTML = 'invalide';
       validationEmail!.classList.remove('success');
       validationEmail!.classList.add('error');
+
     }
   }
 
@@ -120,26 +126,35 @@ export class InscriptionComponent {
       validationNom!.innerHTML = 'valide';
       validationNom!.classList.remove('error');
       validationNom!.classList.add('success');
+      if (this.truthyTab.find((value:any)=>value.nom==true)==undefined) {
+        this.truthyTab.push({nom:true});
+      }
+
     } else {
       console.log(nomPrenomRegex.test(this.nom));
       validationNom!.innerHTML = 'invalide';
       validationNom!.classList.remove('success');
       validationNom!.classList.add('error');
+
     }
   }
   prenomValidate() {
     let validationPrenom = document.getElementById('validationPrenom');
     const nomPrenomRegex = /^[a-zA-Z]{2,}$/;
-    if (nomPrenomRegex.test(this.nom)) {
-      console.log(nomPrenomRegex.test(this.nom));
+    if (nomPrenomRegex.test(this.prenom)) {
+      console.log(nomPrenomRegex.test(this.prenom));
       validationPrenom!.innerHTML = 'valide';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
+      if (this.truthyTab.find((value:any)=>value.prenom==true)==undefined) {
+        this.truthyTab.push({prenom:true});
+      }
     } else {
-      console.log(nomPrenomRegex.test(this.nom));
+      console.log(nomPrenomRegex.test(this.prenom));
       validationPrenom!.innerHTML = 'invalide';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
+
     }
   }
 
@@ -151,11 +166,16 @@ export class InscriptionComponent {
       validationPrenom!.innerHTML = 'valide';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
+      if (this.truthyTab.find((value:any)=>value.telephone==true)==undefined) {
+        this.truthyTab.push({telephone:true});
+      }
+
     } else {
       console.log(nomPrenomRegex.test(this.numero));
       validationPrenom!.innerHTML = 'invalide';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
+
     }
   }
   ninValidate() {
@@ -166,11 +186,16 @@ export class InscriptionComponent {
       validationPrenom!.innerHTML = 'valide';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
+      if (this.truthyTab.find((value:any)=>value.nin==true)==undefined) {
+        this.truthyTab.push({nin:true});
+      }
+
     } else {
       console.log(nomPrenomRegex.test(this.nin));
       validationPrenom!.innerHTML = 'invalide';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
+
     }
   }
 
@@ -182,11 +207,16 @@ export class InscriptionComponent {
       validationPrenom!.innerHTML = 'valide';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
+      if (this.truthyTab.find((value:any)=>value.adresse==true)==undefined) {
+        this.truthyTab.push({adresse:true});
+      }
+
     } else {
       console.log(nomPrenomRegex.test(this.adresse));
       validationPrenom!.innerHTML = 'invalide';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
+
     }
   }
 
@@ -198,13 +228,30 @@ export class InscriptionComponent {
       validationPrenom!.innerHTML = 'valide';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
+      if (this.truthyTab.find((value:any)=>value.passe==true)==undefined) {
+        this.truthyTab.push({passe:true});
+      }
+
     } else {
       console.log(nomPrenomRegex.test(this.pass));
       validationPrenom!.innerHTML = 'invalide';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
+
     }
+    console.log(this.truthyTab);
+    console.log(this.truthyTab.length);
   }
+
+  genreValidate() {
+
+      if (this.truthyTab.find((value:any)=>value.genre==true)==undefined) {
+        this.truthyTab.push({genre:true});
+      }
+
+
+  }
+
   dateValidate() {
     let validationPrenom = document.getElementById('validationNaissance');
     let inputDate = document.getElementById('inputDate');
@@ -216,11 +263,14 @@ export class InscriptionComponent {
       validationPrenom!.innerHTML = 'valide';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
+
+
     } else {
       console.log(nomPrenomRegex.test(this.pass));
       validationPrenom!.innerHTML = 'invalide';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
+
     }
   }
 }

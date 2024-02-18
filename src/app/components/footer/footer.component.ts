@@ -30,10 +30,9 @@ export class FooterComponent implements OnInit {
   }
 
   newsletterSubscribe() {
-    if (this.email == "") {
+    if (this.email == "" || this.emailError==true) {
       this.service.message("OOps", "error", "Veuillez renseigner le champs");
     } else {
-
       this.service.post('api/inscriptionNewsletter', { email: this.email }, ((reponse: any) => {
         console.log(reponse);
         if (reponse.status==200) {
