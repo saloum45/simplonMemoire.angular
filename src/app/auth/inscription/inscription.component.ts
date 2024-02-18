@@ -35,7 +35,7 @@ export class InscriptionComponent {
   public formType = false;
   public showHidePassword: any;
   public emailError: any;
-  public detectedInputError=true;
+  public detectedInputError = true;
 
 
   // Methodes
@@ -95,80 +95,130 @@ export class InscriptionComponent {
   // validations
 
   emailValidate() {
-    let validationEmail=document.getElementById('validationEmail');
-    const emailRegexGegin = /^[a-z]+[.a-z0-9]+@[a-z]+[.]+[a-z]{2,}$/;
+    let validationEmail = document.getElementById('validationEmail');
+    const emailRegexGegin = /^[a-zA-Z]+[.a-z0-9]+@[a-z]+[.]+[a-z]{2,}$/;
     this.emailError = emailRegexGegin.test(this.email);
-    if (emailRegexGegin.test(this.email) ) {
+    if (emailRegexGegin.test(this.email)) {
       console.log(emailRegexGegin.test(this.email));
-      validationEmail!.innerHTML='valide';
+      validationEmail!.innerHTML = 'valide';
       validationEmail!.classList.remove('error');
       validationEmail!.classList.add('success');
-    }else{
+    } else {
       console.log(emailRegexGegin.test(this.email));
-      validationEmail!.innerHTML='invalide';
+      validationEmail!.innerHTML = 'invalide';
       validationEmail!.classList.remove('success');
       validationEmail!.classList.add('error');
     }
   }
 
   nomValidate() {
-    let validationNom=document.getElementById('validationNom');
+    let validationNom = document.getElementById('validationNom');
 
     const nomPrenomRegex = /^[a-zA-Z]{2,}$/;
-    if (nomPrenomRegex.test(this.nom) ) {
+    if (nomPrenomRegex.test(this.nom)) {
       console.log(nomPrenomRegex.test(this.nom));
-      validationNom!.innerHTML='valide';
+      validationNom!.innerHTML = 'valide';
       validationNom!.classList.remove('error');
       validationNom!.classList.add('success');
-    }else{
+    } else {
       console.log(nomPrenomRegex.test(this.nom));
-      validationNom!.innerHTML='invalide';
+      validationNom!.innerHTML = 'invalide';
       validationNom!.classList.remove('success');
       validationNom!.classList.add('error');
     }
   }
   prenomValidate() {
-    let validationPrenom=document.getElementById('validationPrenom');
+    let validationPrenom = document.getElementById('validationPrenom');
     const nomPrenomRegex = /^[a-zA-Z]{2,}$/;
-    if (nomPrenomRegex.test(this.nom) ) {
+    if (nomPrenomRegex.test(this.nom)) {
       console.log(nomPrenomRegex.test(this.nom));
-      validationPrenom!.innerHTML='valide';
+      validationPrenom!.innerHTML = 'valide';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
-    }else{
+    } else {
       console.log(nomPrenomRegex.test(this.nom));
-      validationPrenom!.innerHTML='invalide';
+      validationPrenom!.innerHTML = 'invalide';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
     }
   }
 
   telephoneValidate() {
-    let validationPrenom=document.getElementById('validationTelephone');
+    let validationPrenom = document.getElementById('validationTelephone');
     const nomPrenomRegex = /^[0-9]{9,}$/;
-    if (nomPrenomRegex.test(this.numero) ) {
+    if (nomPrenomRegex.test(this.numero)) {
       console.log(nomPrenomRegex.test(this.numero));
-      validationPrenom!.innerHTML='valide';
+      validationPrenom!.innerHTML = 'valide';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
-    }else{
+    } else {
       console.log(nomPrenomRegex.test(this.numero));
-      validationPrenom!.innerHTML='invalide';
+      validationPrenom!.innerHTML = 'invalide';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
     }
   }
   ninValidate() {
-    let validationPrenom=document.getElementById('validationTelephone');
+    let validationPrenom = document.getElementById('validationNIN');
     const nomPrenomRegex = /^[0-9]{10,}$/;
-    if (nomPrenomRegex.test(this.nin) ) {
+    if (nomPrenomRegex.test(this.nin)) {
       console.log(nomPrenomRegex.test(this.nin));
-      validationPrenom!.innerHTML='valide';
+      validationPrenom!.innerHTML = 'valide';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
-    }else{
+    } else {
       console.log(nomPrenomRegex.test(this.nin));
-      validationPrenom!.innerHTML='invalide';
+      validationPrenom!.innerHTML = 'invalide';
+      validationPrenom!.classList.remove('success');
+      validationPrenom!.classList.add('error');
+    }
+  }
+
+  adresseValidate() {
+    let validationPrenom = document.getElementById('validationAdresse');
+    const nomPrenomRegex = /^[a-zA-Z]+[a-z0-9]{3,}$/;
+    if (nomPrenomRegex.test(this.adresse)) {
+      console.log(nomPrenomRegex.test(this.adresse));
+      validationPrenom!.innerHTML = 'valide';
+      validationPrenom!.classList.remove('error');
+      validationPrenom!.classList.add('success');
+    } else {
+      console.log(nomPrenomRegex.test(this.adresse));
+      validationPrenom!.innerHTML = 'invalide';
+      validationPrenom!.classList.remove('success');
+      validationPrenom!.classList.add('error');
+    }
+  }
+
+  passeValidate() {
+    let validationPrenom = document.getElementById('validationPasse');
+    const nomPrenomRegex = /^[a-zA-Z]+[a-z0-9]{7,}$/;
+    if (nomPrenomRegex.test(this.pass)) {
+      console.log(nomPrenomRegex.test(this.pass));
+      validationPrenom!.innerHTML = 'valide';
+      validationPrenom!.classList.remove('error');
+      validationPrenom!.classList.add('success');
+    } else {
+      console.log(nomPrenomRegex.test(this.pass));
+      validationPrenom!.innerHTML = 'invalide';
+      validationPrenom!.classList.remove('success');
+      validationPrenom!.classList.add('error');
+    }
+  }
+  dateValidate() {
+    let validationPrenom = document.getElementById('validationNaissance');
+    let inputDate = document.getElementById('inputDate');
+    console.warn(inputDate)
+    // inputDate!.ariaValueMax='Thu Feb 22 2005 00:00:00 GMT+0000';
+    const nomPrenomRegex = /^[0-9]+[/]+[0-9]+[/]+[0-9]{2005,}$/;
+    if (nomPrenomRegex.test(this.pass)) {
+      console.log(nomPrenomRegex.test(this.pass));
+      validationPrenom!.innerHTML = 'valide';
+      validationPrenom!.classList.remove('error');
+      validationPrenom!.classList.add('success');
+    } else {
+      console.log(nomPrenomRegex.test(this.pass));
+      validationPrenom!.innerHTML = 'invalide';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
     }

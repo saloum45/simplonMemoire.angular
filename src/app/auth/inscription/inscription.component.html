@@ -27,11 +27,11 @@
         </div>
         <div class="form-element">
           <label for="">Naissance <span class="" id="validationNaissance"></span></label>
-          <input type="date" [(ngModel)]="naissance" />
+          <input type="date" [(ngModel)]="naissance" id="inputDate" (input)="dateValidate()"/>
         </div>
         <div class="form-element">
           <label for="">Adresse <span class="" id="validationAdresse"></span></label>
-          <input type="text" [(ngModel)]="adresse" />
+          <input type="text" [(ngModel)]="adresse" (input)="adresseValidate()"/>
         </div>
         <div class="form-element">
           <label for="">Email <span class="" id="validationEmail"></span></label>
@@ -73,7 +73,7 @@
           <label for="">Passe <span class="" id="validationPasse"></span></label>
           <div class="d-flex justify-content-center w-75">
 
-            <input type="password" id="passwordInput" [(ngModel)]="pass" style="width: 80%;" />
+            <input type="password" id="passwordInput" [(ngModel)]="pass" (input)="passeValidate()" style="width: 80%;" />
             <i class="bi bi-eye"  (click)="showPassword()"></i>
           </div>
         </div>

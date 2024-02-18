@@ -163,3 +163,15 @@ input.inputSuccess
   /* width: 10%; */
   /* border-color: red; */
 }
+
+
+.error
+{
+  display: inline-block !important;
+  color: red !important;
+}
+.success
+{
+  display: inline-block !important;
+  color: rgb(45, 194, 77) !important;
+}

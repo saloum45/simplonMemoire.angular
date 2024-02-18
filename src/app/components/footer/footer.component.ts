@@ -16,6 +16,7 @@ import { RouterLink } from '@angular/router';
 export class FooterComponent implements OnInit {
   // Attributs
   public email = "";
+  public emailError=true;
 
 
 
@@ -46,4 +47,21 @@ export class FooterComponent implements OnInit {
   }
 
 
+  emailValidate() {
+    let validationEmail = document.getElementById('validationEmail');
+    const emailRegexGegin = /^[a-zA-Z]+[.a-z0-9]+@[a-z]+[.]+[a-z]{2,}$/;
+    if (emailRegexGegin.test(this.email)) {
+      console.log(emailRegexGegin.test(this.email));
+      validationEmail!.innerHTML = 'valide';
+      validationEmail!.classList.remove('error');
+      validationEmail!.classList.add('success');
+      this.emailError=false;
+    } else {
+      console.log(emailRegexGegin.test(this.email));
+      validationEmail!.innerHTML = 'invalide';
+      validationEmail!.classList.remove('success');
+      validationEmail!.classList.add('error');
+      this.emailError=true;
+    }
+  }
 }
