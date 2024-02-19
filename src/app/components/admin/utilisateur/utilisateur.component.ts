@@ -29,6 +29,7 @@ export class UtilisateurComponent implements OnInit{
       console.warn(reponse);
       this.listeUtilisateurs=reponse.users;
     }));
+    
     this.dtOptions = {
       searching: true,
       lengthChange: false,

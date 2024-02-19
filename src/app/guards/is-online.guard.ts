@@ -13,11 +13,11 @@ export class IsOnlineGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.allServicesService.IsOnline()) {
+    if (this.allServicesService.IsOnline() && this.allServicesService.whoIsOnline()!='admin') {
       return true;
     } else {
-      this.allServicesService.message('Oops', 'warning', 'Veuillez vous authentifier');
-      this.router.navigate(['/accueil']);
+      this.allServicesService.message('Oops', 'warning', 'Veuillez vous authentifier en tant que (client, livreur,vendeur)');
+      // this.router.navigate(['/accueil']);
       return false;
     }
   }
