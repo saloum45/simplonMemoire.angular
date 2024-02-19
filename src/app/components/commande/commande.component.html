@@ -20,7 +20,7 @@
       <tbody>
         @for (item of commandes; track $index) {
         <tr>
-          <td>{{ item.date_commande | date : "dd/MM/yy à hh:mm" }}</td>
+          <td>{{ item.date_commande | date : 'medium':'fr' }}</td>
           <td>{{ item.nombre_articles }}</td>
           <td>{{ item.montant_total }}</td>
           <td>{{ item.etat_commande }}</td>
