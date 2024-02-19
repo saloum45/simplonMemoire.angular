@@ -118,6 +118,9 @@ export class InscriptionComponent {
       }
 
     }
+    if (this.email=="") {
+      validationEmail!.innerHTML="";
+    }
     // console.log(this.truthyTab);
   }
 
@@ -143,6 +146,9 @@ export class InscriptionComponent {
         this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.nom==true),1);
       }
     }
+    if (this.nom=="") {
+      validationNom!.innerHTML="";
+    }
   }
   prenomValidate() {
     let validationPrenom = document.getElementById('validationPrenom');
@@ -163,6 +169,9 @@ export class InscriptionComponent {
       if (this.truthyTab.find((value:any)=>value.prenom==true)!=undefined) {
         this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.prenom==true),1);
       }
+    }
+    if (this.prenom=="") {
+      validationPrenom!.innerHTML="";
     }
   }
 
@@ -187,6 +196,9 @@ export class InscriptionComponent {
         this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.telephone==true),1);
       }
     }
+    if (this.numero=="") {
+      validationPrenom!.innerHTML="";
+    }
   }
   ninValidate() {
     let validationPrenom = document.getElementById('validationNIN');
@@ -208,6 +220,9 @@ export class InscriptionComponent {
       if (this.truthyTab.find((value:any)=>value.nin==true)!=undefined) {
         this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.nin==true),1);
       }
+    }
+    if (this.nin=="") {
+      validationPrenom!.innerHTML="";
     }
   }
 
@@ -232,6 +247,9 @@ export class InscriptionComponent {
         this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.adresse==true),1);
       }
     }
+    if (this.adresse=="") {
+      validationPrenom!.innerHTML="";
+    }
   }
 
   passeValidate() {
@@ -254,6 +272,9 @@ export class InscriptionComponent {
       if (this.truthyTab.find((value:any)=>value.passe==true)!=undefined) {
         this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.passe==true),1);
       }
+    }
+    if (this.pass=="") {
+      validationPrenom!.innerHTML="";
     }
     // console.log(this.truthyTab);
     // console.log(this.truthyTab.length);
@@ -310,6 +331,9 @@ export class InscriptionComponent {
       if (this.truthyTab.find((value:any)=>value.ninea==true)!=undefined) {
         this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.ninea==true),1);
       }
+    }
+    if (this.ninea=="") {
+      validationPrenom!.innerHTML="";
     }
     // console.log(this.truthyTab);
     // console.log(this.truthyTab.length);

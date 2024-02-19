@@ -6,16 +6,15 @@
       <div class="form-left">
         <div class="form-element">
           <div class="d-flex flex-column">
-            <span class="span_validate" id="validationEmail"></span>
             <label for="">Email </label>
+            <span class="span_validate" id="validationEmail"></span>
           </div>
           <input type="email" [(ngModel)]="email" style="margin-left: 10px;" (input)="emailValidate()">
         </div>
         <div class="form-element">
           <div class="d-flex flex-column">
-            <span class="span_validate" id="validationPasse"></span>
-           
             <label for="">Pass </label>
+            <span class="span_validate" id="validationPasse"></span>
           </div>
           <input type="password" id="passwordInput" [(ngModel)]="password" style="margin-left: 10px;" (input)="passeValidate()">
           <i class="bi bi-eye"  (click)="showPassword()"></i>

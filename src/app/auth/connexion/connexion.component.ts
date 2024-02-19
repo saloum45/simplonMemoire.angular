@@ -106,8 +106,10 @@ export class ConnexionComponent {
 
   // validation
   emailValidate() {
+
     let validationEmail = document.getElementById('validationEmail');
     const emailRegexGegin = /^[a-zA-Z]+[.a-z0-9]+@[a-z]+[.]+[a-z]{2,}$/;
+
     // this.emailError = emailRegexGegin.test(this.email);
     if (emailRegexGegin.test(this.email)) {
       // console.log(emailRegexGegin.test(this.email));
@@ -127,6 +129,9 @@ export class ConnexionComponent {
         this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.email==true),1);
       }
 
+    }
+    if (this.email=="") {
+      validationEmail!.innerHTML="";
     }
     // console.log(this.truthyTab);
   }
@@ -152,6 +157,9 @@ export class ConnexionComponent {
       if (this.truthyTab.find((value:any)=>value.passe==true)!=undefined) {
         this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.passe==true),1);
       }
+    }
+    if (this.password=="") {
+      validationPrenom!.innerHTML="";
     }
     // console.log(this.truthyTab);
     // console.log(this.truthyTab.length);

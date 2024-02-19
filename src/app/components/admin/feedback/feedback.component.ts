@@ -72,16 +72,21 @@ export class FeedbackComponent {
   }
 
   repondreFeedback() {
+    if (this.reponse=="") {
+      this.service.message('Oops', 'error', 'Veuillez renseigner le champs');
 
-    this.service.post("api/RepondreFeedback/" + this.details.id, { message: this.reponse }, ((reponse: any) => {
-      console.log(reponse);
-      if (reponse.status == 200) {
-        this.closeAddExpenseModal.nativeElement.click();
-        this.service.message('Parfait', 'success', 'Envoie fait avec succès');
-      } else {
-        this.service.message('Oops', 'error', 'Vériifer la saisie');
-      }
-    }));
+    }else{
+
+      this.service.post("api/RepondreFeedback/" + this.details.id, { message: this.reponse }, ((reponse: any) => {
+        console.log(reponse);
+        if (reponse.status == 200) {
+          this.closeAddExpenseModal.nativeElement.click();
+          this.service.message('Parfait', 'success', 'Envoie fait avec succès');
+        } else {
+          this.service.message('Oops', 'error', 'Vériifer la saisie');
+        }
+      }));
+    }
 
   }
 }

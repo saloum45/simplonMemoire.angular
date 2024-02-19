@@ -169,6 +169,7 @@ span.span_validate
 {
   font-size: 12px;
   display: none;
+  transition: ease 1.5s;
 }
 
 .error
