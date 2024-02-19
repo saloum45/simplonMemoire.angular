@@ -139,7 +139,7 @@ export class ConnexionComponent {
 
   passeValidate() {
     let validationPrenom = document.getElementById('validationPasse');
-    const nomPrenomRegex = /^[a-zA-Z]+[a-z0-9]{7,}$/;
+    const nomPrenomRegex = /^[a-zA-Z]+[a-z0-9-@_&]{7,}$/;
     if (nomPrenomRegex.test(this.password)) {
       // console.log(nomPrenomRegex.test(this.pass));
       validationPrenom!.innerHTML = 'valide';
