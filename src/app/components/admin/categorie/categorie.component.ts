@@ -43,7 +43,7 @@ export class CategorieComponent {
   }
 
   loadAllCategories(){
-    this.service.get("api/categories",((reponse:any)=>{
+    this.service.get("api/NombreproduitsByCategorie",((reponse:any)=>{
       this.categories=reponse.data;
       console.log(this.categories);
     }));
