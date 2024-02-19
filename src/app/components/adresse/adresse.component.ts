@@ -64,6 +64,19 @@ export class AdresseComponent {
         this.adresse = reponse.client.adresse;
       });
 
+    }else if (this.whoIsOnline() == "livreur") {
+      // alert("client")
+      this.service.get('api/showLivreur', (reponse: any) => {
+        console.log("user", reponse);
+        this.nom = reponse.livreur.nom;
+        this.prenom = reponse.livreur.prenom;
+        this.email = reponse.livreur.email;
+        this.naissance = reponse.livreur.date_naiss;
+        this.numero = reponse.livreur.numero_tel;
+        this.genre = reponse.livreur.genre;
+        this.adresse = reponse.livreur.adresse;
+      });
+
     }
   }
   // la fonction qui permet d'inscrire un utilisateur

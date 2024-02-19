@@ -19,7 +19,7 @@ export class VenteComponent {
  public ventes:any[]=[];
  public produitsVentes:any[]=[];
  public urlBaseImage=this.service.urlBaseImage;
- 
+
 
 // Methodes
 constructor(private service:AllservicesService){
@@ -39,6 +39,7 @@ ngOnInit(): void {
  this.service.get('api/listeVentes',((reponse:any)=>{
   console.log(reponse);
   this.ventes=reponse.data;
+  // console.log('rep '+this.ventes);
  }));
 }
 

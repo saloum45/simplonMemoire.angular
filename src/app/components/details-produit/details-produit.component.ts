@@ -77,6 +77,9 @@ export class DetailsProduitComponent implements OnInit {
       }
     } else {
       this.quantite--;
+      if (this.quantite < 1) {
+        this.quantite = 1;
+      }
     }
   }
 

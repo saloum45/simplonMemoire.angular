@@ -124,7 +124,7 @@ export class InscriptionComponent {
   nomValidate() {
     let validationNom = document.getElementById('validationNom');
 
-    const nomPrenomRegex = /^[a-zA-Z]{2,}$/;
+    const nomPrenomRegex = /^[a-zA-Z]{2,25}$/;
     if (nomPrenomRegex.test(this.nom)) {
       // console.log(nomPrenomRegex.test(this.nom));
       validationNom!.innerHTML = 'valide';
@@ -146,7 +146,7 @@ export class InscriptionComponent {
   }
   prenomValidate() {
     let validationPrenom = document.getElementById('validationPrenom');
-    const nomPrenomRegex = /^[a-zA-Z]{2,}$/;
+    const nomPrenomRegex = /^[a-zA-Z]{2,25}$/;
     if (nomPrenomRegex.test(this.prenom)) {
       // console.log(nomPrenomRegex.test(this.prenom));
       validationPrenom!.innerHTML = 'valide';
@@ -168,7 +168,7 @@ export class InscriptionComponent {
 
   telephoneValidate() {
     let validationPrenom = document.getElementById('validationTelephone');
-    const nomPrenomRegex = /^[0-9]{9,}$/;
+    const nomPrenomRegex = /^(77|76|75|78|33)[0-9]{7}$/;
     if (nomPrenomRegex.test(this.numero)) {
       // console.log(nomPrenomRegex.test(this.numero));
       validationPrenom!.innerHTML = 'valide';
@@ -190,7 +190,7 @@ export class InscriptionComponent {
   }
   ninValidate() {
     let validationPrenom = document.getElementById('validationNIN');
-    const nomPrenomRegex = /^[0-9]{10,}$/;
+    const nomPrenomRegex = /^[0-9]{10,15}$/;
     if (nomPrenomRegex.test(this.nin)) {
       // console.log(nomPrenomRegex.test(this.nin));
       validationPrenom!.innerHTML = 'valide';
@@ -236,7 +236,7 @@ export class InscriptionComponent {
 
   passeValidate() {
     let validationPrenom = document.getElementById('validationPasse');
-    const nomPrenomRegex = /^[a-zA-Z]+[a-z0-9]{7,}$/;
+    const nomPrenomRegex = /^[a-zA-Z]+[a-z0-9-@_&]{7,}$/;
     if (nomPrenomRegex.test(this.pass)) {
       // console.log(nomPrenomRegex.test(this.pass));
       validationPrenom!.innerHTML = 'valide';
@@ -288,5 +288,30 @@ export class InscriptionComponent {
       validationPrenom!.classList.add('error');
 
     }
+  }
+
+  nineaValidate() {
+    let validationPrenom = document.getElementById('validationNinea');
+    const nomPrenomRegex = /^[0-9]+[0-9]{8,8}$/;
+    if (nomPrenomRegex.test(this.ninea)) {
+      // console.log(nomPrenomRegex.test(this.pass));
+      validationPrenom!.innerHTML = 'valide';
+      validationPrenom!.classList.remove('error');
+      validationPrenom!.classList.add('success');
+      if (this.truthyTab.find((value:any)=>value.ninea==true)==undefined) {
+        this.truthyTab.push({ninea:true});
+      }
+
+    } else {
+      // console.log(nomPrenomRegex.test(this.pass));
+      validationPrenom!.innerHTML = 'invalide';
+      validationPrenom!.classList.remove('success');
+      validationPrenom!.classList.add('error');
+      if (this.truthyTab.find((value:any)=>value.ninea==true)!=undefined) {
+        this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.ninea==true),1);
+      }
+    }
+    // console.log(this.truthyTab);
+    // console.log(this.truthyTab.length);
   }
 }
