@@ -139,24 +139,7 @@
               </p>
             </div>
           }
-          <!-- <p-carousel [value]="commentaires" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
-            <ng-template let-product pTemplate="item">
-                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-                    <div class="mb-3">
-                        <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" [alt]="product.name" class="w-6 shadow-2" />
-                    </div>
-                    <div>
-                        <h4 class="mb-1">{{ product.name }}</h4>
-                        <h6 class="mt-0 mb-3">{{ '$' + product.price }}</h6>
-                        <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag>
-                        <div class="mt-5 flex align-items-center justify-content-center gap-2">
-                            <p-button icon="pi pi-search" [rounded]="true" />
-                            <p-button icon="pi pi-star-fill" [rounded]="true" severity="secondary" />
-                        </div>
-                    </div>
-                </div>
-            </ng-template>
-        </p-carousel> -->
+
 
         </div>
       </div>
@@ -167,23 +150,33 @@
         aria-labelledby="nav-profile-tab"
         tabindex="0"
       >
-        <div class="row row-cols-2 row-cols-md-4 g-4 mt-1 similaire-items">
-          <div class="col" [routerLink]="['/produit', 1]">
-            <div class="card" id="card">
-              <div class="text-center image">
-                <img src="assets/Madd.png" alt="" />
-              </div>
-              <div class="card-text">
-                <h6 class="text-center">Confiture de madd</h6>
-                <span class="text-center">2000 fcfa</span>
-                <div class="text-center">
-                  <button class="btn">Ajouter au panier</button>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col">
+      @if (produitSimilaires.length==0) {
+        <div class="m-auto text-center">
+          <img src="assets/empty_image.png" class="img-fluid" alt="" style="height: 250px;width: 250px;">
+          <h5 class="text-center">Pas de produits similaires pour le moment</h5>
+        </div>
+      }
+        <div class="row row-cols-2 row-cols-md-4 g-4 mt-1 similaire-items">
+          @for (item of produitSimilaires.slice(0,4); track $index) {
+
+            <div class="col" [routerLink]="['/produit', item.id]">
+              <div class="card" id="card">
+                <div class="text-center image">
+                  <img src="{{urlBaseImage}}{{item.image}}" alt="" />
+                </div>
+                <div class="card-text">
+                  <h6 class="text-center">Confiture de madd</h6>
+                  <span class="text-center">2000 fcfa</span>
+                  <div class="text-center">
+                    <button class="btn">Ajouter au panier</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+
+          <!-- <div class="col">
             <div class="card" id="card">
               <div class="text-center image">
                 <img src="assets/Madd.png" alt="" />
@@ -196,8 +189,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col">
+          </div> -->
+          <!-- <div class="col">
             <div class="card" id="card">
               <div class="text-center image">
                 <img src="assets/Madd.png" alt="" />
@@ -210,8 +203,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col">
+          </div> -->
+          <!-- <div class="col">
             <div class="card" id="card">
               <div class="text-center image">
                 <img src="assets/Madd.png" alt="" />
@@ -224,7 +217,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@
         @for (item of livraisons; track $index) {
         <tr>
           <td class="align-middle">
-            {{ item.Date_commande | date : "dd/MM/yy à hh:mm" }}
+            {{ item.Date_commande | date : 'medium':'fr' }}
           </td>
           <td class="align-middle">
             @for (item1 of item.commercants; track $index) {

@@ -19,7 +19,7 @@ export class AllservicesService {
   // urlBaseImage = 'https://www.falltech.site/panierlocal_backend/public/images/';
 
   public readonly prixLivraion = 2000;
-  public nombreProduitPanier =JSON.parse(localStorage.getItem('panier') ?? '[]').length;
+  public nombreProduitPanier = JSON.parse(localStorage.getItem('panier') ?? '[]').length;
 
   constructor(private http: HttpClient) {
 
@@ -63,21 +63,29 @@ export class AllservicesService {
 
 
   message(title: any, icon: any, message: any) {
-    if(icon=='success'){
+    if (icon == 'warning') {
 
       Swal.fire({
         title: title,
         text: message,
         icon: icon,
-        timer: 800
+        timer: 600
       });
-    }else{
+    } else if (icon == 'success') {
 
+      Swal.fire({
+        title: title,
+        text: message,
+        icon: icon,
+        timer: 600
+      });
+    } else {
       Swal.fire({
         title: title,
         text: message,
         icon: icon
       });
+
     }
   }
 
@@ -98,7 +106,7 @@ export class AllservicesService {
       return null;
     }
   }
-// la fonction qui retourne l'id de l'utilisateur connécté
+  // la fonction qui retourne l'id de l'utilisateur connécté
   IsOnline() {
     if (localStorage.getItem("onlineUser") != null || localStorage.getItem("onlineUser") != undefined) {
       let data = JSON.parse(localStorage.getItem("onlineUser") ?? '{}');
@@ -157,7 +165,7 @@ export class AllservicesService {
       }
     }
     // cardContent = JSON.parse(localStorage.getItem('panier') ?? '[]').length;
-    this.nombreProduitPanier =JSON.parse(localStorage.getItem('panier') ?? '[]').length;
+    this.nombreProduitPanier = JSON.parse(localStorage.getItem('panier') ?? '[]').length;
   }
 
   getFromPanier() {
@@ -227,13 +235,13 @@ export class AllservicesService {
   }
 
   // popup notiflix
-  errorMessage(message:any){
+  errorMessage(message: any) {
     Notify.failure(message);
 
     // Notify.
   }
 
-  successMessage(message:any){
+  successMessage(message: any) {
     Notify.success(message);
   }
 }

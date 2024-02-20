@@ -48,7 +48,7 @@ export class FooterComponent implements OnInit {
 
   emailValidate() {
     let validationEmail = document.getElementById('validationEmail');
-    const emailRegexGegin = /^[a-zA-Z]+[.a-z0-9]+@[a-z]+[.]+[a-z]{2,}$/;
+    const emailRegexGegin = /^[a-zA-Z]+[.a-z0-9]+@[a-z]+[.]{1}[a-z]{2,}$/;
     if (emailRegexGegin.test(this.email)) {
       console.log(emailRegexGegin.test(this.email));
       validationEmail!.innerHTML = 'valide';
@@ -62,5 +62,9 @@ export class FooterComponent implements OnInit {
       validationEmail!.classList.add('error');
       this.emailError=true;
     }
+    if (this.email=="") {
+      validationEmail!.innerHTML="";
+    }
   }
+
 }

@@ -22,6 +22,7 @@ export class DetailsProduitComponent implements OnInit {
   // Attributs
   public quantite = 1;
   public produit: any;
+  public produitSimilaires: any[]=[];
   public note = 0;
   public commentaire = "";
   public commentaires: any[] = [];
@@ -39,6 +40,7 @@ export class DetailsProduitComponent implements OnInit {
       console.log("details", reponse.data);
     });
     this.loadCommentaires();
+    this.getProduitSimilaires();
   }
 
   loadCommentaires() {
@@ -160,5 +162,12 @@ export class DetailsProduitComponent implements OnInit {
       this.service.message("Oops", "warning", "La connexion est requise pour cette action");
     }
 
+  }
+
+  getProduitSimilaires(){
+    this.service.get('api/produitsSimilaire/'+this.activatedRouter.snapshot.params['id'],((reponse:any)=>{
+      console.log('similaires',reponse);
+      this.produitSimilaires=reponse.data;
+    }));
   }
 }
