@@ -23,9 +23,17 @@
           <input type="text" [(ngModel)]="nin" />
         </div>
         }
-        <div class="form-element">
-          <label for="">Ancien Pass</label>
-          <input type="text" [(ngModel)]="pass" />
+        <div class="form-element flex-column">
+          <div class="d-flex justify-content-between">
+
+            <label for="">Nouveau Pass</label>
+            <div class="change-pass-bloc">
+
+              <input type="password" (input)="passeValidate()" id="passwordInput" style="width: 100%;" [(ngModel)]="pass" />
+              <i class="bi bi-eye"  (click)="showPassword()"></i>
+            </div>
+          </div>
+          <span class="span_validate" id="validationPasse"></span>
         </div>
       </div>
 
@@ -53,9 +61,17 @@
           <input type="text" [(ngModel)]="ninea" />
         </div>
         }
-        <div class="form-element">
-          <label for="">Nouveau Pass</label>
-          <input type="password" />
+        <div class="form-element flex-column">
+          <div class="d-flex justify-content-between">
+
+            <label for="">Confirm Pass</label>
+            <div class="change-pass-bloc">
+
+              <input type="password" (input)="isPassConforme()" [disabled]="!isConfirmInputAllowed" id="passwordInput" style="width: 100%;" [(ngModel)]="confirmPass" />
+              <i class="bi bi-eye"  (click)="showPassword()"></i>
+            </div>
+          </div>
+          <span class="span_validate" id="ConfirmPasseInput"></span>
         </div>
       </div>
       <!-- <div class="form-image">

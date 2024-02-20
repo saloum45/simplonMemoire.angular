@@ -182,3 +182,11 @@ span.span_validate
   display: inline-block !important;
   color: rgb(45, 194, 77) !important;
 }
+
+
+/* for profile component */
+.change-pass-bloc
+{
+  display: flex;
+  width: 70%;
+}

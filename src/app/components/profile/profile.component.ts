@@ -26,6 +26,10 @@ export class ProfileComponent implements OnInit {
   public pass = "";
   public email = "";
   public user: any;
+  public confirmPass="";
+  public showHidePassword: any;
+  public isConfirmInputAllowed = false;
+
 
   // Methodes
   constructor(private service: AllservicesService, private router: Router) {
@@ -81,32 +85,114 @@ export class ProfileComponent implements OnInit {
   }
   // la fonction qui permet d'inscrire un utilisateur
   modification() {
-    if (this.nom == "" || this.prenom == "") {
-      this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
-    } else {
-      this.user = new Commerçant(this.nom, this.prenom, this.email, this.pass, this.numero, this.nin, this.ninea, this.adresse, this.genre, this.naissance);
-      console.log("user", this.user);
-      this.service.post('api/modifierInfoCommercant', this.user, (reponse: any) => {
-        if (reponse.status == 200) {
-          // console.log('success',reponse);
-          //  this.router.navigate(['/connexion']);
-          this.service.message("Parfait", "success", "Profil modifié avec succès");
-          this.loadProfil();
+    if (this.isConfirmInputAllowed) {
+      if (this.service.whoIsOnline()=='commercant') {
+
+        this.service.post('api/modifierPasswordCommercant',{password:this.pass},((reponse:any)=>{
+          console.log('pass change',reponse);
+          if (reponse.status==200) {
+            this.service.message('Parfait','success','modification faite avec succès');
+            this.pass="";
+            this.confirmPass="";
+          }
+        }));
+      }else if (this.service.whoIsOnline()=='client') {
+        this.service.post('api/modifierPasswordClient',{password:this.pass},((reponse:any)=>{
+          console.log('pass change',reponse);
+          if (reponse.status==200) {
+            this.service.message('Parfait','success','modification faite avec succès');
+            this.pass="";
+            this.confirmPass="";
+          }
+        }));
+
+      }else if (this.service.whoIsOnline()=='livreur') {
+        this.service.post('api/modifierPasswordLivreur',{password:this.pass},((reponse:any)=>{
+          console.log('pass change',reponse);
+          if (reponse.status==200) {
+            this.service.message('Parfait','success','modification faite avec succès');
+            this.pass="";
+            this.confirmPass="";
+          }
+        }));
+
+      }
+    }else{
+
+      if (this.nom == "" || this.prenom == "") {
+        this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
+      } else {
+        this.user = new Commerçant(this.nom, this.prenom, this.email, this.pass, this.numero, this.nin, this.ninea, this.adresse, this.genre, this.naissance);
+        console.log("user", this.user);
+        this.service.post('api/modifierInfoCommercant', this.user, (reponse: any) => {
+          if (reponse.status == 200) {
+            this.service.message("Parfait", "success", "Profil modifié avec succès");
+            this.loadProfil();
 
 
-        } else {
-          console.log('error ', reponse);
-          this.service.message("Désolé!!!", "error", "modification a échouée, vérifier la saisie");
-        }
-      });
+          } else {
+            console.log('error ', reponse);
+            this.service.message("Désolé!!!", "error", "modification a échouée, vérifier la saisie");
+          }
+        });
+      }
     }
   }
 
-  showPassword() {
 
-  }
 
   whoIsOnline() {
     return this.service.whoIsOnline();
   }
+
+  showPassword() {
+    this.showHidePassword = document.querySelectorAll('#passwordInput');
+    this.showHidePassword.forEach((element:any) => {
+
+      if (element.type == 'text') {
+        element.type = 'password';
+      } else {
+        element.type = 'text';
+      }
+    });
+  }
+
+  isPassConforme(){
+    let validationPrenom = document.getElementById('ConfirmPasseInput');
+
+    if (this.pass==this.confirmPass) {
+      validationPrenom!.innerHTML = 'Conforme';
+      validationPrenom!.classList.remove('error');
+      validationPrenom!.classList.add('success');
+    } else {
+      validationPrenom!.innerHTML = 'Pas conforme';
+      validationPrenom!.classList.remove('success');
+      validationPrenom!.classList.add('error');
+
+    }
+  }
+
+  passeValidate() {
+    let validationPrenom = document.getElementById('validationPasse');
+    const nomPrenomRegex = /^[a-zA-Z]+[a-z0-9-@_&]{7,}$/;
+    if (nomPrenomRegex.test(this.pass)) {
+      validationPrenom!.innerHTML = 'valide';
+      validationPrenom!.classList.remove('error');
+      validationPrenom!.classList.add('success');
+      this.isConfirmInputAllowed=true;
+
+    } else {
+      validationPrenom!.innerHTML = 'invalide';
+      validationPrenom!.classList.remove('success');
+      validationPrenom!.classList.add('error');
+      this.isConfirmInputAllowed=false;
+
+    }
+    if (this.pass=="") {
+      validationPrenom!.innerHTML="";
+    }
+
+      this.isPassConforme();
+  }
+
 }
