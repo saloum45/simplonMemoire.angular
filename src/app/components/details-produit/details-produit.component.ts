@@ -21,7 +21,9 @@ export class DetailsProduitComponent implements OnInit {
 
   // Attributs
   public quantite = 1;
-  public produit: any;
+  public produit: any={
+    image:''
+  };
   public produitSimilaires: any[]=[];
   public note = 0;
   public commentaire = "";
@@ -42,7 +44,6 @@ export class DetailsProduitComponent implements OnInit {
     this.loadCommentaires();
     this.getProduitSimilaires();
   }
-
   initSimilaire(id:any){
     this.service.simplePost("api/Detailsproduits/" + id, (reponse: any) => {
       this.produit = reponse.data;
@@ -57,6 +58,7 @@ export class DetailsProduitComponent implements OnInit {
       this.produitSimilaires=reponse.data;
     }));
   }
+
   loadCommentaires() {
     this.service.get("api/commentaires/" + this.activatedRouter.snapshot.params['id'], ((reponse: any) => {
       this.commentaires = reponse.data;
