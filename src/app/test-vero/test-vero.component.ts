@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './test-vero.component.css'
 })
 export class TestVeroComponent {
+// Attributs
+public isSecondCrenaux=false;
 
+ addCrenaux(){
+  this.isSecondCrenaux=!this.isSecondCrenaux;
+ }
 }

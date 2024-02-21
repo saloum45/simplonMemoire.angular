@@ -23,6 +23,7 @@ import { ClientGuard } from './guards/client.guard';
 import { VendeurGuard } from './guards/vendeur.guard';
 import { LivreurGuard } from './guards/livreur.guard';
 import { IsOnlineGuard } from './guards/is-online.guard';
+import { TestVeroComponent } from './test-vero/test-vero.component';
 
 
 export const routes: Routes = [
@@ -121,7 +122,11 @@ export const routes: Routes = [
     component:ConfidentialiteSecuriteComponent
   },
   {
+    path:'testVero',
+    component:TestVeroComponent
+  },
+  {
     path:'**',
     component:PageNotFoundComponent
-  }
+  },
 ];
