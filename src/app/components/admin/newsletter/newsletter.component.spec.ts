@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewsletterComponent } from './newsletter.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('NewsletterComponent', () => {
   let component: NewsletterComponent;
@@ -8,10 +9,10 @@ describe('NewsletterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NewsletterComponent]
+      imports: [NewsletterComponent,HttpClientModule]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(NewsletterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

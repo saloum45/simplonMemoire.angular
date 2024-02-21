@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignalementComponent } from './signalement.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('SignalementComponent', () => {
   let component: SignalementComponent;
@@ -8,10 +9,10 @@ describe('SignalementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SignalementComponent]
+      imports: [SignalementComponent,HttpClientModule]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(SignalementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

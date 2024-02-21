@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConfirmCommandComponent } from './confirm-command.component';
+import { HttpClient } from '@angular/common/http';
 
 describe('ConfirmCommandComponent', () => {
   let component: ConfirmCommandComponent;
@@ -8,10 +9,10 @@ describe('ConfirmCommandComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ConfirmCommandComponent]
+      imports: [ConfirmCommandComponent,HttpClient]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ConfirmCommandComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
