@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
   // Attributs
+  public testSpecAtribut="doingTestWell";
   public nom = "";
   public prenom = "";
   public naissance = new Date();

@@ -21,4 +21,9 @@ describe('ProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it(`should have the "doingTestWell"`, () => {
+    const fixture = TestBed.createComponent(ProfileComponent);
+    const profile = fixture.componentInstance;
+    expect(profile.testSpecAtribut).toContain('doing');
+  });
 });
