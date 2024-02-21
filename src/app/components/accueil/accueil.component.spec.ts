@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccueilComponent } from './accueil.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 describe('AccueilComponent', () => {
   let component: AccueilComponent;
@@ -9,7 +9,7 @@ describe('AccueilComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AccueilComponent,HttpClient]
+      imports: [AccueilComponent,HttpClientModule]
     })
     .compileComponents();
 

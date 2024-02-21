@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConfirmCommandComponent } from './confirm-command.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ConfirmCommandComponent', () => {
   let component: ConfirmCommandComponent;
@@ -9,7 +10,8 @@ describe('ConfirmCommandComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ConfirmCommandComponent,HttpClient]
+      imports: [ConfirmCommandComponent,HttpClientModule,RouterTestingModule],
+      // providers:[HttpClientModule]
     })
     .compileComponents();
 
