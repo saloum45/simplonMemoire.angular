@@ -1,6 +1,6 @@
 <div>
 <label for="">Jour</label>
-  <select name="" id="">4
+  <select name="" id="" (change)="selectJour($event)">
     <option value="lundi">Lundi</option>
     <option value="mardi">mardi</option>
     <option value="mercredi">mercredi</option>
@@ -10,14 +10,15 @@
 <div class="d-flex ">
   <div class="mx-3">
     <label for="">debut</label>
-    <input type="time" name="" id="">
+    <input type="time" name="" id="" [(ngModel)]="planningsObjet.creanaux[0].startTime">
   </div>
   <div>
     <label for="">Fin</label>
-    <input type="time" name="" id="">
+    <input type="time" name="" id="" [(ngModel)]="planningsObjet.creanaux[0].endTime">
   </div>
 </div>
 <span (click)="addCrenaux()">+++++</span>
+
 @if (isSecondCrenaux) {
 
   <div class="d-flex ">
@@ -32,3 +33,5 @@
 </div>
 
 }
+
+<button (click)="addPlannings()">Ajouter</button>
