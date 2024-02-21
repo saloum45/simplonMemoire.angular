@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
   public pass = "";
   public email = "";
   public user: any;
-  public confirmPass="";
+  public confirmPass = "";
   public showHidePassword: any;
   public isConfirmInputAllowed = false;
 
@@ -68,7 +68,7 @@ export class ProfileComponent implements OnInit {
         this.adresse = reponse.client.adresse;
       });
 
-    }else if (this.whoIsOnline() == "livreur") {
+    } else if (this.whoIsOnline() == "livreur") {
       // alert("client")
       this.service.get('api/showLivreur', (reponse: any) => {
         console.log("user", reponse);
@@ -86,38 +86,41 @@ export class ProfileComponent implements OnInit {
   // la fonction qui permet d'inscrire un utilisateur
   modification() {
     if (this.isConfirmInputAllowed) {
-      if (this.service.whoIsOnline()=='commercant') {
+      if (this.service.whoIsOnline() == 'commercant') {
 
-        this.service.post('api/modifierPasswordCommercant',{password:this.pass},((reponse:any)=>{
-          console.log('pass change',reponse);
-          if (reponse.status==200) {
-            this.service.message('Parfait','success','modification faite avec succès');
-            this.pass="";
-            this.confirmPass="";
+        this.service.post('api/modifierPasswordCommercant', { password: this.pass }, ((reponse: any) => {
+          console.log('pass change', reponse);
+          if (reponse.status == 200) {
+            document.getElementById('ConfirmPasseInput')!.innerHTML = '';
+            document.getElementById('validationPasse')!.innerHTML = '';
+
+            this.service.message('Parfait', 'success', 'modification faite avec succès');
+            this.pass = "";
+            this.confirmPass = "";
           }
         }));
-      }else if (this.service.whoIsOnline()=='client') {
-        this.service.post('api/modifierPasswordClient',{password:this.pass},((reponse:any)=>{
-          console.log('pass change',reponse);
-          if (reponse.status==200) {
-            this.service.message('Parfait','success','modification faite avec succès');
-            this.pass="";
-            this.confirmPass="";
+      } else if (this.service.whoIsOnline() == 'client') {
+        this.service.post('api/modifierPasswordClient', { password: this.pass }, ((reponse: any) => {
+          console.log('pass change', reponse);
+          if (reponse.status == 200) {
+            this.service.message('Parfait', 'success', 'modification faite avec succès');
+            this.pass = "";
+            this.confirmPass = "";
           }
         }));
 
-      }else if (this.service.whoIsOnline()=='livreur') {
-        this.service.post('api/modifierPasswordLivreur',{password:this.pass},((reponse:any)=>{
-          console.log('pass change',reponse);
-          if (reponse.status==200) {
-            this.service.message('Parfait','success','modification faite avec succès');
-            this.pass="";
-            this.confirmPass="";
+      } else if (this.service.whoIsOnline() == 'livreur') {
+        this.service.post('api/modifierPasswordLivreur', { password: this.pass }, ((reponse: any) => {
+          console.log('pass change', reponse);
+          if (reponse.status == 200) {
+            this.service.message('Parfait', 'success', 'modification faite avec succès');
+            this.pass = "";
+            this.confirmPass = "";
           }
         }));
 
       }
-    }else{
+    } else {
 
       if (this.nom == "" || this.prenom == "") {
         this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
@@ -128,6 +131,7 @@ export class ProfileComponent implements OnInit {
           if (reponse.status == 200) {
             this.service.message("Parfait", "success", "Profil modifié avec succès");
 
+            this.loadProfil();
 
           } else {
             console.log('error ', reponse);
@@ -136,7 +140,6 @@ export class ProfileComponent implements OnInit {
         });
       }
     }
-    this.loadProfil();
   }
 
 
@@ -147,7 +150,7 @@ export class ProfileComponent implements OnInit {
 
   showPassword() {
     this.showHidePassword = document.querySelectorAll('#passwordInput');
-    this.showHidePassword.forEach((element:any) => {
+    this.showHidePassword.forEach((element: any) => {
 
       if (element.type == 'text') {
         element.type = 'password';
@@ -157,10 +160,10 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  isPassConforme(){
+  isPassConforme() {
     let validationPrenom = document.getElementById('ConfirmPasseInput');
 
-    if (this.pass==this.confirmPass) {
+    if (this.pass == this.confirmPass && this.pass != "") {
       validationPrenom!.innerHTML = 'Conforme';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
@@ -168,6 +171,9 @@ export class ProfileComponent implements OnInit {
       validationPrenom!.innerHTML = 'Pas conforme';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
+    }
+    if (this.pass == "") {
+      validationPrenom!.innerHTML = '';
 
     }
   }
@@ -179,20 +185,20 @@ export class ProfileComponent implements OnInit {
       validationPrenom!.innerHTML = 'valide';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
-      this.isConfirmInputAllowed=true;
+      this.isConfirmInputAllowed = true;
 
     } else {
       validationPrenom!.innerHTML = 'invalide';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
-      this.isConfirmInputAllowed=false;
+      this.isConfirmInputAllowed = false;
 
     }
-    if (this.pass=="") {
-      validationPrenom!.innerHTML="";
+    if (this.pass == "") {
+      validationPrenom!.innerHTML = "";
     }
+    this.isPassConforme();
 
-      this.isPassConforme();
   }
 
 }
