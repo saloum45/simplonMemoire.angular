@@ -127,7 +127,6 @@ export class ProfileComponent implements OnInit {
         this.service.post('api/modifierInfoCommercant', this.user, (reponse: any) => {
           if (reponse.status == 200) {
             this.service.message("Parfait", "success", "Profil modifié avec succès");
-            this.loadProfil();
 
 
           } else {
@@ -137,6 +136,7 @@ export class ProfileComponent implements OnInit {
         });
       }
     }
+    this.loadProfil();
   }
 
 

@@ -160,7 +160,7 @@
         <div class="row row-cols-2 row-cols-md-4 g-4 mt-1 similaire-items">
           @for (item of produitSimilaires.slice(0,4); track $index) {
 
-            <div class="col" [routerLink]="['/produit', item.id]">
+            <div class="col" [routerLink]="['/detailsProduit',item.id]" (click)="initSimilaire(item.id)">
               <div class="card" id="card">
                 <div class="text-center image">
                   <img src="{{urlBaseImage}}{{item.image}}" alt="" />
@@ -169,7 +169,7 @@
                   <h6 class="text-center">{{item.nom_produit}}</h6>
                   <span class="text-center">{{item.prix}} fcfa</span>
                   <div class="text-center">
-                    <button class="btn" (click)="postPanier(produit)">Ajouter au panier</button>
+                    <button class="btn" (click)="postPanier(item)">Ajouter au panier</button>
                   </div>
                 </div>
               </div>

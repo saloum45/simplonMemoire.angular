@@ -43,6 +43,20 @@ export class DetailsProduitComponent implements OnInit {
     this.getProduitSimilaires();
   }
 
+  initSimilaire(id:any){
+    this.service.simplePost("api/Detailsproduits/" + id, (reponse: any) => {
+      this.produit = reponse.data;
+      console.log("details", reponse.data);
+    });
+    this.loadCommentaires();
+    this.getProduitSimilaires();
+    // this.ngOnInit();
+    // this.getProduitSimilaires();
+    this.service.get('api/produitsSimilaire/'+id,((reponse:any)=>{
+      console.log('similaires',reponse);
+      this.produitSimilaires=reponse.data;
+    }));
+  }
   loadCommentaires() {
     this.service.get("api/commentaires/" + this.activatedRouter.snapshot.params['id'], ((reponse: any) => {
       this.commentaires = reponse.data;

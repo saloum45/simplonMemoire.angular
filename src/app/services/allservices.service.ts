@@ -117,31 +117,12 @@ export class AllservicesService {
   }
 
   postToPanier(produit: any, quantite = 0) {
-    let produitPanier = {};
-    if (localStorage.getItem('panier') == null || localStorage.getItem('panier') == undefined) {
-      if (quantite != 0) {
+    if (produit.quantite==0) {
+      this.message('Oops','warning','Ce produit est en rupture de stock');
+    }else{
 
-        produitPanier = {
-          produit: produit,
-          quantitePanier: quantite
-        }
-      } else {
-
-        produitPanier = {
-          produit: produit,
-          quantitePanier: 1
-        }
-      }
-      localStorage.setItem('panier', JSON.stringify([produitPanier]));
-      this.message("parfait", "success", "produit ajouté au panier");
-    } else {
-      let panier = JSON.parse(localStorage.getItem('panier') ?? '[]');
-      let a = panier.filter((item: any) => item.produit.id == produit.id);
-      // console.log(a.length);
-      if (a.length > 0) {
-
-        this.message("oops", "warning", "Ce produit existe déja dans le panier");
-      } else {
+      let produitPanier = {};
+      if (localStorage.getItem('panier') == null || localStorage.getItem('panier') == undefined) {
         if (quantite != 0) {
 
           produitPanier = {
@@ -155,17 +136,41 @@ export class AllservicesService {
             quantitePanier: 1
           }
         }
-        // let produitPanier = {
-        //   produit: produit,
-        //   quantitePanier: 1
-        // }
-        panier.push(produitPanier);
-        localStorage.setItem('panier', JSON.stringify(panier));
+        localStorage.setItem('panier', JSON.stringify([produitPanier]));
         this.message("parfait", "success", "produit ajouté au panier");
+      } else {
+        let panier = JSON.parse(localStorage.getItem('panier') ?? '[]');
+        let a = panier.filter((item: any) => item.produit.id == produit.id);
+        // console.log(a.length);
+        if (a.length > 0) {
+
+          this.message("oops", "warning", "Ce produit existe déja dans le panier");
+        } else {
+          if (quantite != 0) {
+
+            produitPanier = {
+              produit: produit,
+              quantitePanier: quantite
+            }
+          } else {
+
+            produitPanier = {
+              produit: produit,
+              quantitePanier: 1
+            }
+          }
+          // let produitPanier = {
+          //   produit: produit,
+          //   quantitePanier: 1
+          // }
+          panier.push(produitPanier);
+          localStorage.setItem('panier', JSON.stringify(panier));
+          this.message("parfait", "success", "produit ajouté au panier");
+        }
       }
+      // cardContent = JSON.parse(localStorage.getItem('panier') ?? '[]').length;
+      this.nombreProduitPanier = JSON.parse(localStorage.getItem('panier') ?? '[]').length;
     }
-    // cardContent = JSON.parse(localStorage.getItem('panier') ?? '[]').length;
-    this.nombreProduitPanier = JSON.parse(localStorage.getItem('panier') ?? '[]').length;
   }
 
   getFromPanier() {
