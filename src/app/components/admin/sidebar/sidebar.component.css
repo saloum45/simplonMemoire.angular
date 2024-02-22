@@ -93,7 +93,15 @@
 }
 .container-bloc .right-content{
   width: 80%;
+  /* overflow: auto; */
+  /* height: 100vh; */
   /* background-color: red; */
+}
+
+.right-container{
+
+  overflow: auto;
+  height: 600px;
 }
 .container-bloc .right-content .right-top{
   height: 60px;

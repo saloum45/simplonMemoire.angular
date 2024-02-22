@@ -11,12 +11,12 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 })
 export class AllservicesService {
   // local server
-  // urlBase = 'http://localhost:8000/';
-  // urlBaseImage = 'http://localhost:8000/images/';
+  urlBase = 'http://localhost:8000/';
+  urlBaseImage = 'http://localhost:8000/images/';
 
   // distant server
-  urlBase = 'https://www.falltech.site/panierlocal_backend/';
-  urlBaseImage = 'https://www.falltech.site/panierlocal_backend/public/images/';
+  // urlBase = 'https://www.falltech.site/panierlocal_backend/';
+  // urlBaseImage = 'https://www.falltech.site/panierlocal_backend/public/images/';
 
   public readonly prixLivraion = 2000;
   public nombreProduitPanier = JSON.parse(localStorage.getItem('panier') ?? '[]').length;

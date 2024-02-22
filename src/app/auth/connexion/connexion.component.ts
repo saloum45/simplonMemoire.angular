@@ -63,7 +63,6 @@ export class ConnexionComponent {
               this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
             }
           }
-
         }
       });
     }
