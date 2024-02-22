@@ -33,6 +33,9 @@ export class AccueilAdminComponent implements OnInit{
         }
       });
     }));
+    this.service.get('api/NombreVente',((reponse:any)=>{
+     this.nbrVentes=reponse.data;
+    }));
 
 
     this.service.get('api/commandes', ((reponse: any) => {
