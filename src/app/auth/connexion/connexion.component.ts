@@ -53,17 +53,13 @@ export class ConnexionComponent {
           // console.log("reponse conn",reponse);
         } else {
           console.log('error ', reponse);
-          if (reponse.status == 401) {
-
+          if (reponse.status == 405) {
             this.service.message("Désolé!!!", "error", "Connexion  échouée, Compte bloqué veuillez contacter l'admin par la page contact");
-          }else{
-
+          } else {
             // this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
             if (reponse.errorsList) {
-
               this.service.message("Désolé!!!", "error", "Connexion  échouée, vérifier la saisie => " + Object.values(reponse.errorsList).join('--'));
             } else {
-
               this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
             }
           }
