@@ -5,20 +5,20 @@
 
       <div class="form-left">
         <div class="form-element">
-          <label for="">Nom</label>
-          <input type="text" [(ngModel)]="nom">
+          <label for="">Nom <span class="span_validate" id="validationNom"></span></label>
+          <input type="text" [(ngModel)]="nom" (input)="nomValidate()"/>
         </div>
         <div class="form-element">
-          <label for="">Email</label>
-          <input type="email" [(ngModel)]="email">
+          <label for="">Email <span class="span_validate" id="validationEmail"></span></label>
+          <input type="email" [(ngModel)]="email" (input)="emailValidate()"/>
         </div>
         <div class="form-element">
-          <label for="">Numero</label>
-          <input type="text" [(ngModel)]="numero">
+          <label for="">Numero <span class="span_validate" id="validationTelephone"></span></label>
+          <input type="text" [(ngModel)]="numero" (input)="telephoneValidate()"/>
         </div>
         <div class="form-element">
-          <label for="">Message</label>
-          <input type="text" [(ngModel)]="message">
+          <label for="">Message <span class="span_validate" id="validationMessage"></span></label>
+          <input type="text" [(ngModel)]="message" (input)="messageValidate()"/>
         </div>
       </div>
       <div class="form-image">
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="text-center w-100">
-      <button class="btn" (click)="envoyer()">Envoyer</button>
+      <button class="btn" (click)="envoyer()" [disabled]="truthyTab.length<4">Envoyer</button>
     </div>
   </div>
 </div>

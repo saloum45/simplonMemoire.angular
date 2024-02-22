@@ -34,7 +34,7 @@
   justify-content: space-between;
 
   input {
-    width: 70%;
+    width: 65%;
     border: none;
     border-bottom: 2px var(--darkbluecolor) solid;
     /* padding-left: 20px; */
