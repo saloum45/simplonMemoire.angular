@@ -97,7 +97,7 @@ export class InscriptionComponent {
 
   emailValidate() {
     let validationEmail = document.getElementById('validationEmail');
-    const emailRegexGegin = /^[a-zA-Z]+[.a-z0-9]+@[a-z]+[.]{1}[a-z]{2,}$/;
+    const emailRegexGegin = /^[a-zA-Z]+[.a-z0-9]+@[a-z]+[.]{1}[a-z]{2,3}$/;
     // const emailRegexEnd = /^[a-z]{2,}$/;
     this.emailError = emailRegexGegin.test(this.email);
     if (emailRegexGegin.test(this.email) ) {
