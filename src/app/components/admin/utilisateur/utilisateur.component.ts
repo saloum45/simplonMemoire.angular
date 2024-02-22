@@ -47,7 +47,7 @@ export class UtilisateurComponent implements OnInit {
     }));
   }
 
-  bloquerUtilisateur(id:number) {
+  bloquerUtilisateur(id: number) {
     Swal.fire({
       title: "Etes vous sûr ",
       text: "De vouloir faire cette action",
@@ -60,14 +60,14 @@ export class UtilisateurComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        this.service.get("api/bloquerUtilisateur/"+id, ((reponse: any) => {
+        this.service.get("api/bloquerUtilisateur/" + id, ((reponse: any) => {
           console.log(reponse);
           if (reponse.status == 200) {
             this.service.message('Parfait', 'success', reponse.message);
             // this.showProduitSignaler(this.produitSignale.id);
+            this.loadAllUtilisateur();
           }
         }));
-        this.loadAllUtilisateur();
 
       }
     });
