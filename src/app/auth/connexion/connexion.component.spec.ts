@@ -21,4 +21,8 @@ describe('ConnexionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  // test de la reponse du backend
+  it('should return a popup error because the input are empty', () => {
+    expect(component.connexion()).toBeFalse();
+  });
 });

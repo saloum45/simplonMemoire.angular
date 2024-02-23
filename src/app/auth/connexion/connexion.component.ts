@@ -20,16 +20,17 @@ export class ConnexionComponent {
   public password = "";
   public email = "";
   public showHidePassword: any;
-  public truthyTab:any[]=[];
+  public truthyTab: any[] = [];
 
   // Methodes
   constructor(private service: AllservicesService, private router: Router) {
 
   }
 
+  // DoingTest
   // la fonction qui permet d'inscrire un utilisateur
   connexion() {
-    if (this.password == "" || this.email == "" || this.truthyTab.length<2) {
+    if (this.password == "" || this.email == "" || this.truthyTab.length < 2) {
       this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
     } else {
 
@@ -48,7 +49,7 @@ export class ConnexionComponent {
           } else {
             this.router.navigate(['/accueil']);
           }
-          this.service.message("Bienvenue " + reponse.user.prenom+" "+reponse.user.nom, "success", "Connexion faite avec succès");
+          this.service.message("Bienvenue " + reponse.user.prenom + " " + reponse.user.nom, "success", "Connexion faite avec succès");
           // this.deconnexionAutomatique();
           // console.log("reponse conn",reponse);
         } else {
@@ -56,16 +57,18 @@ export class ConnexionComponent {
           // this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
           if (reponse.errorsList) {
 
-            this.service.message("Désolé!!!", "error", "Connexion  échouée, vérifier la saisie => "+Object.values(reponse.errorsList).join('--'));
-          }else{
-
+            this.service.message("Désolé!!!", "error", "Connexion  échouée, vérifier la saisie => " + Object.values(reponse.errorsList).join('--'));
+          } else {
             this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
           }
 
         }
       });
     }
+    return false;
   }
+
+  // Testing with parametre
 
   showPassword() {
     this.showHidePassword = document.getElementById('passwordInput');
@@ -75,7 +78,9 @@ export class ConnexionComponent {
       this.showHidePassword.type = 'text';
     }
   }
-
+  testConnexion(a:any,b:any) {
+    return a*b;
+  }
 
 
   deconnexionAutomatique() {
@@ -116,8 +121,8 @@ export class ConnexionComponent {
       validationEmail!.innerHTML = 'valide';
       validationEmail!.classList.remove('error');
       validationEmail!.classList.add('success');
-      if (this.truthyTab.find((value:any)=>value.email==true)==undefined) {
-        this.truthyTab.push({email:true});
+      if (this.truthyTab.find((value: any) => value.email == true) == undefined) {
+        this.truthyTab.push({ email: true });
       }
       console.log(this.truthyTab);
     } else {
@@ -125,13 +130,13 @@ export class ConnexionComponent {
       validationEmail!.innerHTML = 'invalide';
       validationEmail!.classList.remove('success');
       validationEmail!.classList.add('error');
-      if (this.truthyTab.find((value:any)=>value.email==true)!=undefined) {
-        this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.email==true),1);
+      if (this.truthyTab.find((value: any) => value.email == true) != undefined) {
+        this.truthyTab.splice(this.truthyTab.findIndex((value: any) => value.email == true), 1);
       }
 
     }
-    if (this.email=="") {
-      validationEmail!.innerHTML="";
+    if (this.email == "") {
+      validationEmail!.innerHTML = "";
     }
     // console.log(this.truthyTab);
   }
@@ -145,8 +150,8 @@ export class ConnexionComponent {
       validationPrenom!.innerHTML = 'valide';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
-      if (this.truthyTab.find((value:any)=>value.passe==true)==undefined) {
-        this.truthyTab.push({passe:true});
+      if (this.truthyTab.find((value: any) => value.passe == true) == undefined) {
+        this.truthyTab.push({ passe: true });
       }
 
     } else {
@@ -154,12 +159,12 @@ export class ConnexionComponent {
       validationPrenom!.innerHTML = 'invalide';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
-      if (this.truthyTab.find((value:any)=>value.passe==true)!=undefined) {
-        this.truthyTab.splice(this.truthyTab.findIndex((value:any)=>value.passe==true),1);
+      if (this.truthyTab.find((value: any) => value.passe == true) != undefined) {
+        this.truthyTab.splice(this.truthyTab.findIndex((value: any) => value.passe == true), 1);
       }
     }
-    if (this.password=="") {
-      validationPrenom!.innerHTML="";
+    if (this.password == "") {
+      validationPrenom!.innerHTML = "";
     }
     // console.log(this.truthyTab);
     // console.log(this.truthyTab.length);
