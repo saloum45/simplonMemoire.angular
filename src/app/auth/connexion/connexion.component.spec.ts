@@ -29,7 +29,7 @@ describe('ConnexionComponent', () => {
 
   // test de la reponse du backend
   it('should return true when the informations passed to the login function are  truthy', () => {
-    expect(component.connexionFortest("saloumfall45@gmail.com","Saloum454546")).toBeFalse();
+    expect(component.connexionFortest("saloumfall45@gmail.com","Saloum45")).toBeTrue();
   });
- 
+
 });

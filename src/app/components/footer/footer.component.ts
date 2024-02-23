@@ -37,6 +37,7 @@ export class FooterComponent implements OnInit {
         console.log(reponse);
         if (reponse.status==200) {
           this.service.message('Parfait','success','Merci de vous être inscrit dans notre newsletter');
+          this.email="";
         }else{
           this.service.message('Oops','warning','Il semble que ce mail est déja inscrit');
 
