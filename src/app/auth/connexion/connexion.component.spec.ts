@@ -22,7 +22,14 @@ describe('ConnexionComponent', () => {
     expect(component).toBeTruthy();
   });
   // test de la reponse du backend
-  it('should return a popup error because the input are empty', () => {
-    expect(component.connexion()).toBeFalse();
+  it('should return false when the informations passed to the login function are not truthy', () => {
+    expect(component.connexionFortest("saem","Saloum454546")).toBeFalse();
   });
+
+
+  // test de la reponse du backend
+  it('should return true when the informations passed to the login function are  truthy', () => {
+    expect(component.connexionFortest("saloumfall45@gmail.com","Saloum454546")).toBeFalse();
+  });
+ 
 });

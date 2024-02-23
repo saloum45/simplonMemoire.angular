@@ -69,6 +69,37 @@ export class ConnexionComponent {
   }
 
   // Testing with parametre
+  // la fonction qui permet d'inscrire un utilisateur
+  connexionFortest(email:any,password:any) {
+    if (password == "" || email == "" ) {
+      this.service.message("Désolé", "error", "Veuillez renseigner tous les champs");
+      return false;
+
+    } else {
+
+      this.service.post('api/login', { email: email, password: password }, (reponse: any) => {
+        if (reponse.status == 200) {
+
+          this.service.message("Bienvenue " + reponse.user.prenom + " " + reponse.user.nom, "success", "Connexion faite avec succès");
+          return true;
+
+        } else {
+
+          if (reponse.errorsList) {
+
+            this.service.message("Désolé!!!", "error", "Connexion  échouée, vérifier la saisie => " + Object.values(reponse.errorsList).join('--'));
+          } else {
+            this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
+          }
+          return true;
+
+        }
+      });
+      return false;
+    }
+  }
+
+
 
   showPassword() {
     this.showHidePassword = document.getElementById('passwordInput');
