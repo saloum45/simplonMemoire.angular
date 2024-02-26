@@ -3,6 +3,7 @@ import { AllservicesService } from '../../services/allservices.service';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
+import { iif } from 'rxjs';
 
 @Component({
   selector: 'app-catalogue',
@@ -94,5 +95,16 @@ export class CatalogueComponent implements OnInit {
   // Méthode pour obtenir le nombre total de pages
   get totalPages(): number {
     return Math.ceil(this.search().length / this.articlesParPage);
+  }
+
+  // filtre selon prix, croissant décroissant
+  filtrePrix(event:any){
+    if (event.target.value=='desc') {
+
+      this.produits=this.getArticlesPage().sort((p1:any, p2:any) => (p1.prix < p2.prix) ? 1 : (p1.prix > p2.prix) ? -1 : 0);
+    }else{
+
+      this.produits=this.getArticlesPage().sort((p1:any, p2:any) => (p1.prix > p2.prix) ? 1 : (p1.prix < p2.prix) ? -1 : 0);
+    }
   }
 }
