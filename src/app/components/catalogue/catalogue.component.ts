@@ -101,10 +101,10 @@ export class CatalogueComponent implements OnInit {
   filtrePrix(event:any){
     if (event.target.value=='desc') {
 
-      this.produits=this.getArticlesPage().sort((p1:any, p2:any) => (p1.prix < p2.prix) ? 1 : (p1.prix > p2.prix) ? -1 : 0);
+      this.produits.sort((p1:any, p2:any) => (p1.prix < p2.prix) ? 1 : (p1.prix > p2.prix) ? -1 : 0);
     }else{
 
-      this.produits=this.getArticlesPage().sort((p1:any, p2:any) => (p1.prix > p2.prix) ? 1 : (p1.prix < p2.prix) ? -1 : 0);
+      this.produits.sort((p1:any, p2:any) => (p1.prix > p2.prix) ? 1 : (p1.prix < p2.prix) ? -1 : 0);
     }
   }
 }
