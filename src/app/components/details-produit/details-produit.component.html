@@ -10,11 +10,18 @@
         <img src="{{urlBaseImage}}{{ produit.image }}" id="imageReponsive" alt="">
         <span>
           Avis :
+          @for (nombre of [1,2,3,4,5]; track $index) {
+            @if (nombre<=moyenneNote) {
+              <i class="bi bi-star-fill mx-1"></i>
+            }@else {
+              <i class="bi bi-star mx-1"></i>
+            }
+          }
+          <!-- <i class="bi bi-star mx-1"></i>
           <i class="bi bi-star mx-1"></i>
           <i class="bi bi-star mx-1"></i>
           <i class="bi bi-star mx-1"></i>
-          <i class="bi bi-star mx-1"></i>
-          <i class="bi bi-star mx-1"></i>
+          <i class="bi bi-star mx-1"></i> -->
         </span>
         <span data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="bi bi-pen-fill"></i>

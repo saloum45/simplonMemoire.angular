@@ -257,12 +257,10 @@ export class AllservicesService {
   private refresh: BehaviorSubject<any> = new BehaviorSubject<any>(false);
 
   public getRefresh(): Observable<any> {
-
     return this.refresh.asObservable();
   }
 
   public setRefresh(value: any): void {
-
     this.refresh.next(value);
   }
 }

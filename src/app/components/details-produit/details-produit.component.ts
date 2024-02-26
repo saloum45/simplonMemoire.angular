@@ -65,6 +65,7 @@ export class DetailsProduitComponent implements OnInit {
       this.commentaires.forEach((element: any) => {
         this.moyenneNote += element.Note;
       });;
+      this.moyenneNote=this.moyenneNote/this.commentaires.length;  
       console.log('moy', this.moyenneNote);
     }));
 
