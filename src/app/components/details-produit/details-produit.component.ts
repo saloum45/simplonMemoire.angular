@@ -22,11 +22,11 @@ export class DetailsProduitComponent implements OnInit {
   // Attributs
   public quantite = 1;
   public produit: any;
-  public produitSimilaires: any[]=[];
+  public produitSimilaires: any[] = [];
   public note = 0;
   public commentaire = "";
   public commentaires: any[] = [];
-  public moyenneNote=0;
+  public moyenneNote = 0;
   public urlBaseImage = this.service.urlBaseImage;
   // Methodes
   constructor(private service: AllservicesService, private activatedRouter: ActivatedRoute) {
@@ -43,7 +43,7 @@ export class DetailsProduitComponent implements OnInit {
     this.getProduitSimilaires();
   }
 
-  initSimilaire(id:any){
+  initSimilaire(id: any) {
     this.service.simplePost("api/Detailsproduits/" + id, (reponse: any) => {
       this.produit = reponse.data;
       console.log("details", reponse.data);
@@ -52,9 +52,9 @@ export class DetailsProduitComponent implements OnInit {
     this.getProduitSimilaires();
     // this.ngOnInit();
     // this.getProduitSimilaires();
-    this.service.get('api/produitsSimilaire/'+id,((reponse:any)=>{
-      console.log('similaires',reponse);
-      this.produitSimilaires=reponse.data;
+    this.service.get('api/produitsSimilaire/' + id, ((reponse: any) => {
+      console.log('similaires', reponse);
+      this.produitSimilaires = reponse.data;
     }));
   }
   loadCommentaires() {
@@ -62,10 +62,10 @@ export class DetailsProduitComponent implements OnInit {
       this.commentaires = reponse.data;
       console.log('commmentaires', reponse);
       // this.moyenneNote=this.commentaires.reduce((accumulator:any, currentValue:any) => accumulator + currentValue,0)/this.commentaires.length;
-      this.commentaires.forEach((element:any) => {
-        this.moyenneNote+=element.Note;
+      this.commentaires.forEach((element: any) => {
+        this.moyenneNote += element.Note;
       });;
-      console.log('moy',this.moyenneNote);
+      console.log('moy', this.moyenneNote);
     }));
 
   }
@@ -104,13 +104,15 @@ export class DetailsProduitComponent implements OnInit {
 
   postPanier(produit: any, quantite = 0) {
     this.service.postToPanier(produit, quantite);
+    this.refresh(JSON.parse(localStorage.getItem('panier') ?? '[]').length);
+
   }
 
   envoyerAvis() {
     if (this.service.IsOnline()) {
-      if (this.service.whoIsOnline()=="livreur" || this.service.whoIsOnline()=="commercant" ) {
+      if (this.service.whoIsOnline() == "livreur" || this.service.whoIsOnline() == "commercant") {
         this.service.message('Oop\'s', "warning", "Il vous faut un compte client pour cette action");
-      }else{
+      } else {
 
         // this.router.navigate(['/confirmCommand']);
         if (this.note == 0 || this.commentaire == "") {
@@ -131,9 +133,9 @@ export class DetailsProduitComponent implements OnInit {
               this.commentaire = "";
               this.note = 0;
               this.closeAddExpenseModal.nativeElement.click();
-            }else{
+            } else {
 
-              this.service.message("Parfait", "warning", "envoie échoué, Vérifiez la saisie => "+Object.values(reponse.errorsList).join('--'));
+              this.service.message("Parfait", "warning", "envoie échoué, Vérifiez la saisie => " + Object.values(reponse.errorsList).join('--'));
             }
             this.loadCommentaires();
           }));
@@ -167,8 +169,8 @@ export class DetailsProduitComponent implements OnInit {
               this.service.message("Parfait", "success", "signalment avec succès");
               this.commentaire = "";
               this.closeAddExpenseModalSignalement.nativeElement.click();
-            }else{
-              this.service.message("Parfait", "warning", "envoie échoué, Vérifiez la saisie => "+Object.values(reponse.errorsList).join('--'));
+            } else {
+              this.service.message("Parfait", "warning", "envoie échoué, Vérifiez la saisie => " + Object.values(reponse.errorsList).join('--'));
             }
           }));
 
@@ -180,10 +182,15 @@ export class DetailsProduitComponent implements OnInit {
     }
   }
 
-  getProduitSimilaires(){
-    this.service.get('api/produitsSimilaire/'+this.activatedRouter.snapshot.params['id'],((reponse:any)=>{
-      console.log('similaires',reponse);
-      this.produitSimilaires=reponse.data;
+  getProduitSimilaires() {
+    this.service.get('api/produitsSimilaire/' + this.activatedRouter.snapshot.params['id'], ((reponse: any) => {
+      console.log('similaires', reponse);
+      this.produitSimilaires = reponse.data;
     }));
+  }
+
+  // panierItem
+  public refresh(number: any) {
+    this.service.setRefresh(number);
   }
 }

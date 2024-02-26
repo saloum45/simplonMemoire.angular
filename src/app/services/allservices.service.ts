@@ -3,6 +3,8 @@ import { Injectable, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Produit } from '../models/produit';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Observable } from 'rxjs/internal/Observable';
 // import { HttpClientModule } from '@angular/common/http';
 
 
@@ -117,9 +119,9 @@ export class AllservicesService {
   }
 
   postToPanier(produit: any, quantite = 0) {
-    if (produit.quantite==0) {
-      this.message('Oops','warning','Ce produit est en rupture de stock');
-    }else{
+    if (produit.quantite == 0) {
+      this.message('Oops', 'warning', 'Ce produit est en rupture de stock');
+    } else {
 
       let produitPanier = {};
       if (localStorage.getItem('panier') == null || localStorage.getItem('panier') == undefined) {
@@ -227,7 +229,7 @@ export class AllservicesService {
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",  
+      cancelButtonColor: "#d33",
       confirmButtonText: "Oui",
       cancelButtonText: "Non"
     }).then((result) => {
@@ -250,4 +252,17 @@ export class AllservicesService {
     Notify.success(message);
   }
 
+
+  // panierItemNumber
+  private refresh: BehaviorSubject<any> = new BehaviorSubject<any>(false);
+
+  public getRefresh(): Observable<any> {
+
+    return this.refresh.asObservable();
+  }
+
+  public setRefresh(value: any): void {
+
+    this.refresh.next(value);
+  }
 }

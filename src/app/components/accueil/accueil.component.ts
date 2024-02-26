@@ -12,25 +12,32 @@ import { Produit } from '../../models/produit';
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
 })
-export class AccueilComponent implements OnInit{
+export class AccueilComponent implements OnInit {
   // Attributs
-  public produits:any=[];
-  public urlBaseImage=this.service.urlBaseImage;
+  public produits: any = [];
+  public urlBaseImage = this.service.urlBaseImage;
 
 
- // Methodes
- constructor(private service:AllservicesService){
+  // Methodes
+  constructor(private service: AllservicesService) {
 
- }
+  }
 
- ngOnInit(): void {
-   this.service.get("api/produits",(reponse:any)=>{
-     this.produits=reponse.data;
-    //  console.log(reponse.data);
-   });
- }
+  ngOnInit(): void {
+    this.service.get("api/produits", (reponse: any) => {
+      this.produits = reponse.data;
+      //  console.log(reponse.data);
+    });
+  }
 
- postPanier(produit:any){
-  this.service.postToPanier(produit);
- }
+  postPanier(produit: any) {
+    this.service.postToPanier(produit);
+    this.refresh(JSON.parse(localStorage.getItem('panier') ?? '[]').length);
+
+  }
+
+  // panierItem
+  public refresh(number: any) {
+    this.service.setRefresh(number);
+  }
 }

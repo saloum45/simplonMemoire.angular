@@ -21,34 +21,37 @@ export class HeaderComponent implements OnInit {
   // public nombreArticlesPanier=this.service.getFromPanier().length;
   // cardContent=1;
   // public isOnline=this.service.IsOnline();
-  public navLinks=[
+  public panierItemNumber=JSON.parse(localStorage.getItem('panier') ?? '[]').length;
+  public navLinks = [
     {
-      path:"accueil",
-      name:"Accueil",
-      icon:"bi bi-house-check-fill"
+      path: "accueil",
+      name: "Accueil",
+      icon: "bi bi-house-check-fill"
     },
     {
-      path:"catalogue",
-      name:"Catalogue",
-      icon:"bi bi-shop"
+      path: "catalogue",
+      name: "Catalogue",
+      icon: "bi bi-shop"
 
     },
     {
-      path:"contact",
-      name:"Contact",
-      icon:"bi bi-person-lines-fill"
+      path: "contact",
+      name: "Contact",
+      icon: "bi bi-person-lines-fill"
     },
     {
-      path:"panier",
-      name:"Panier",
-      icon:"bi bi-cart3",
-      nombreArticlesPanier:this.service.nombreProduitPanier
+      path: "panier",
+      name: "Panier",
+      icon: "bi bi-cart3",
+      nombreArticlesPanier: this.service.nombreProduitPanier
     }
   ];
-constructor(private service:AllservicesService, private router:Router){
+  constructor(private service: AllservicesService, private router: Router) {
 
-}
+  }
   ngOnInit(): void {
+    this.loadPanierItem();
+
     // console.log('test data',this.isOnline);
     // console.warn("test",JSON.parse(localStorage.getItem("onlineUser") ?? '{}').token);
   }
@@ -66,14 +69,14 @@ constructor(private service:AllservicesService, private router:Router){
   //   });
   // }
 
-  isOnline(){
-   return this.service.IsOnline();
+  isOnline() {
+    return this.service.IsOnline();
   }
 
-  deconnexion(){
+  deconnexion() {
     localStorage.removeItem("onlineUser");
     this.router.navigate(['/accueil']);
-    this.service.message("Au revoir","success","Déconnexion faite avec succès");
+    this.service.message("Au revoir", "success", "Déconnexion faite avec succès");
     // deconnexionCommercant
     // this.service.simplePost("api/deconnexionCommercant",((reponse:any)=>{
     //   console.log(reponse);
@@ -82,5 +85,24 @@ constructor(private service:AllservicesService, private router:Router){
   }
   whoIsOnline() {
     return this.service.whoIsOnline();
+  }
+
+  //   this.service.getRefresh().subscribe((value: boolean) => {
+  //     if(value) {
+
+  //       this.loadCards()
+  //     }
+
+  // })
+  loadPanierItem() {
+
+    this.service.getRefresh().subscribe((value: any) => {
+      if (value) {
+        // console.log(value);
+        this.panierItemNumber=value;
+        return value
+        // this.loadCards()
+      }
+    });
   }
 }

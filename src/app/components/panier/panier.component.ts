@@ -19,6 +19,7 @@ export class PanierComponent implements OnInit {
   public sommeArticles = 0;
   public prixLivraion = this.service.prixLivraion;
   public urlBaseImage=this.service.urlBaseImage;
+  public nombreProduitPanier = JSON.parse(localStorage.getItem('panier') ?? '[]').length;
 
   // Methodes
   constructor(private service: AllservicesService, private router: Router) {
@@ -28,6 +29,7 @@ export class PanierComponent implements OnInit {
   ngOnInit(): void {
     this.panier = this.service.getFromPanier();
     this.totalArticles();
+    this.nombreProduitPanier = JSON.parse(localStorage.getItem('panier') ?? '[]').length;
   }
 
   upOrDownQuantity(type: string, id: any) {
@@ -81,6 +83,7 @@ export class PanierComponent implements OnInit {
     this.panier = this.service.getFromPanier();
     this.service.message("Parfait", "success", "produit retiré du panier");
     this.totalArticles();
+    this.refresh(JSON.parse(localStorage.getItem('panier') ?? '[]').length);
 
   }
 
@@ -105,4 +108,9 @@ export class PanierComponent implements OnInit {
     }
   }
 
+
+   // panierItem
+   public refresh(number:any) {
+    this.service.setRefresh(number);
+  }
 }
