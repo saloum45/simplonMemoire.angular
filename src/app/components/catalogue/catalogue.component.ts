@@ -102,9 +102,11 @@ export class CatalogueComponent implements OnInit {
     if (event.target.value=='desc') {
 
       this.produits.sort((p1:any, p2:any) => (p1.prix < p2.prix) ? 1 : (p1.prix > p2.prix) ? -1 : 0);
-    }else{
+    }else if(event.target.value=='asc'){
 
       this.produits.sort((p1:any, p2:any) => (p1.prix > p2.prix) ? 1 : (p1.prix < p2.prix) ? -1 : 0);
+    }else{
+      this.loadAllProducts();
     }
   }
 }

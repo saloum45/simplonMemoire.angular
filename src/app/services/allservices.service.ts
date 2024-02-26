@@ -227,7 +227,7 @@ export class AllservicesService {
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      cancelButtonColor: "#d33",  
       confirmButtonText: "Oui",
       cancelButtonText: "Non"
     }).then((result) => {
@@ -249,4 +249,5 @@ export class AllservicesService {
   successMessage(message: any) {
     Notify.success(message);
   }
+
 }
