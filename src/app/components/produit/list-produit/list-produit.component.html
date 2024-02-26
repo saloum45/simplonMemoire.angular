@@ -13,7 +13,7 @@
   </div>
 
   <div class="row row-cols-1 row-cols-md-4 g-4">
-    @for (item of search(); track $index) {
+    @for (item of getArticlesPage(); track $index) {
 
     <div class="col">
       <div class="card" id="card">
@@ -45,6 +45,24 @@
       </div>
     </div>
     }
+  </div>
+  <div class="pagination">
+    <button
+      [disabled]="pageActuelle === 1"
+      (click)="pageActuelle = pageActuelle - 1"
+    >
+      Précedent
+    </button>
+    @for (page of pages; track $index) {
+
+    <span (click)="pageActuelle = page"> {{ page }}</span>
+    }
+    <button
+      [disabled]="pageActuelle === totalPages"
+      (click)="pageActuelle = pageActuelle + 1"
+    >
+      Suivant
+    </button>
   </div>
 
   @if (search().length==0) {

@@ -136,7 +136,7 @@ export class ContactComponent implements OnInit {
 
  messageValidate() {
     let validationPrenom = document.getElementById('validationMessage');
-    const nomPrenomRegex = /^[a-zA-Z]+[a-z0-9]{3,}$/;
+    const nomPrenomRegex = /^[a-zA-Z]+[a-z0-9]$/;
     if (nomPrenomRegex.test(this.message)) {
       // console.log(nomPrenomRegex.test(this.adresse));
       validationPrenom!.innerHTML = 'valide';

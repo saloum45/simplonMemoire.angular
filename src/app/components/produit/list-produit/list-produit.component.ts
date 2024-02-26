@@ -19,7 +19,8 @@ export class ListProduitComponent implements OnInit {
   public produits: any = [];
   public searchInput = "";
   public urlBaseImage = this.service.urlBaseImage;
-
+  public pageActuelle: number = 1;
+  public articlesParPage: number = 8;
 
   // Methodes
   constructor(private service: AllservicesService) {
@@ -72,4 +73,22 @@ export class ListProduitComponent implements OnInit {
 
 
   }
+
+
+    // Méthode pour déterminer les articles à afficher sur la page actuelle
+    getArticlesPage(): any[] {
+      const indexDebut = (this.pageActuelle - 1) * this.articlesParPage;
+      const indexFin = indexDebut + this.articlesParPage;
+      return this.search().slice(indexDebut, indexFin);
+    }
+    // Méthode pour générer la liste des pages
+    get pages(): number[] {
+      const totalPages = Math.ceil(this.search().length / this.articlesParPage);
+      return Array(totalPages).fill(0).map((_, index) => index + 1);
+    }
+
+    // Méthode pour obtenir le nombre total de pages
+    get totalPages(): number {
+      return Math.ceil(this.search().length / this.articlesParPage);
+    }
 }
