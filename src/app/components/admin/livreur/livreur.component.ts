@@ -124,14 +124,19 @@ ngOnInit(): void {
 
 
 AjouterLivreur(){
-  console.log(this.livreur);
-  this.service.post("api/registerLivreur",this.livreur,((reponse:any)=>{
-    if (reponse.status==200) {
-      console.log("liv",reponse);
-      this.service.message('Parfait','success','Livreur ajouté avec succès');
-      this.closeAddExpenseModal.nativeElement.click();
-    }
-  }));
+  if (this.livreur.adresse=="" || this.livreur.numero_tel=="" || this.livreur.email=="" || this.livreur.nom=="" || this.livreur.matricule=="" ) {
+    this.service.message('Oops','error','Veuillez renseigner tousles champs');
+  }else{
+
+    console.log(this.livreur);
+    this.service.post("api/registerLivreur",this.livreur,((reponse:any)=>{
+      if (reponse.status==200) {
+        console.log("liv",reponse);
+        this.service.message('Parfait','success','Livreur ajouté avec succès');
+        this.closeAddExpenseModal.nativeElement.click();
+      }
+    }));
+  }
   this.getLivreurs();
 }
 

@@ -51,7 +51,7 @@
           <div>
             <p>Affecter à un livreur :</p>
             <div class="form-element">
-              <select name="" id=""  (change)="AffecterLivreur($event)">
+              <select name="" id=""  (change)="AffecterLivreur($event)" [disabled]="etat_commande=='terminer' || etat_commande=='en_cours'">
                 <option selected>Livreurs</option>
                 @for (item of livreurs; track $index) {
                   @if (item.statut=="disponible") {

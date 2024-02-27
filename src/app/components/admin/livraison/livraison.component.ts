@@ -23,6 +23,7 @@ export class LivraisonComponent implements OnInit {
   public adresse_vendeurs:any[]=[];
   public livreur_id="";
   public commande_id="";
+  public etat_commande="";
 
   dtOptions: DataTables.Settings = {};
   public livreurs: any[] = [];
@@ -69,6 +70,7 @@ export class LivraisonComponent implements OnInit {
       this.numero=reponse.data.numero_tel;
       this.commande_id=reponse.data.commande_id;
       this.adresse_vendeurs=reponse.data.details_commande;
+      this.etat_commande=reponse.data.etat_commande;
       // console.warn(this.commande_id);
     }));
 
