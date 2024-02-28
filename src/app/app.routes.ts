@@ -23,6 +23,7 @@ import { ClientGuard } from './guards/client.guard';
 import { VendeurGuard } from './guards/vendeur.guard';
 import { LivreurGuard } from './guards/livreur.guard';
 import { IsOnlineGuard } from './guards/is-online.guard';
+import { InitPasswordComponent } from './auth/init-password/init-password.component';
 
 
 export const routes: Routes = [
@@ -119,6 +120,10 @@ export const routes: Routes = [
   {
     path:'confidentialiteSecurite',
     component:ConfidentialiteSecuriteComponent
+  },
+  {
+    path:'initPass',
+    component:InitPasswordComponent
   },
 
   {

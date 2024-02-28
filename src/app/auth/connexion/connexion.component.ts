@@ -21,6 +21,7 @@ export class ConnexionComponent {
   public email = "";
   public showHidePassword: any;
   public truthyTab: any[] = [];
+  public loginTryNumber=0;
 
   // Methodes
   constructor(private service: AllservicesService, private router: Router) {
@@ -61,6 +62,39 @@ export class ConnexionComponent {
               this.service.message("Désolé!!!", "error", "Connexion  échouée, vérifier la saisie => " + Object.values(reponse.errorsList).join('--'));
             } else {
               this.service.message("Désolé!!!", "error", "connexion  échouée, vérifier la saisie ");
+            }
+            this.loginTryNumber++;
+            if (this.loginTryNumber==3) {
+              this.loginTryNumber=0;
+                Swal.fire({
+                  title: "Vous avez oublié votre mot de passe ? ",
+                  text: "Voulez vous réinitialiser votre mot de passe ?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Oui",
+                  cancelButtonText: "Non"
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    this.service.post("api/verifMail",{email:this.email},((reponse:any)=>{
+                      console.log('pass init rep',reponse);
+                    }));
+                    Swal.fire({
+                      title: 'Parfait',
+                      text: 'Veuillez vérifier votre boite mail pour continuer la réinitialisation',
+                      icon: 'success'
+                    });
+                    // this.service.message("Parfait", "success", "Veuillez vérifier votre boite mail pour la porsuite de la réinitialisation");
+                  } else {
+                    // this.service.message("Oops", "warning", "Réinitialisation annulée");
+                    Swal.fire({
+                      title: 'Oops',
+                      text: 'Réinitialisation annulée',
+                      icon: 'warning'
+                    });
+                  }
+                });
             }
           }
         }
