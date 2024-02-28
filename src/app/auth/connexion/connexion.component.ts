@@ -79,12 +79,22 @@ export class ConnexionComponent {
                   if (result.isConfirmed) {
                     this.service.post("api/verifMail",{email:this.email},((reponse:any)=>{
                       console.log('pass init rep',reponse);
+                      if (reponse.status==200) {
+                        Swal.fire({
+                          title: 'Parfait',
+                          text: 'Veuillez vérifier votre boite mail pour continuer la réinitialisation',
+                          icon: 'success'
+                        });
+
+                      }else{
+
+                        Swal.fire({
+                          title: 'Oops',
+                          text: 'Le mail fournit n\'existe pas,donc réinitialisation pas possible',
+                          icon: 'error'
+                        });
+                      }
                     }));
-                    Swal.fire({
-                      title: 'Parfait',
-                      text: 'Veuillez vérifier votre boite mail pour continuer la réinitialisation',
-                      icon: 'success'
-                    });
                     // this.service.message("Parfait", "success", "Veuillez vérifier votre boite mail pour la porsuite de la réinitialisation");
                   } else {
                     // this.service.message("Oops", "warning", "Réinitialisation annulée");

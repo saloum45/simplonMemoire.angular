@@ -17,9 +17,9 @@ export class InitPasswordComponent {
   public showHidePassword: any;
   public pass = "";
   public truthyTab: any;
-  public isConfirmInputAllowed=false;
-  public confirmPass='';
-public canSend=false;
+  public isConfirmInputAllowed = false;
+  public confirmPass = '';
+  public canSend = false;
 
 
 
@@ -48,12 +48,12 @@ public canSend=false;
       validationPrenom!.innerHTML = 'Conforme';
       validationPrenom!.classList.remove('error');
       validationPrenom!.classList.add('success');
-      this.canSend=true;
+      this.canSend = true;
     } else {
       validationPrenom!.innerHTML = 'Pas conforme';
       validationPrenom!.classList.remove('success');
       validationPrenom!.classList.add('error');
-      this.canSend=false;
+      this.canSend = false;
     }
     if (this.pass == "") {
       validationPrenom!.innerHTML = '';
@@ -84,8 +84,18 @@ public canSend=false;
 
   }
 
-  initaliserPass(){
-    alert('pass init  okay');
+  initaliserPass() {
+    // alert('pass init  okay');
+    console.log('id',{ id: 1, password: this.pass });
+    this.service.post('api/resetPassword', { id: 1, password: this.pass }, ((reponse: any) => {
+      console.log(reponse);
+      if (reponse.status==200) {
+        this.service.message('Parfait','success','mot de passe réinitialisé, veuillez vous connecter');
+        this.router.navigate(['/connexion']);
+      }else{
+        this.service.message('Oops','error','Réinitialisation échouée veuillez ressayer');
+      }
+    }));
   }
 
 }
