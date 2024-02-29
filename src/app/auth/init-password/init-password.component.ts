@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AllservicesService } from '../../services/allservices.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { param } from 'jquery';
 
 @Component({
   selector: 'app-init-password',
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './init-password.component.html',
   styleUrl: '../connexion/connexion.component.css'
 })
-export class InitPasswordComponent {
+export class InitPasswordComponent implements OnInit{
   // Attributs
   public showHidePassword: any;
   public pass = "";
@@ -20,6 +21,7 @@ export class InitPasswordComponent {
   public isConfirmInputAllowed = false;
   public confirmPass = '';
   public canSend = false;
+  public userId="";
 
 
 
@@ -27,6 +29,11 @@ export class InitPasswordComponent {
   // Methods
   constructor(private service: AllservicesService, private router: Router, private activatedRoute: ActivatedRoute) {
 
+  }
+  ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params=>{
+      this.userId=params['userId']
+    })
   }
 
   showPassword() {
@@ -81,12 +88,11 @@ export class InitPasswordComponent {
       validationPrenom!.innerHTML = "";
     }
     this.isPassConforme();
-
   }
 
   initaliserPass() {
     // alert('pass init  okay');
-    console.log('id',{ id: 1, password: this.pass });
+    console.log('id',{ userId: this.userId, password: this.pass });
     this.service.post('api/resetPassword', { id: 1, password: this.pass }, ((reponse: any) => {
       console.log(reponse);
       if (reponse.status==200) {
